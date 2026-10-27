@@ -60,6 +60,9 @@ class GraphStore:
             self.base = self.ds.graph(URIRef(config.BASE_GRAPH))
             self.inferred = self.ds.graph(URIRef(config.INFERRED_GRAPH))
             self.base.parse(source, format="turtle")
+            if source == config.ONTOLOGY_PATH:  # runtime.ttl contient déjà les extensions
+                for ext in sorted(config.EXTENSIONS_DIR.glob("*.ttl")):
+                    self.base.parse(ext, format="turtle")
             self.source = source
             self._infer()
             self.version += 1

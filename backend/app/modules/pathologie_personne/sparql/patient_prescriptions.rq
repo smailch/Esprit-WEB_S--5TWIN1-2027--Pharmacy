@@ -1,0 +1,17 @@
+# objectif: Prescriptions d'un patient (lecture seule, module d'un autre membre) avec médecin et pharmacien.
+# categorie: Read
+# params: s:iri
+# exemple: {"s": "Patient_Youssef"}
+SELECT ?id ?label ?date ?posologie ?medecin ?medecinId ?pharmacien ?pharmacienId
+       (GROUP_CONCAT(DISTINCT ?medLabel; separator=", ") AS ?medicaments) WHERE {
+  ?presc :concernePatient {{s}} ; rdfs:label ?label .
+  OPTIONAL { ?presc :datePrescription ?d }
+  OPTIONAL { ?presc :posologie ?posologie }
+  OPTIONAL { ?presc :prescritMedicament/rdfs:label ?medLabel }
+  OPTIONAL { ?presc :prescritPar ?m . ?m rdfs:label ?medecin }
+  OPTIONAL { ?presc :estDelivreePar ?ph . ?ph rdfs:label ?pharmacien }
+  BIND(STR(?d) AS ?date)
+  BIND(STRAFTER(STR(?presc), "#") AS ?id)
+  BIND(STRAFTER(STR(?m), "#") AS ?medecinId)
+  BIND(STRAFTER(STR(?ph), "#") AS ?pharmacienId)
+} GROUP BY ?id ?label ?date ?posologie ?medecin ?medecinId ?pharmacien ?pharmacienId ORDER BY ?id

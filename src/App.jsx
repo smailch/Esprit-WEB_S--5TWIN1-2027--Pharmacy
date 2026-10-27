@@ -18,6 +18,11 @@ import DonneesCliniques from './pages/DonneesCliniques.jsx';
 import Scenario from './pages/Scenario.jsx';
 import AssistantModuleD from './pages/AssistantModuleD.jsx';
 import SparqlModuleD from './pages/SparqlModuleD.jsx';
+// Module Pathologie + Personne
+import TableauSante from './pages/sante/TableauSante.jsx';
+import Pathologies from './pages/sante/Pathologies.jsx';
+import ConsoleSante from './pages/sante/ConsoleSante.jsx';
+import { AssistantSantePage, PatientPage, PersonnesPage, SanteLayout } from './pages/sante/routes.jsx';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -46,6 +51,15 @@ export default function App() {
           <Route path="/scenario" element={<Scenario />} />
           <Route path="/module-d/assistant" element={<AssistantModuleD />} />
           <Route path="/module-d/sparql" element={<SparqlModuleD />} />
+          {/* Module Pathologie + Personne */}
+          <Route element={<SanteLayout />}>
+            <Route path="/sante" element={<TableauSante />} />
+            <Route path="/pathologies" element={<Pathologies />} />
+            <Route path="/personnes" element={<PersonnesPage />} />
+            <Route path="/patients/:id" element={<PatientPage />} />
+            <Route path="/assistant-sante" element={<AssistantSantePage />} />
+          </Route>
+          <Route path="/sante-sparql" element={<ConsoleSante />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

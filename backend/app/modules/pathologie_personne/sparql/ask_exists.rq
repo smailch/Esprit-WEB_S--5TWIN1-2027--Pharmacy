@@ -1,0 +1,5 @@
+# objectif: L'IRI existe-t-il déjà ? (404, ou collision 409 à la création)
+# categorie: ASK
+# params: s:iri
+# exemple: {"s": "Patient_Ali"}
+ASK { {{s}} ?p ?o }

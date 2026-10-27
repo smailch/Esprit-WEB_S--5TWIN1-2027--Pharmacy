@@ -1,0 +1,13 @@
+# objectif: Pathologies d'un patient avec leur type et leur famille (aiguë/chronique).
+# categorie: Read
+# params: s:iri
+# exemple: {"s": "Patient_Ali"}
+SELECT DISTINCT ?id ?label ?code ?type ?famille WHERE {
+  {{s}} :souffreDe ?p .
+  ?p rdfs:label ?label ; a ?t . ?t rdfs:subClassOf* :Pathologie .
+  OPTIONAL { ?p :codeCIM10 ?code }
+  OPTIONAL { ?t rdfs:subClassOf* ?f . FILTER(?f IN (:MaladieAigue, :MaladieChronique)) }
+  BIND(STRAFTER(STR(?p), "#") AS ?id)
+  BIND(STRAFTER(STR(?t), "#") AS ?type)
+  BIND(STRAFTER(STR(?f), "#") AS ?famille)
+} ORDER BY ?label

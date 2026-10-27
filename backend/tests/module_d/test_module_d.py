@@ -36,8 +36,9 @@ def test_tests_sur_copie_et_original_intact():
 
 def test_referentiels(client):
     ref = get(client, "/api/module-d/referentiels")
-    assert ids(ref["patients"]) == {"Patient_Ali", "Patient_Sara", "Patient_Youssef", "Patient_Lina"}
-    assert ids(ref["medecins"]) == {"Dr_Benali", "Dr_Trabelsi"}
+    # ⊇ et non == : ontologie/extensions/ ajoute d'autres patients et médecins (module Pathologie + Personne)
+    assert {"Patient_Ali", "Patient_Sara", "Patient_Youssef", "Patient_Lina"} <= ids(ref["patients"])
+    assert {"Dr_Benali", "Dr_Trabelsi"} <= ids(ref["medecins"])
     assert ids(ref["typesPrescription"]) == {"PrescriptionSimple", "PrescriptionRenouvelable", "PrescriptionNormale",
                                              "PrescriptionUrgente", "RenouvellementCourt", "RenouvellementLong"}
     assert ids(ref["typesDonnee"]) == {"ExamenClinique", "HistoriqueMedical", "SigneVital", "AnalyseBiologique", "Allergie", "Antecedent"}

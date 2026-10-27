@@ -1,0 +1,10 @@
+# objectif: Nombre total de pathologies correspondant aux filtres (pagination).
+# categorie: Agregat
+# params: filters:raw
+# exemple: {"filters": "FILTER EXISTS { ?p a/rdfs:subClassOf* :MaladieChronique }"}
+SELECT (COUNT(DISTINCT ?p) AS ?total) WHERE {
+  ?p a ?t . ?t rdfs:subClassOf* :Pathologie .
+  ?p rdfs:label ?label .
+  OPTIONAL { ?p :codeCIM10 ?code }
+  {{filters}}
+}

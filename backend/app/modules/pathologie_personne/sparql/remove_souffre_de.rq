@@ -1,0 +1,5 @@
+# objectif: Retirer une pathologie d'un patient.
+# categorie: Update
+# params: s:iri, patho:iri
+# exemple: {"s": "Patient_Lina", "patho": "InsuffisanceHepatique"}
+DELETE DATA { {{s}} :souffreDe {{patho}} . }

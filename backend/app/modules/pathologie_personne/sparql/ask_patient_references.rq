@@ -1,0 +1,5 @@
+# objectif: Le patient est-il référencé (prescription ou donnée clinique) ? Si oui, suppression refusée (409).
+# categorie: ASK
+# params: s:iri
+# exemple: {"s": "Patient_Ali"}
+ASK { { ?x :concernePatient {{s}} } UNION { ?x :estDonneeDe {{s}} } }

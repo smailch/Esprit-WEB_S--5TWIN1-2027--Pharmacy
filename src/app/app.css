@@ -19,10 +19,21 @@
 .app-nav {
   position: sticky; top: 61px; align-self: start;
   height: calc(100vh - 61px);
-  display: flex; flex-direction: column; justify-content: space-between;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 18px;
+  overflow-y: auto; overscroll-behavior: contain; /* menu plus haut que l'écran (3 modules) */
   padding: 24px 16px;
   border-right: 1px solid var(--line);
+  /* Barre de défilement discrète, aux couleurs du site : invisible au repos, visible au survol */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s;
 }
+.app-nav:hover, .app-nav:focus-within { scrollbar-color: rgba(30, 50, 39, 0.28) transparent; }
+.app-nav::-webkit-scrollbar { width: 6px; }
+.app-nav::-webkit-scrollbar-track { background: transparent; margin: 12px 0; }
+.app-nav::-webkit-scrollbar-thumb { background: transparent; border-radius: 999px; }
+.app-nav:hover::-webkit-scrollbar-thumb, .app-nav:focus-within::-webkit-scrollbar-thumb { background: rgba(30, 50, 39, 0.22); }
+.app-nav::-webkit-scrollbar-thumb:hover { background: rgba(30, 50, 39, 0.4); }
 .app-nav ul { display: grid; gap: 4px; }
 .app-link {
   display: flex; align-items: center; gap: 12px;
@@ -297,3 +308,4 @@
 
 /* Les enfants de grilles ne doivent jamais s'élargir au-delà de leur colonne (tableaux larges → défilement interne). */
 .console > *, .split > *, .answer-layout > *, .panel > *, .result, .code-block { min-width: 0; }
+.app-nav-section { margin: 1rem 0 .3rem; padding: 0 .75rem; font-size: .72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; opacity: .6; }

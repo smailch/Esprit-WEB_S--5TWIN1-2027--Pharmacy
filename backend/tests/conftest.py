@@ -22,3 +22,20 @@ def fresh(client):
     client.post("/api/admin/reset")
     yield client
     client.post("/api/admin/reset")
+
+
+# ---------- Module Pathologie + Personne ----------
+@pytest.fixture()
+def sq():
+    """Client SPARQL du module sur le graphe commun, remis dans l'état initial avant et après le test."""
+    from app.graph_store import store
+    from app.modules.pathologie_personne.client import StoreClient
+    store.load(reset=True)
+    yield StoreClient(store)
+    store.load(reset=True)
+
+
+@pytest.fixture()
+def repo(sq):
+    from app.modules.pathologie_personne.service import Repository
+    return Repository(sq)

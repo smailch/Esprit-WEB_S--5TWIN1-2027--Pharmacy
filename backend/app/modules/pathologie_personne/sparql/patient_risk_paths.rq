@@ -1,0 +1,12 @@
+# objectif: Property path complet Patient → Prescription → Médicament → Molécule → ContreIndication → Pathologie ; « atteint » si le patient a la pathologie.
+# categorie: Chemin
+# params: filters:raw
+# exemple: {"filters": ""}
+SELECT DISTINCT ?patient ?medicament ?molecule ?pathologie ?atteint WHERE {
+  ?pat ^:concernePatient/:prescritMedicament ?med .
+  ?med :contientMolecule ?mol .
+  ?mol :aContreIndication/:concernePathologie ?p .
+  BIND(EXISTS { ?pat :souffreDe ?p } AS ?atteint)
+  ?pat rdfs:label ?patient . ?med rdfs:label ?medicament . ?mol rdfs:label ?molecule . ?p rdfs:label ?pathologie .
+  {{filters}}
+} ORDER BY DESC(?atteint) ?patient

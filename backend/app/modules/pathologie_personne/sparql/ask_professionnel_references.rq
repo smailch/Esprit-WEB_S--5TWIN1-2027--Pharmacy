@@ -1,0 +1,5 @@
+# objectif: Le professionnel a-t-il prescrit ou délivré une ordonnance ? Si oui, suppression refusée (409).
+# categorie: ASK
+# params: s:iri
+# exemple: {"s": "Dr_Benali"}
+ASK { { ?x :prescritPar {{s}} } UNION { ?x :estDelivreePar {{s}} } }

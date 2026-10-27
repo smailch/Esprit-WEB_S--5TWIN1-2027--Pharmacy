@@ -1,0 +1,10 @@
+# objectif: Nombre de médecins ou pharmaciens correspondant aux filtres (pagination).
+# categorie: Agregat
+# params: classe:iri, filters:raw
+# exemple: {"classe": "Pharmacien", "filters": ""}
+SELECT (COUNT(DISTINCT ?s) AS ?total) WHERE {
+  ?s a {{classe}} ; rdfs:label ?label .
+  OPTIONAL { ?s :nom ?nom }
+  OPTIONAL { ?s :specialite ?specialite }
+  {{filters}}
+}

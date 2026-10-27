@@ -1,0 +1,8 @@
+# objectif: Patients atteints d'une pathologie donnée.
+# categorie: Filtre
+# params: s:iri
+# exemple: {"s": "HypertensionArterielle"}
+SELECT ?id ?label ?age WHERE {
+  ?p :souffreDe {{s}} ; rdfs:label ?label . OPTIONAL { ?p :age ?age }
+  BIND(STRAFTER(STR(?p), "#") AS ?id)
+} ORDER BY ?label

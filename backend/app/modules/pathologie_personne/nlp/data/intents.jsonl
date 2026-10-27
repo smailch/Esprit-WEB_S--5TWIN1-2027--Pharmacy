@@ -1,0 +1,232 @@
+{"intent": "patients_par_pathologie", "text": "quels patients souffrent de ent_pathologie"}
+{"intent": "patients_par_pathologie", "text": "quels sont les patients atteints de ent_pathologie"}
+{"intent": "patients_par_pathologie", "text": "liste des patients qui ont ent_pathologie"}
+{"intent": "patients_par_pathologie", "text": "qui souffre de ent_pathologie"}
+{"intent": "patients_par_pathologie", "text": "qui a ent_pathologie"}
+{"intent": "patients_par_pathologie", "text": "patients avec ent_pathologie"}
+{"intent": "patients_par_pathologie", "text": "les malades de ent_pathologie"}
+{"intent": "patients_par_pathologie", "text": "quels patients sont atteints d une maladie ent_type"}
+{"intent": "patients_par_pathologie", "text": "patients souffrant d une ent_type"}
+{"intent": "patients_par_pathologie", "text": "qui est atteint de ent_pathologie"}
+{"intent": "patients_par_pathologie", "text": "montre moi les patients ayant ent_pathologie"}
+{"intent": "patients_par_pathologie", "text": "quels patients ne souffrent pas de ent_pathologie"}
+{"intent": "patients_par_pathologie", "text": "patients atteints de ent_pathologie de plus de ent_num ans"}
+{"intent": "patients_par_pathologie", "text": "donne les patients diagnostiques ent_pathologie"}
+{"intent": "patients_par_pathologie", "text": "quels patients ont une ent_type"}
+{"intent": "patients_par_pathologie", "text": "afficher les personnes souffrant de ent_pathologie"}
+{"intent": "patients_par_pathologie", "text": "les patients qui ont une ent_pathologie"}
+{"intent": "patients_par_pathologie", "text": "quelles patientes ont ent_pathologie"}
+{"intent": "pathologies_patient", "text": "de quoi souffre ent_patient"}
+{"intent": "pathologies_patient", "text": "quelles sont les pathologies de ent_patient"}
+{"intent": "pathologies_patient", "text": "quelles maladies a ent_patient"}
+{"intent": "pathologies_patient", "text": "ent_patient souffre de quoi"}
+{"intent": "pathologies_patient", "text": "maladies de ent_patient"}
+{"intent": "pathologies_patient", "text": "liste des pathologies du patient ent_patient"}
+{"intent": "pathologies_patient", "text": "quel est le diagnostic de ent_patient"}
+{"intent": "pathologies_patient", "text": "de quelle maladie est atteint ent_patient"}
+{"intent": "pathologies_patient", "text": "qu est ce qu a ent_patient"}
+{"intent": "pathologies_patient", "text": "ent_patient a quelles maladies"}
+{"intent": "pathologies_patient", "text": "quelles pathologies pour ent_patient"}
+{"intent": "pathologies_patient", "text": "montre les maladies de ent_patient"}
+{"intent": "pathologies_patient", "text": "ent_patient est malade de quoi"}
+{"intent": "pathologies_patient", "text": "dossier medical de ent_patient"}
+{"intent": "pathologies_patient", "text": "de quoi est atteinte ent_patient"}
+{"intent": "pathologies_patient", "text": "pathologies du patient ent_patient"}
+{"intent": "patients_filtre", "text": "liste des patients de plus de ent_num ans"}
+{"intent": "patients_filtre", "text": "les patients de moins de ent_num ans"}
+{"intent": "patients_filtre", "text": "patients ages entre ent_num et ent_num ans"}
+{"intent": "patients_filtre", "text": "les patientes de sexe feminin"}
+{"intent": "patients_filtre", "text": "les patients de sexe masculin"}
+{"intent": "patients_filtre", "text": "quels sont les patients ent_classe"}
+{"intent": "patients_filtre", "text": "afficher les ent_classe"}
+{"intent": "patients_filtre", "text": "liste des patients"}
+{"intent": "patients_filtre", "text": "tous les patients"}
+{"intent": "patients_filtre", "text": "les femmes"}
+{"intent": "patients_filtre", "text": "les hommes de plus de ent_num ans"}
+{"intent": "patients_filtre", "text": "patients seniors"}
+{"intent": "patients_filtre", "text": "les personnes agees"}
+{"intent": "patients_filtre", "text": "quels patients n ont aucune pathologie"}
+{"intent": "patients_filtre", "text": "patients sans pathologie"}
+{"intent": "patients_filtre", "text": "les patients ent_classe de sexe feminin"}
+{"intent": "patients_filtre", "text": "montre les patients ages de ent_num ans"}
+{"intent": "patients_filtre", "text": "quels patients ont moins de ent_num ans"}
+{"intent": "compter", "text": "combien de patients ent_classe"}
+{"intent": "compter", "text": "combien de patients"}
+{"intent": "compter", "text": "combien y a t il de patients"}
+{"intent": "compter", "text": "nombre de patients de plus de ent_num ans"}
+{"intent": "compter", "text": "combien de medecins"}
+{"intent": "compter", "text": "combien de pharmaciens"}
+{"intent": "compter", "text": "nombre de pathologies"}
+{"intent": "compter", "text": "combien de maladies ent_type"}
+{"intent": "compter", "text": "combien de patients souffrent de ent_pathologie"}
+{"intent": "compter", "text": "combien de femmes"}
+{"intent": "compter", "text": "compter les patients ent_classe"}
+{"intent": "compter", "text": "quel est le nombre de patients"}
+{"intent": "compter", "text": "total des patients"}
+{"intent": "compter", "text": "combien de pathologies existe t il"}
+{"intent": "compter", "text": "nombre de medecins ent_specialite"}
+{"intent": "compter", "text": "combien de patientes"}
+{"intent": "pathologies_par_type", "text": "quelles sont les maladies ent_type"}
+{"intent": "pathologies_par_type", "text": "quelles ent_type existent"}
+{"intent": "pathologies_par_type", "text": "liste des ent_type"}
+{"intent": "pathologies_par_type", "text": "les maladies ent_type"}
+{"intent": "pathologies_par_type", "text": "quelles pathologies sont des ent_type"}
+{"intent": "pathologies_par_type", "text": "donne moi les ent_type"}
+{"intent": "pathologies_par_type", "text": "toutes les pathologies"}
+{"intent": "pathologies_par_type", "text": "liste des pathologies"}
+{"intent": "pathologies_par_type", "text": "quelles maladies existent"}
+{"intent": "pathologies_par_type", "text": "afficher les ent_type"}
+{"intent": "pathologies_par_type", "text": "quelles sont les pathologies de type ent_type"}
+{"intent": "pathologies_par_type", "text": "pathologies ent_type"}
+{"intent": "pathologies_par_type", "text": "les ent_type connues"}
+{"intent": "pathologies_par_type", "text": "quelles sont les ent_type"}
+{"intent": "pathologies_par_type", "text": "montre les maladies ent_type"}
+{"intent": "pathologies_par_type", "text": "quelles ent_type sont enregistrees"}
+{"intent": "code_cim10", "text": "quel est le code cim 10 de ent_pathologie"}
+{"intent": "code_cim10", "text": "code cim de ent_pathologie"}
+{"intent": "code_cim10", "text": "code de ent_pathologie"}
+{"intent": "code_cim10", "text": "quel code pour ent_pathologie"}
+{"intent": "code_cim10", "text": "cim10 ent_pathologie"}
+{"intent": "code_cim10", "text": "donne le code cim10 du ent_pathologie"}
+{"intent": "code_cim10", "text": "code diagnostic de ent_pathologie"}
+{"intent": "code_cim10", "text": "classification cim de ent_pathologie"}
+{"intent": "code_cim10", "text": "ent_pathologie code"}
+{"intent": "code_cim10", "text": "quel est le code de la ent_pathologie"}
+{"intent": "code_cim10", "text": "codes cim des ent_type"}
+{"intent": "code_cim10", "text": "quel code cim correspond a ent_pathologie"}
+{"intent": "code_cim10", "text": "le code international de ent_pathologie"}
+{"intent": "code_cim10", "text": "code cim 10 ent_pathologie"}
+{"intent": "code_cim10", "text": "reference cim de ent_pathologie"}
+{"intent": "code_cim10", "text": "ent_pathologie quel code cim"}
+{"intent": "medicaments_indiques", "text": "quels medicaments pour ent_pathologie"}
+{"intent": "medicaments_indiques", "text": "quels medicaments sont indiques pour ent_pathologie"}
+{"intent": "medicaments_indiques", "text": "que prendre contre ent_pathologie"}
+{"intent": "medicaments_indiques", "text": "traitement de ent_pathologie"}
+{"intent": "medicaments_indiques", "text": "comment traiter ent_pathologie"}
+{"intent": "medicaments_indiques", "text": "medicament pour soigner ent_pathologie"}
+{"intent": "medicaments_indiques", "text": "quel medicament contre ent_pathologie"}
+{"intent": "medicaments_indiques", "text": "quels traitements pour la ent_pathologie"}
+{"intent": "medicaments_indiques", "text": "que donner pour ent_pathologie"}
+{"intent": "medicaments_indiques", "text": "medicaments indiques en cas de ent_pathologie"}
+{"intent": "medicaments_indiques", "text": "quel remede pour ent_pathologie"}
+{"intent": "medicaments_indiques", "text": "soigner ent_pathologie"}
+{"intent": "medicaments_indiques", "text": "quels medicaments soignent ent_pathologie"}
+{"intent": "medicaments_indiques", "text": "liste des medicaments pour ent_pathologie"}
+{"intent": "medicaments_indiques", "text": "que prescrire pour ent_pathologie"}
+{"intent": "medicaments_indiques", "text": "ent_pathologie quel traitement"}
+{"intent": "medicaments_indiques", "text": "quels medicaments contre la ent_pathologie"}
+{"intent": "medicaments_indiques", "text": "un medicament contre le ent_pathologie"}
+{"intent": "medicaments_indiques", "text": "medicaments efficaces contre ent_pathologie"}
+{"intent": "medicaments_contre_indiques", "text": "quels medicaments sont contre indiques en cas de ent_pathologie"}
+{"intent": "medicaments_contre_indiques", "text": "medicaments contre indiques pour ent_pathologie"}
+{"intent": "medicaments_contre_indiques", "text": "quels medicaments eviter avec ent_pathologie"}
+{"intent": "medicaments_contre_indiques", "text": "medicaments interdits en cas de ent_pathologie"}
+{"intent": "medicaments_contre_indiques", "text": "que ne pas prendre avec ent_pathologie"}
+{"intent": "medicaments_contre_indiques", "text": "medicaments dangereux pour ent_pathologie"}
+{"intent": "medicaments_contre_indiques", "text": "contre indications de ent_pathologie"}
+{"intent": "medicaments_contre_indiques", "text": "quels medicaments sont deconseilles pour ent_pathologie"}
+{"intent": "medicaments_contre_indiques", "text": "medicaments a eviter si ent_pathologie"}
+{"intent": "medicaments_contre_indiques", "text": "ent_pathologie medicaments interdits"}
+{"intent": "medicaments_contre_indiques", "text": "quels medicaments sont dangereux en cas de ent_pathologie"}
+{"intent": "medicaments_contre_indiques", "text": "les contre indications liees a ent_pathologie"}
+{"intent": "medicaments_contre_indiques", "text": "que faut il eviter avec ent_pathologie"}
+{"intent": "medicaments_contre_indiques", "text": "quels medicaments ne pas donner a un patient avec ent_pathologie"}
+{"intent": "medicaments_contre_indiques", "text": "medicaments incompatibles avec ent_pathologie"}
+{"intent": "medicaments_contre_indiques", "text": "quels produits sont contre indiques pour ent_pathologie"}
+{"intent": "medecins_par_specialite", "text": "quels medecins sont ent_specialite"}
+{"intent": "medecins_par_specialite", "text": "liste des medecins"}
+{"intent": "medecins_par_specialite", "text": "les medecins ent_specialite"}
+{"intent": "medecins_par_specialite", "text": "qui sont les ent_specialite"}
+{"intent": "medecins_par_specialite", "text": "quels sont les medecins en ent_specialite"}
+{"intent": "medecins_par_specialite", "text": "medecins specialises en ent_specialite"}
+{"intent": "medecins_par_specialite", "text": "liste des pharmaciens"}
+{"intent": "medecins_par_specialite", "text": "quels pharmaciens travaillent en ent_specialite"}
+{"intent": "medecins_par_specialite", "text": "qui est ent_specialite"}
+{"intent": "medecins_par_specialite", "text": "tous les medecins"}
+{"intent": "medecins_par_specialite", "text": "les docteurs"}
+{"intent": "medecins_par_specialite", "text": "quelle est la specialite de ent_medecin"}
+{"intent": "medecins_par_specialite", "text": "specialite de ent_medecin"}
+{"intent": "medecins_par_specialite", "text": "les pharmaciens"}
+{"intent": "medecins_par_specialite", "text": "y a t il un ent_specialite"}
+{"intent": "medecins_par_specialite", "text": "trouver un medecin ent_specialite"}
+{"intent": "patients_medecin", "text": "quels patients suit ent_medecin"}
+{"intent": "patients_medecin", "text": "patients de ent_medecin"}
+{"intent": "patients_medecin", "text": "qui sont les patients de ent_medecin"}
+{"intent": "patients_medecin", "text": "quels patients ont ete traites par ent_medecin"}
+{"intent": "patients_medecin", "text": "a qui ent_medecin a prescrit"}
+{"intent": "patients_medecin", "text": "les patients du ent_medecin"}
+{"intent": "patients_medecin", "text": "quels patients consultent ent_medecin"}
+{"intent": "patients_medecin", "text": "patients suivis par ent_medecin"}
+{"intent": "patients_medecin", "text": "liste des patients de ent_medecin"}
+{"intent": "patients_medecin", "text": "qui ent_medecin soigne t il"}
+{"intent": "patients_medecin", "text": "pour qui ent_pharmacien a delivre"}
+{"intent": "patients_medecin", "text": "quels patients ent_pharmacien a servis"}
+{"intent": "patients_medecin", "text": "clients de ent_pharmacien"}
+{"intent": "patients_medecin", "text": "patients de ent_pharmacien"}
+{"intent": "patients_medecin", "text": "ent_medecin suit quels patients"}
+{"intent": "patients_medecin", "text": "quels malades ent_medecin a vus"}
+{"intent": "intervenants_prescription", "text": "qui a delivre l ent_prescription"}
+{"intent": "intervenants_prescription", "text": "qui a prescrit l ent_prescription"}
+{"intent": "intervenants_prescription", "text": "quel medecin a prescrit l ent_prescription"}
+{"intent": "intervenants_prescription", "text": "quel pharmacien a delivre ent_prescription"}
+{"intent": "intervenants_prescription", "text": "qui a signe l ent_prescription"}
+{"intent": "intervenants_prescription", "text": "details de l ent_prescription"}
+{"intent": "intervenants_prescription", "text": "medecin de l ent_prescription"}
+{"intent": "intervenants_prescription", "text": "pharmacien de l ent_prescription"}
+{"intent": "intervenants_prescription", "text": "ent_prescription prescrite par qui"}
+{"intent": "intervenants_prescription", "text": "qui est le prescripteur de l ent_prescription"}
+{"intent": "intervenants_prescription", "text": "informations sur l ent_prescription"}
+{"intent": "intervenants_prescription", "text": "que contient l ent_prescription"}
+{"intent": "intervenants_prescription", "text": "qui a fait l ent_prescription"}
+{"intent": "intervenants_prescription", "text": "ent_prescription delivree par qui"}
+{"intent": "intervenants_prescription", "text": "contenu de l ent_prescription"}
+{"intent": "intervenants_prescription", "text": "l ent_prescription concerne quel patient"}
+{"intent": "alertes", "text": "y a t il des prescriptions dangereuses"}
+{"intent": "alertes", "text": "quelles sont les alertes"}
+{"intent": "alertes", "text": "alertes de securite"}
+{"intent": "alertes", "text": "prescriptions a risque"}
+{"intent": "alertes", "text": "y a t il des conflits medicamenteux"}
+{"intent": "alertes", "text": "liste des alertes"}
+{"intent": "alertes", "text": "quelles ordonnances posent probleme"}
+{"intent": "alertes", "text": "des contre indications dans les prescriptions"}
+{"intent": "alertes", "text": "ent_patient a t il une alerte"}
+{"intent": "alertes", "text": "alertes pour ent_patient"}
+{"intent": "alertes", "text": "y a t il un danger pour ent_patient"}
+{"intent": "alertes", "text": "quelles prescriptions sont dangereuses"}
+{"intent": "alertes", "text": "risques des ordonnances"}
+{"intent": "alertes", "text": "ordonnances dangereuses"}
+{"intent": "alertes", "text": "alerte allergie"}
+{"intent": "alertes", "text": "quels patients sont en danger"}
+{"intent": "ask_patient_classe", "text": "ent_patient est elle un patient ent_classe"}
+{"intent": "ask_patient_classe", "text": "ent_patient est il ent_classe"}
+{"intent": "ask_patient_classe", "text": "est ce que ent_patient est ent_classe"}
+{"intent": "ask_patient_classe", "text": "ent_patient est il un ent_classe"}
+{"intent": "ask_patient_classe", "text": "est ce que ent_patient est un patient ent_classe"}
+{"intent": "ask_patient_classe", "text": "ent_patient est elle ent_classe"}
+{"intent": "ask_patient_classe", "text": "ent_patient est une ent_classe"}
+{"intent": "ask_patient_classe", "text": "ent_patient est un patient ent_classe"}
+{"intent": "ask_patient_classe", "text": "est ce que ent_patient est une patiente ent_classe"}
+{"intent": "ask_patient_classe", "text": "ent_patient fait partie des ent_classe"}
+{"intent": "ask_patient_classe", "text": "ent_patient est il considere comme ent_classe"}
+{"intent": "ask_patient_classe", "text": "le patient ent_patient est il ent_classe"}
+{"intent": "ask_patient_classe", "text": "ent_patient c est un ent_classe"}
+{"intent": "ask_patient_classe", "text": "ent_patient ent_classe oui ou non"}
+{"intent": "ask_patient_classe", "text": "ent_patient est ent_classe ou pas"}
+{"intent": "ask_patient_classe", "text": "la patiente ent_patient est elle ent_classe"}
+{"intent": "hors_perimetre", "text": "quel temps fait il demain"}
+{"intent": "hors_perimetre", "text": "qui a gagne le match hier"}
+{"intent": "hors_perimetre", "text": "quelle est la capitale de la france"}
+{"intent": "hors_perimetre", "text": "raconte moi une blague"}
+{"intent": "hors_perimetre", "text": "comment faire une pizza"}
+{"intent": "hors_perimetre", "text": "quel est le prix de l essence"}
+{"intent": "hors_perimetre", "text": "bonjour"}
+{"intent": "hors_perimetre", "text": "merci beaucoup"}
+{"intent": "hors_perimetre", "text": "qui est le president de la republique"}
+{"intent": "hors_perimetre", "text": "quelle heure est il"}
+{"intent": "hors_perimetre", "text": "ecris un poeme sur la mer"}
+{"intent": "hors_perimetre", "text": "traduis cette phrase en anglais"}
+{"intent": "hors_perimetre", "text": "comment aller a tunis en train"}
+{"intent": "hors_perimetre", "text": "quelle est la meilleure voiture"}
+{"intent": "hors_perimetre", "text": "joue de la musique"}
+{"intent": "hors_perimetre", "text": "combien coute un telephone"}
+{"intent": "hors_perimetre", "text": "recette du couscous"}

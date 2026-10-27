@@ -1,0 +1,78 @@
+{"q": "Quels patients souffrent de diabète ?", "intent": "patients_par_pathologie", "entites": ["DiabeteType2"], "min": 1}
+{"q": "Qui est diabétique ?", "intent": "patients_par_pathologie", "entites": ["DiabeteType2"], "min": 1}
+{"q": "les malades qui ont du sucre", "intent": "patients_par_pathologie", "entites": ["DiabeteType2"], "min": 1}
+{"q": "Quels patients ont mal de tête ?", "intent": "patients_par_pathologie", "entites": ["Migraine"], "min": 1}
+{"q": "patients atteints d'hypertension", "intent": "patients_par_pathologie", "entites": ["HypertensionArterielle"], "min": 1}
+{"q": "Qui souffre d'une maladie chronique ?", "intent": "patients_par_pathologie", "entites": ["MaladieChronique"], "min": 1}
+{"q": "quels patients ont une infection aigue", "intent": "patients_par_pathologie", "entites": ["InfectionAigue"], "min": 1}
+{"q": "patients avec une pneumoni", "intent": "patients_par_pathologie", "entites": ["Pneumonie"], "min": 1}
+{"q": "Quels patients ne souffrent pas de migraine ?", "intent": "patients_par_pathologie", "entites": ["Migraine"], "min": 1}
+{"q": "qui a l'ulcère ?", "intent": "patients_par_pathologie", "entites": ["UlcereGastroduodenal"], "min": 1}
+{"q": "De quoi souffre Sara Jlassi ?", "intent": "pathologies_patient", "entites": ["Patient_Sara"], "min": 1}
+{"q": "Quelles sont les maladies de Fatma ?", "intent": "pathologies_patient", "entites": ["Patient_Fatma"], "min": 3}
+{"q": "de quoi souffre youssef", "intent": "pathologies_patient", "entites": ["Patient_Youssef"], "min": 2}
+{"q": "pathologies de Hédi Mejri", "intent": "pathologies_patient", "entites": ["Patient_Hedi"], "min": 3}
+{"q": "Ali Ben Salah a quelles maladies ?", "intent": "pathologies_patient", "entites": ["Patient_Ali"], "min": 2}
+{"q": "diagnostic de Karim Jaziri", "intent": "pathologies_patient", "entites": ["Patient_Karim"], "min": 2}
+{"q": "de quoi souffre Rnia Ferchichi", "intent": "pathologies_patient", "entites": ["Patient_Rania"], "min": 2}
+{"q": "Liste des patients de plus de 60 ans", "intent": "patients_filtre", "min": 3}
+{"q": "les patients de moins de 18 ans", "intent": "patients_filtre", "min": 3}
+{"q": "patients âgés entre 30 et 50 ans", "intent": "patients_filtre", "min": 3}
+{"q": "Les patientes de sexe féminin", "intent": "patients_filtre", "min": 6}
+{"q": "quels sont les patients enfants ?", "intent": "patients_filtre", "entites": ["PatientEnfant"], "min": 3}
+{"q": "afficher les adultes", "intent": "patients_filtre", "entites": ["PatientAdulte"], "min": 8}
+{"q": "les hommes de plus de 50 ans", "intent": "patients_filtre", "min": 3}
+{"q": "Quels patients n'ont aucune pathologie ?", "intent": "patients_filtre", "min": 1}
+{"q": "montre-moi les seniors", "intent": "patients_filtre", "min": 3}
+{"q": "tous les patients", "intent": "patients_filtre", "min": 11}
+{"q": "Combien de patients enfants ?", "intent": "compter", "entites": ["PatientEnfant"]}
+{"q": "combien de patients au total", "intent": "compter"}
+{"q": "Combien de médecins ?", "intent": "compter"}
+{"q": "nombre de pharmaciens", "intent": "compter"}
+{"q": "combien de maladies chroniques", "intent": "compter", "entites": ["MaladieChronique"]}
+{"q": "combien de patients souffrent d'hypertension ?", "intent": "compter", "entites": ["HypertensionArterielle"]}
+{"q": "combien de femmes sont suivies", "intent": "compter"}
+{"q": "Quelles sont les maladies chroniques ?", "intent": "pathologies_par_type", "entites": ["MaladieChronique"], "min": 10}
+{"q": "Quelles infections aiguës existent ?", "intent": "pathologies_par_type", "entites": ["InfectionAigue"], "min": 5}
+{"q": "liste des maladies métaboliques", "intent": "pathologies_par_type", "entites": ["MaladieMetabolique"], "min": 4}
+{"q": "quelles sont les douleurs aigues", "intent": "pathologies_par_type", "entites": ["DouleurAigue"], "min": 4}
+{"q": "toutes les maladies", "intent": "pathologies_par_type", "min": 19}
+{"q": "les insuffisances d'organe connues", "intent": "pathologies_par_type", "entites": ["InsuffisanceOrgane"], "min": 4}
+{"q": "Quel est le code CIM-10 du diabète ?", "intent": "code_cim10", "entites": ["DiabeteType2"], "min": 1}
+{"q": "code cim de la migraine", "intent": "code_cim10", "entites": ["Migraine"], "min": 1}
+{"q": "quel code pour l'otite", "intent": "code_cim10", "entites": ["Otite"], "min": 1}
+{"q": "code CIM10 de l'hypothyroïdie", "intent": "code_cim10", "entites": ["Hypothyroidie"], "min": 1}
+{"q": "Quels médicaments pour la migraine ?", "intent": "medicaments_indiques", "entites": ["Migraine"], "min": 3}
+{"q": "que prendre pour une angine", "intent": "medicaments_indiques", "entites": ["Angine"], "min": 3}
+{"q": "traitement du diabète", "intent": "medicaments_indiques", "entites": ["DiabeteType2"], "min": 1}
+{"q": "quel médicament soigne la pneumonie ?", "intent": "medicaments_indiques", "entites": ["Pneumonie"], "min": 2}
+{"q": "quels médicaments contre le mal aux dents", "intent": "medicaments_indiques", "entites": ["DouleurDentaire"], "min": 3}
+{"q": "Quels médicaments sont contre-indiqués en cas d'insuffisance rénale ?", "intent": "medicaments_contre_indiques", "entites": ["InsuffisanceRenale"], "min": 3}
+{"q": "médicaments à éviter avec un ulcère", "intent": "medicaments_contre_indiques", "entites": ["UlcereGastroduodenal"], "min": 2}
+{"q": "quels medicaments sont interdits pour l'insuffisance hepatique", "intent": "medicaments_contre_indiques", "entites": ["InsuffisanceHepatique"], "min": 3}
+{"q": "contre indications de l'insufisance renale", "intent": "medicaments_contre_indiques", "entites": ["InsuffisanceRenale"], "min": 3}
+{"q": "Quels médecins sont pneumologues ?", "intent": "medecins_par_specialite", "min": 1}
+{"q": "liste des médecins", "intent": "medecins_par_specialite", "min": 5}
+{"q": "y a-t-il un pédiatre ?", "intent": "medecins_par_specialite", "min": 1}
+{"q": "quels sont les cardiologues", "intent": "medecins_par_specialite", "min": 1}
+{"q": "quelle est la spécialité du Dr Zouari ?", "intent": "medecins_par_specialite", "entites": ["Dr_Zouari"], "min": 1}
+{"q": "liste des pharmaciens", "intent": "medecins_par_specialite", "min": 3}
+{"q": "Quels patients suit Dr Benali ?", "intent": "patients_medecin", "entites": ["Dr_Benali"], "min": 3}
+{"q": "patients du docteur Trabelsi", "intent": "patients_medecin", "entites": ["Dr_Trabelsi"], "min": 1}
+{"q": "pour qui la pharmacienne Khelifi a délivré", "intent": "patients_medecin", "entites": ["Ph_Khelifi"], "min": 1}
+{"q": "Qui a délivré l'ordonnance 003 ?", "intent": "intervenants_prescription", "entites": ["Presc_003"], "min": 1}
+{"q": "qui a prescrit l'ordonnance numéro 4", "intent": "intervenants_prescription", "entites": ["Presc_004"], "min": 1}
+{"q": "que contient l'ordonnance 001", "intent": "intervenants_prescription", "entites": ["Presc_001"], "min": 1}
+{"q": "Y a-t-il des prescriptions dangereuses ?", "intent": "alertes", "min": 3}
+{"q": "quelles sont les alertes de sécurité", "intent": "alertes", "min": 3}
+{"q": "Ali a-t-il une alerte ?", "intent": "alertes", "entites": ["Patient_Ali"], "min": 1}
+{"q": "ordonnances à risque", "intent": "alertes", "min": 3}
+{"q": "Sara est-elle un patient enfant ?", "intent": "ask_patient_classe", "entites": ["Patient_Sara", "PatientEnfant"], "bool": true}
+{"q": "Lina est-elle adulte ?", "intent": "ask_patient_classe", "entites": ["Patient_Lina", "PatientAdulte"], "bool": true}
+{"q": "est-ce que Hédi est un enfant ?", "intent": "ask_patient_classe", "entites": ["Patient_Hedi", "PatientEnfant"], "bool": false}
+{"q": "Nour est-elle mineure ?", "intent": "ask_patient_classe", "entites": ["Patient_Nour", "PatientEnfant"], "bool": true}
+{"q": "Quel temps fait-il à Tunis ?", "intent": "hors_perimetre"}
+{"q": "Qui a gagné la coupe du monde ?", "intent": "hors_perimetre"}
+{"q": "donne moi une recette de gâteau", "intent": "hors_perimetre"}
+{"q": "Bonjour, comment ça va ?", "intent": "hors_perimetre"}
+{"q": "Quelle est la capitale de l'Italie ?", "intent": "hors_perimetre"}

@@ -1,0 +1,8 @@
+# objectif: Patients par tranche d'âge (BIND/IF + GROUP BY).
+# categorie: Agregat
+# params:
+# exemple: {}
+SELECT ?tranche (COUNT(DISTINCT ?p) AS ?nb) WHERE {
+  ?p a/rdfs:subClassOf* :Patient ; :age ?a .
+  BIND(IF(?a < 18, "0-17", IF(?a < 40, "18-39", IF(?a < 65, "40-64", "65+"))) AS ?tranche)
+} GROUP BY ?tranche ORDER BY ?tranche

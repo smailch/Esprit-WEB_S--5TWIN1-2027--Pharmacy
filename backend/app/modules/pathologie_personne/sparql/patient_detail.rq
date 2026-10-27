@@ -1,0 +1,11 @@
+# objectif: Détail d'un patient (données + classe dérivée de l'âge).
+# categorie: Read
+# params: s:iri
+# exemple: {"s": "Patient_Lina"}
+SELECT ?label ?nom ?age ?sexe ?classe ?asserte WHERE {
+  {{s}} a/rdfs:subClassOf* :Patient ; rdfs:label ?label ; :age ?age .
+  OPTIONAL { {{s}} :nom ?nom }
+  OPTIONAL { {{s}} :sexe ?sexe }
+  BIND(IF(?age < 18, "PatientEnfant", "PatientAdulte") AS ?classe)
+  BIND(EXISTS { {{s}} a ?c . FILTER(?c IN (:PatientEnfant, :PatientAdulte)) } AS ?asserte)
+} LIMIT 1

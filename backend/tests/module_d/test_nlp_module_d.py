@@ -192,7 +192,9 @@ def test_question_inconnue_et_entite_inconnue(client):
     out = ask(client, "Quel temps fera-t-il demain ?")
     assert out["intent"] is None and out["compris"] is False and out["sparql"] is None and "Reformulez" in out["message"]
     out = ask(client, "Le patient Patient_F001 a-t-il une prescription contre-indiquée ?")
-    assert out["sparql"] is None and "Patient_F001" in out["message"] and "Youssef Hamdi" in out["message"]
+    # Le message propose des patients connus ; leur liste dépend des extensions de l'ontologie (ontologie/extensions/)
+    assert out["sparql"] is None and "Patient_F001" in out["message"]
+    assert any(nom in out["message"] for nom in ("Youssef Hamdi", "Ali Ben Salah", "Sara Jlassi", "Lina Gharbi"))
 
 
 def test_dictionnaire_dynamique_apres_crud(fresh):

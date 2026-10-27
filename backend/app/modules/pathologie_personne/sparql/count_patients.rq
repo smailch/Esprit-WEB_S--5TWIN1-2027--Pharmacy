@@ -1,0 +1,10 @@
+# objectif: Nombre total de patients correspondant aux filtres (pagination).
+# categorie: Agregat
+# params: filters:raw
+# exemple: {"filters": "FILTER(?age >= 60)"}
+SELECT (COUNT(DISTINCT ?p) AS ?total) WHERE {
+  ?p a/rdfs:subClassOf* :Patient ; rdfs:label ?label ; :age ?age .
+  OPTIONAL { ?p :nom ?nom }
+  OPTIONAL { ?p :sexe ?sexe }
+  {{filters}}
+}

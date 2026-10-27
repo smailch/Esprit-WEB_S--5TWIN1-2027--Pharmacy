@@ -1,0 +1,8 @@
+# objectif: Professionnels de santé par classe et spécialité (GROUP BY).
+# categorie: Agregat
+# params:
+# exemple: {}
+SELECT ?classe ?specialite (COUNT(?s) AS ?nb) WHERE {
+  ?s a ?c ; :specialite ?specialite . ?c rdfs:subClassOf :ProfessionnelSante .
+  BIND(STRAFTER(STR(?c), "#") AS ?classe)
+} GROUP BY ?classe ?specialite ORDER BY ?classe DESC(?nb)

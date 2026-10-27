@@ -1,0 +1,7 @@
+# objectif: Remplacer la valeur d'une propriété de données (age, sexe, specialite, nom, codeCIM10).
+# categorie: Update
+# params: s:iri, p:iri, value:raw
+# exemple: {"s": "Patient_Lina", "p": "age", "value": "32"}
+DELETE { {{s}} {{p}} ?old }
+INSERT { {{s}} {{p}} {{value}} }
+WHERE  { OPTIONAL { {{s}} {{p}} ?old } }

@@ -76,6 +76,7 @@ Note : la grille est individuelle → chaque membre doit pouvoir présenter sa p
 - [x] 36 tests pytest ; scripts/setup + start (Windows et sh) ; README ; docs/PRESENTATION_MODULE_A.md
 - Lancement dev : `.claude/launch.json` (configs « api » et « dev »). Back-end à relancer après modif Python (pas de --reload).
 - Points techniques : rdflib ne gère pas EXISTS{GRAPH} dans SELECT ni GROUP_CONCAT sur variable non liée → contourné (Python / COALESCE).
+- Branche Git du module A : `Molecule-Medicament` (créée le 2026-10-27 depuis main @ c9d58ce, poussée sur GitHub). Travailler dessus pour le module A.
 - Reste : intégration avec les modules B, C, D des coéquipiers (même application) quand ils seront prêts.
 
 ## Prochaine étape
