@@ -1,0 +1,13 @@
+# objectif: Fiche patient en RDF (CONSTRUCT) : le patient, ses pathologies et ses prescriptions — export Turtle.
+# categorie: Read
+# params: s:iri
+# exemple: {"s": "Patient_Sara"}
+CONSTRUCT {
+  {{s}} ?p ?o .
+  ?patho rdfs:label ?pl ; :codeCIM10 ?code .
+  ?presc :concernePatient {{s}} ; rdfs:label ?prl ; :prescritMedicament ?med .
+} WHERE {
+  { {{s}} ?p ?o }
+  UNION { {{s}} :souffreDe ?patho . ?patho rdfs:label ?pl . OPTIONAL { ?patho :codeCIM10 ?code } }
+  UNION { ?presc :concernePatient {{s}} ; rdfs:label ?prl ; :prescritMedicament ?med }
+}

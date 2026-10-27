@@ -1,0 +1,8 @@
+# objectif: Créer un médecin ou un pharmacien (classe en paramètre, jamais d'âge ni de sexe : domaine Patient).
+# categorie: Create
+# params: s:iri, classe:iri, label:litfr, nom:lit, specialite:lit
+# exemple: {"s": "Dr_Test", "classe": "Medecin", "label": "Dr Test", "nom": "Test", "specialite": "Dermatologie"}
+INSERT DATA {
+  {{s}} a owl:NamedIndividual , {{classe}} ;
+      rdfs:label {{label}} ; :nom {{nom}} ; :specialite {{specialite}} .
+}

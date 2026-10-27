@@ -1,0 +1,11 @@
+# objectif: Détail d'une pathologie (type, famille, CIM-10).
+# categorie: Read
+# params: s:iri
+# exemple: {"s": "InsuffisanceRenale"}
+SELECT ?label ?code ?type ?famille WHERE {
+  {{s}} a ?t ; rdfs:label ?label . ?t rdfs:subClassOf* :Pathologie .
+  OPTIONAL { {{s}} :codeCIM10 ?code }
+  OPTIONAL { ?t rdfs:subClassOf* ?f . FILTER(?f IN (:MaladieAigue, :MaladieChronique)) }
+  BIND(STRAFTER(STR(?t), "#") AS ?type)
+  BIND(STRAFTER(STR(?f), "#") AS ?famille)
+} LIMIT 1

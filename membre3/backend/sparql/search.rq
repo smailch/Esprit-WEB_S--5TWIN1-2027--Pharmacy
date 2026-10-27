@@ -1,0 +1,18 @@
+# objectif: Recherche texte insensible à la casse et aux accents (label, nom, CIM-10, spécialité) dans Pathologie et Personne.
+# categorie: Recherche
+# params: q:lit
+# exemple: {"q": "insuffisance"}
+SELECT DISTINCT ?id ?label ?classe ?module WHERE {
+  ?s a ?c . ?c rdfs:subClassOf* ?root . FILTER(?root IN (:Pathologie, :Personne))
+  ?s rdfs:label ?label .
+  OPTIONAL { ?s :nom ?nom }
+  OPTIONAL { ?s :codeCIM10 ?code }
+  OPTIONAL { ?s :specialite ?spec }
+  BIND(CONCAT(STR(?label), " ", COALESCE(?nom, ""), " ", COALESCE(?code, ""), " ", COALESCE(?spec, "")) AS ?txt)
+  BIND(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(LCASE(?txt),
+       "[éèêë]", "e"), "[àâä]", "a"), "[îï]", "i"), "[ôö]", "o"), "[ùûü]", "u"), "ç", "c") AS ?norm)
+  FILTER(CONTAINS(?norm, {{q}}))
+  BIND(STRAFTER(STR(?s), "#") AS ?id)
+  BIND(STRAFTER(STR(?c), "#") AS ?classe)
+  BIND(STRAFTER(STR(?root), "#") AS ?module)
+} ORDER BY ?module ?label LIMIT 50

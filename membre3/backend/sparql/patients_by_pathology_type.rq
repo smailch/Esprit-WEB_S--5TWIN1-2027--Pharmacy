@@ -1,0 +1,9 @@
+# objectif: Hiérarchie — patients atteints d'une pathologie d'un type donné, sous-types compris (rdf:type/rdfs:subClassOf*).
+# categorie: Hierarchie
+# params: type:iri
+# exemple: {"type": "MaladieChronique"}
+SELECT DISTINCT ?id ?patient ?pathologie ?typePathologie WHERE {
+  ?pat :souffreDe ?p ; rdfs:label ?patient .
+  ?p a ?t ; rdfs:label ?pathologie . ?t rdfs:subClassOf* {{type}} ; rdfs:label ?typePathologie .
+  BIND(STRAFTER(STR(?pat), "#") AS ?id)
+} ORDER BY ?patient

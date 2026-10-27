@@ -1,0 +1,5 @@
+# objectif: Question oui/non : ce patient est-il un enfant (âge < 18, classe définie PatientEnfant) ?
+# categorie: ASK
+# params: s:iri
+# exemple: {"s": "Patient_Sara"}
+ASK { {{s}} a/rdfs:subClassOf* :Patient ; :age ?age . FILTER(?age < 18) }

@@ -1,0 +1,5 @@
+# objectif: Rattacher une pathologie à un patient (lien souffreDe).
+# categorie: Create
+# params: s:iri, patho:iri
+# exemple: {"s": "Patient_Lina", "patho": "InsuffisanceHepatique"}
+INSERT DATA { {{s}} :souffreDe {{patho}} . }

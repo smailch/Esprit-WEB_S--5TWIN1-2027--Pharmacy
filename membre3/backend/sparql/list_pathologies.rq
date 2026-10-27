@@ -1,0 +1,18 @@
+# objectif: Liste paginée des pathologies : type asserté, famille (aiguë/chronique), CIM-10, nombre de patients.
+# categorie: Read
+# params: filters:raw, limit:int, offset:int
+# exemple: {"filters": "", "limit": 5, "offset": 0}
+SELECT ?id ?label ?code ?type ?famille (COUNT(DISTINCT ?pat) AS ?nbPatients) WHERE {
+  ?p a ?t . ?t rdfs:subClassOf* :Pathologie .
+  ?p rdfs:label ?label .
+  OPTIONAL { ?p :codeCIM10 ?code }
+  OPTIONAL { ?t rdfs:subClassOf* ?f . FILTER(?f IN (:MaladieAigue, :MaladieChronique)) }
+  OPTIONAL { ?pat :souffreDe ?p }
+  BIND(STRAFTER(STR(?p), "#") AS ?id)
+  BIND(STRAFTER(STR(?t), "#") AS ?type)
+  BIND(STRAFTER(STR(?f), "#") AS ?famille)
+  {{filters}}
+}
+GROUP BY ?id ?label ?code ?type ?famille
+ORDER BY ?label
+LIMIT {{limit}} OFFSET {{offset}}

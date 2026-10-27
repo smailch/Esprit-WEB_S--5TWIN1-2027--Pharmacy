@@ -1,0 +1,14 @@
+# objectif: Médicaments indiqués et contre-indiqués pour une pathologie (chaîne estContreIndiquePour écrite en property path).
+# categorie: Chemin
+# params: s:iri
+# exemple: {"s": "InsuffisanceRenale"}
+SELECT DISTINCT ?id ?label ?relation ?via WHERE {
+  {
+    ?med :estIndiquePour {{s}} . BIND("indiqué" AS ?relation)
+  } UNION {
+    ?med :contientMolecule ?mol . ?mol :aContreIndication/:concernePathologie {{s}} .
+    ?mol rdfs:label ?via . BIND("contre-indiqué" AS ?relation)
+  }
+  ?med rdfs:label ?label .
+  BIND(STRAFTER(STR(?med), "#") AS ?id)
+} ORDER BY ?relation ?label

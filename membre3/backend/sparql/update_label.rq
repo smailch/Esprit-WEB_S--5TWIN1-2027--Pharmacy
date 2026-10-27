@@ -1,0 +1,7 @@
+# objectif: Modifier le libellé affiché (rdfs:label) d'une entité.
+# categorie: Update
+# params: s:iri, label:litfr
+# exemple: {"s": "Obesite", "label": "Obésité (IMC ≥ 30)"}
+DELETE { {{s}} rdfs:label ?old }
+INSERT { {{s}} rdfs:label {{label}} }
+WHERE  { OPTIONAL { {{s}} rdfs:label ?old } }

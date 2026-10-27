@@ -1,0 +1,15 @@
+# objectif: Liste paginée des médecins ou pharmaciens avec le nombre d'ordonnances liées.
+# categorie: Read
+# params: classe:iri, filters:raw, limit:int, offset:int
+# exemple: {"classe": "Medecin", "filters": "", "limit": 10, "offset": 0}
+SELECT ?id ?label ?nom ?specialite (COUNT(DISTINCT ?presc) AS ?nbPrescriptions) WHERE {
+  ?s a {{classe}} ; rdfs:label ?label .
+  OPTIONAL { ?s :nom ?nom }
+  OPTIONAL { ?s :specialite ?specialite }
+  OPTIONAL { ?presc :prescritPar|:estDelivreePar ?s }
+  BIND(STRAFTER(STR(?s), "#") AS ?id)
+  {{filters}}
+}
+GROUP BY ?id ?label ?nom ?specialite
+ORDER BY ?label
+LIMIT {{limit}} OFFSET {{offset}}

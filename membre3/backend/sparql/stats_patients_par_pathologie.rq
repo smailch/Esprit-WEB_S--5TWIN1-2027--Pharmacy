@@ -1,0 +1,8 @@
+# objectif: Nombre de patients par pathologie (GROUP BY + HAVING sur un minimum).
+# categorie: Agregat
+# params: min:int
+# exemple: {"min": 2}
+SELECT ?id ?pathologie (COUNT(DISTINCT ?pat) AS ?nbPatients) WHERE {
+  ?pat :souffreDe ?p . ?p rdfs:label ?pathologie .
+  BIND(STRAFTER(STR(?p), "#") AS ?id)
+} GROUP BY ?id ?pathologie HAVING (COUNT(DISTINCT ?pat) >= {{min}}) ORDER BY DESC(?nbPatients) ?pathologie

@@ -1,0 +1,11 @@
+# objectif: Voisinage d'une entité (relations sortantes et entrantes) pour la vue graphe.
+# categorie: Read
+# params: s:iri
+# exemple: {"s": "Patient_Ali"}
+SELECT DISTINCT ?dir ?prop ?id ?label WHERE {
+  { {{s}} ?p ?o . BIND("out" AS ?dir) } UNION { ?o ?p {{s}} . BIND("in" AS ?dir) }
+  FILTER(isIRI(?o) && STRSTARTS(STR(?o), "http://example.org/pharma#"))
+  OPTIONAL { ?o rdfs:label ?label }
+  BIND(IF(?p = rdf:type, "type", STRAFTER(STR(?p), "#")) AS ?prop)
+  BIND(STRAFTER(STR(?o), "#") AS ?id)
+}

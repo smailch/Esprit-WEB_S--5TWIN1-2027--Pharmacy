@@ -14,6 +14,8 @@ Consignes complètes : `../PROMPT_CLAUDE_CODE_MEMBRE3.md`. Contexte d'équipe : 
 
 ## Avancement
 - [x] Étape 2 : squelette, client SPARQL (Fuseki/rdflib), scripts, validation HermiT
+- [x] Étape 3 : individus (19 pathologies, 11 patients, 5 médecins, 3 pharmaciens), HermiT OK
+- [x] Étape 4 : 36 requêtes nommées (`backend/sparql`), services, 50 tests rdflib, `docs/SPARQL.md` généré
 
 ## Reste à faire
 - Individus, SPARQL, API, NLP, frontend, docs, installation propre.

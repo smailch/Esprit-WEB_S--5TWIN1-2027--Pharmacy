@@ -1,0 +1,28 @@
+# objectif: Alertes sécurité (Q6 enrichie) : contre-indication liée à une pathologie du patient OU allergie connue, avec médecin et pharmacien.
+# categorie: Alerte
+# params: filters:raw
+# exemple: {"filters": ""}
+SELECT DISTINCT ?prescId ?ordonnance ?patId ?patient ?medicament ?type ?raison ?medecin ?pharmacien WHERE {
+  {
+    ?presc :concernePatient ?pat ; :prescritMedicament ?med .
+    ?med :contientMolecule/:aContreIndication ?ci .
+    ?ci :concernePathologie ?patho .
+    ?pat :souffreDe ?patho .
+    ?patho rdfs:label ?pl .
+    BIND("contre-indication" AS ?type)
+    BIND(CONCAT("Contre-indiqué : ", STR(?pl)) AS ?raison)
+  } UNION {
+    ?al a :Allergie ; :estDonneeDe ?pat ; :allergiqueA ?mol .
+    ?presc :concernePatient ?pat ; :prescritMedicament ?med .
+    ?med :contientMolecule ?mol .
+    ?mol rdfs:label ?ml .
+    BIND("allergie" AS ?type)
+    BIND(CONCAT("Allergie connue : ", STR(?ml)) AS ?raison)
+  }
+  ?presc rdfs:label ?ordonnance . ?pat rdfs:label ?patient . ?med rdfs:label ?medicament .
+  OPTIONAL { ?presc :prescritPar/rdfs:label ?medecin }
+  OPTIONAL { ?presc :estDelivreePar/rdfs:label ?pharmacien }
+  BIND(STRAFTER(STR(?pat), "#") AS ?patId)
+  BIND(STRAFTER(STR(?presc), "#") AS ?prescId)
+  {{filters}}
+} ORDER BY ?prescId

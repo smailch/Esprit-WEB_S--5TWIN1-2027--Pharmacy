@@ -1,0 +1,12 @@
+# objectif: Compteurs du tableau de bord (enfants/adultes dérivés de l'âge, aiguës/chroniques via la hiérarchie, médecins, pharmaciens).
+# categorie: Agregat
+# params:
+# exemple: {}
+SELECT ?enfants ?adultes ?aigues ?chroniques ?medecins ?pharmaciens WHERE {
+  { SELECT (COUNT(DISTINCT ?p) AS ?enfants) WHERE { ?p a/rdfs:subClassOf* :Patient ; :age ?a . FILTER(?a < 18) } }
+  { SELECT (COUNT(DISTINCT ?p) AS ?adultes) WHERE { ?p a/rdfs:subClassOf* :Patient ; :age ?a . FILTER(?a >= 18) } }
+  { SELECT (COUNT(DISTINCT ?x) AS ?aigues) WHERE { ?x a/rdfs:subClassOf* :MaladieAigue } }
+  { SELECT (COUNT(DISTINCT ?x) AS ?chroniques) WHERE { ?x a/rdfs:subClassOf* :MaladieChronique } }
+  { SELECT (COUNT(DISTINCT ?m) AS ?medecins) WHERE { ?m a :Medecin } }
+  { SELECT (COUNT(DISTINCT ?m) AS ?pharmaciens) WHERE { ?m a :Pharmacien } }
+}

@@ -1,0 +1,5 @@
+# objectif: Supprimer une entité (après contrôle ASK des références).
+# categorie: Delete
+# params: s:iri
+# exemple: {"s": "Patient_Test"}
+DELETE WHERE { {{s}} ?p ?o }

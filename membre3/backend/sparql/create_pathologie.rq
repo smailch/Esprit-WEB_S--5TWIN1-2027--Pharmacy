@@ -1,0 +1,7 @@
+# objectif: Créer une pathologie aiguë ou chronique (sous-type) avec son code CIM-10.
+# categorie: Create
+# params: s:iri, classe:iri, label:litfr, code:lit
+# exemple: {"s": "Grippe", "classe": "InfectionAigue", "label": "Grippe", "code": "J11"}
+INSERT DATA {
+  {{s}} a owl:NamedIndividual , {{classe}} ; rdfs:label {{label}} ; :codeCIM10 {{code}} .
+}

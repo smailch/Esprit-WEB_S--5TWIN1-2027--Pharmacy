@@ -1,0 +1,8 @@
+# objectif: La pathologie est-elle référencée (patient, contre-indication, médicament, antécédent) ? Si oui, 409.
+# categorie: ASK
+# params: s:iri
+# exemple: {"s": "DiabeteType2"}
+ASK {
+  { ?x :souffreDe {{s}} } UNION { ?x :concernePathologie {{s}} }
+  UNION { ?x :estIndiquePour {{s}} } UNION { ?x :porteSur {{s}} }
+}

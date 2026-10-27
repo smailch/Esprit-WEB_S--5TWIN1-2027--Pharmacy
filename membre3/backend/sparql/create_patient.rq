@@ -1,0 +1,8 @@
+# objectif: Créer un patient. Seule la classe :Patient est assertée ; Enfant/Adulte est dérivé de l'âge.
+# categorie: Create
+# params: s:iri, label:litfr, nom:lit, age:int, sexe:lit
+# exemple: {"s": "Patient_Test", "label": "Test Demo", "nom": "Demo", "age": 30, "sexe": "F"}
+INSERT DATA {
+  {{s}} a owl:NamedIndividual , :Patient ;
+      rdfs:label {{label}} ; :nom {{nom}} ; :age {{age}} ; :sexe {{sexe}} .
+}
