@@ -11,6 +11,13 @@ import Interactions from './pages/Interactions.jsx';
 import Assistant from './pages/Assistant.jsx';
 import SparqlConsole from './pages/SparqlConsole.jsx';
 import NotFound from './pages/NotFound.jsx';
+// Module D — Prescription + Donnée clinique
+import Prescriptions from './pages/Prescriptions.jsx';
+import PrescriptionDetail from './pages/PrescriptionDetail.jsx';
+import DonneesCliniques from './pages/DonneesCliniques.jsx';
+import Scenario from './pages/Scenario.jsx';
+import AssistantModuleD from './pages/AssistantModuleD.jsx';
+import SparqlModuleD from './pages/SparqlModuleD.jsx';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -33,6 +40,12 @@ export default function App() {
           <Route path="/interactions" element={<Interactions />} />
           <Route path="/assistant" element={<Assistant />} />
           <Route path="/sparql" element={<SparqlConsole />} />
+          <Route path="/prescriptions" element={<Prescriptions />} />
+          <Route path="/prescriptions/:id" element={<PrescriptionDetail />} />
+          <Route path="/donnees-cliniques" element={<DonneesCliniques />} />
+          <Route path="/scenario" element={<Scenario />} />
+          <Route path="/module-d/assistant" element={<AssistantModuleD />} />
+          <Route path="/module-d/sparql" element={<SparqlModuleD />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

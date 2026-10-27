@@ -1,0 +1,53 @@
+/* ==========================================================================
+   Module D (Prescription + Personne) — compléments à la charte « Sage Studio » de app.css
+   ========================================================================== */
+
+.small { font-size: 0.82rem; }
+.block { display: block; }
+.stack { display: inline-flex; flex-wrap: wrap; gap: 4px; }
+.note { display: flex; align-items: center; gap: 8px; margin: -8px 0 18px; font-size: 0.86rem; color: var(--green); }
+
+.app-nav-group { margin: 14px 14px 4px; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); }
+
+/* ---------- Filtres de période et pagination ---------- */
+.date-field { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--green); }
+.pager { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px; margin-top: 16px; font-size: 0.86rem; color: var(--ink-soft); }
+.kpi-alert { text-decoration: none; color: inherit; border-color: rgba(176, 86, 59, 0.45); background: rgba(176, 86, 59, 0.08); transition: background-color 0.25s; }
+.kpi-alert:hover { background: rgba(176, 86, 59, 0.16); }
+.kpi-alert .kpi-label { display: inline-flex; align-items: center; gap: 4px; color: #7a311b; }
+
+/* ---------- Assistant ---------- */
+.assistant-intro { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 14px; margin: -10px 0 18px; color: var(--ink-soft); }
+.assistant-intro p { max-width: 760px; }
+.answer-text.is-unknown { display: flex; gap: 10px; align-items: flex-start; font-size: 1.05rem; color: #6e2f1c; }
+
+/* ---------- Chaîne du scénario ---------- */
+.chain { display: grid; gap: 10px; }
+.chain-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 10px 12px; border-radius: 14px; border: 1px solid var(--line); background: rgba(242, 240, 236, 0.3); }
+.chain-row.is-danger { border-color: rgba(176, 86, 59, 0.55); background: rgba(176, 86, 59, 0.08); }
+.chain-node {
+  display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; font-size: 0.84rem;
+  background: rgba(242, 240, 236, 0.85); border: 1px solid var(--line-strong); color: var(--forest); text-decoration: none;
+}
+a.chain-node:hover { background: var(--ivory); }
+.chain-node.is-danger { background: #b0563b; border-color: #7a311b; color: var(--ivory); }
+.chain-node.is-muted { opacity: 0.65; }
+.chain-arrow { display: inline-flex; flex-direction: column; align-items: center; color: var(--green); }
+.chain-rel { font-family: var(--font-mono); font-size: 0.62rem; opacity: 0.8; }
+.chain-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 10px; font-size: 0.78rem; color: var(--green); }
+.chain-legend span { display: inline-flex; align-items: center; gap: 4px; }
+@media (max-width: 620px) { .chain-rel { display: none; } }
+
+/* ---------- Graphe en couches (CONSTRUCT) ---------- */
+.layer-graph .rg-edge path { stroke: var(--forest); stroke-width: 1.1; opacity: 0.45; color: var(--forest); }
+.layer-graph .rg-edge.is-on path { opacity: 1; stroke-width: 2; }
+.layer-graph .rg-edge.is-danger path { stroke: #b0563b; opacity: 0.9; stroke-dasharray: 5 4; color: #b0563b; }
+.layer-graph .rg-node circle.is-conflict { stroke: #7a311b; stroke-width: 4; }
+.legend-item { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; }
+
+/* ---------- Données cliniques ---------- */
+.kpi-button { text-align: left; cursor: pointer; font: inherit; color: inherit; transition: background-color 0.25s, border-color 0.25s; }
+.kpi-button:hover { background: rgba(242, 240, 236, 0.6); }
+.kpi-button.is-active { border-color: var(--forest); background: rgba(30, 50, 39, 0.08); }
+.row-actions { white-space: nowrap; text-align: right; }
+.row-actions .icon-btn + .icon-btn { margin-left: 4px; }
