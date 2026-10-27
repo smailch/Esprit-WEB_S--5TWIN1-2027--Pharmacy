@@ -9,6 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from . import config
 from .graph_store import store
 from .modules.molecule_medicament.router import router as module_a_router
+from .modules.prescription_clinique.router import router as module_d_router
 
 app = FastAPI(
     title="PharmaSémantique API",
@@ -19,6 +20,7 @@ app = FastAPI(
 app.add_middleware(CORSMiddleware, allow_origins=config.CORS_ORIGINS, allow_methods=["*"], allow_headers=["*"])
 
 app.include_router(module_a_router, prefix="/api")
+app.include_router(module_d_router, prefix="/api")
 
 
 @app.get("/api/health", tags=["Système"])
