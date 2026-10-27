@@ -17,7 +17,13 @@ from app.nlp.entity_extractor import build_aliases
 from app.ontology.loader import OntologyError, OntologyStore
 from app.ontology.queries import local_name
 from app.ontology.sparql_guard import SparqlRejected, validate_read_query
-from app.ontology.vocab import PREFIXES
+from app.ontology.vocab import CI_TYPES, EFFECT_TYPES, PREFIXES
+
+# RDFLib n'infère pas rdf:type le long de rdfs:subClassOf.
+# Les individus sont typés par une feuille (EffetGraveDigestif, etc.).
+_DIRECT_TYPE = re.compile(
+    r"(\?[A-Za-z_][\w]*)\s+a\s+:(" + "|".join((*EFFECT_TYPES, *CI_TYPES)) + r")\b"
+)
 
 _FENCE = re.compile(r"```(?:sparql|turtle)?\s*(.*?)```", re.IGNORECASE | re.DOTALL)
 _START = re.compile(r"(?im)^[ \t]*(PREFIX|BASE|SELECT|ASK|CONSTRUCT|DESCRIBE)\b")
@@ -199,6 +205,27 @@ def shape_results(result: dict, limit: int) -> tuple[list[dict], int]:
     return rows, len(result["rows"])
 
 
+def widen_direct_types(query: str) -> str:
+    """Remplace ``?x a :ClasseParente`` par un chemin de sous-classes.
+
+    ``?effet a :EffetSecondaire`` ne matche personne : Hémorragie digestive
+    est ``:EffetGraveDigestif``, sous-classe de ``:EffetGrave``.
+    """
+    counter = {"n": 0}
+
+    def replace(match: re.Match) -> str:
+        counter["n"] += 1
+        variable, class_name = match.group(1), match.group(2)
+        type_variable = f"?_type{counter['n']}"
+        return (
+            f"{variable} a {type_variable} . "
+            f"{type_variable} rdfs:subClassOf* :{class_name} . "
+            f"FILTER(isIRI({type_variable}))"
+        )
+
+    return _DIRECT_TYPE.sub(replace, query)
+
+
 def answer_with_qwen(store: OntologyStore, question: str) -> dict:
     settings = store.settings
     cleaned = " ".join((question or "").split())
@@ -207,7 +234,9 @@ def answer_with_qwen(store: OntologyStore, question: str) -> dict:
     # Les préfixes officiels remplacent ceux du modèle : un rdfs: mal copié
     # ferait échouer rdfs:label et rdfs:subClassOf.
     body = "\n".join(line for line in query.splitlines() if not re.match(r"(?i)^\s*(PREFIX|BASE)\b", line))
-    query = f"{PREFIXES}\n{body.strip()}"
+    widened = widen_direct_types(body.strip())
+    widened_types = widened != body.strip()
+    query = f"{PREFIXES}\n{widened}"
     try:
         executed = store.query(query)
     except OntologyError as exc:
@@ -215,6 +244,11 @@ def answer_with_qwen(store: OntologyStore, question: str) -> dict:
     rows, total = shape_results(executed, settings.sparql_max_rows)
     count = rows[0]["count"] if len(rows) == 1 and "count" in rows[0] else len(rows)
     message = "Requête écrite par Qwen2.5 3B Instruct et exécutée par RDFLib sur les triplets assertés."
+    if widened_types:
+        message += (
+            " Le type direct a été élargi aux sous-classes : aucun effet n'est typé :EffetSecondaire, "
+            "les graves sont :EffetGraveDigestif ou :EffetGraveNeurologique."
+        )
     if total == 0:
         message += " Aucun triplet asserté ne correspond."
     if total > len(rows):

@@ -52,6 +52,43 @@ def test_qwen_select_is_executed(client, monkeypatch):
     }
 
 
+def test_direct_effect_type_is_widened_to_subclasses(client, monkeypatch):
+    client.app.state.settings.nlp_engine = "qwen"
+    monkeypatch.setattr(
+        "app.nlp.qwen.generate_sparql",
+        lambda settings, question, graph: """
+            SELECT ?effet ?label WHERE {
+              ?effet a :EffetSecondaire .
+              ?effet :niveauGravite "grave" .
+              ?effet rdfs:label ?label .
+            }
+        """,
+    )
+    response = client.post("/api/nlp/ask", json={"question": "Quels sont les effets secondaires graves ?"})
+    body = response.json()
+    assert response.status_code == 200, response.text
+    assert "subClassOf*" in body["sparql"]
+    assert {item["id"] for item in body["results"]} == {
+        "HemorragieDigestive",
+        "UlcerePerfore",
+        "Convulsion",
+        "DepressionRespiratoire",
+    }
+
+
+def test_empty_qwen_answer_uses_rules_for_any_question(client, monkeypatch):
+    client.app.state.settings.nlp_engine = "qwen"
+    monkeypatch.setattr(
+        "app.nlp.qwen.generate_sparql",
+        lambda settings, question, graph: "SELECT ?medicament WHERE { ?medicament :provoqueDirectement ?effet }",
+    )
+    response = client.post("/api/nlp/ask", json={"question": "Quels médicaments sont liés aux allergies ?"})
+    body = response.json()
+    assert body["intent"] == "list_drugs_for_ci_category"
+    assert {item["id"] for item in body["results"]} == {"Clamoxyl", "AmoxicillineBiogaran"}
+    assert "règles" in body["warnings"][0]
+
+
 def test_qwen_delete_falls_back_to_rules(client, monkeypatch):
     client.app.state.settings.nlp_engine = "qwen"
     monkeypatch.setattr(

@@ -16,21 +16,33 @@ from app.ontology.queries import DomainError
 from app.ontology.sparql_guard import SparqlRejected
 
 
+def _prefer_rules(ruled: dict, notice: str) -> dict:
+    ruled["warnings"] = [notice, *[item for item in ruled.get("warnings") or [] if item]]
+    analysis = dict(ruled.get("analysis") or {})
+    analysis["translator"] = "rules"
+    analysis["qwen"] = "replaced"
+    ruled["analysis"] = analysis
+    return ruled
+
+
 def answer_question(store: OntologyStore, question: str) -> dict:
     if store.settings.nlp_engine == "qwen":
         try:
-            return answer_with_qwen(store, question)
+            produced = answer_with_qwen(store, question)
         except (QwenUnavailable, SparqlRejected) as exc:
-            ruled = answer_with_rules(store, question)
             notice = str(exc)
             if isinstance(exc, SparqlRejected):
                 notice = f"Qwen a proposé une requête refusée ({exc}). Réponse par les règles."
-            ruled["warnings"] = [notice, *[item for item in ruled.get("warnings") or [] if item]]
-            analysis = dict(ruled.get("analysis") or {})
-            analysis["translator"] = "rules"
-            analysis["qwen"] = "unavailable"
-            ruled["analysis"] = analysis
-            return ruled
+            return _prefer_rules(answer_with_rules(store, question), notice)
+        if not produced.get("results") and not produced.get("count"):
+            ruled = answer_with_rules(store, question)
+            if ruled.get("results") or ruled.get("count"):
+                return _prefer_rules(
+                    ruled,
+                    "La requête de Qwen ne correspond à aucun triplet. "
+                    "Réponse par les règles : sous-classes, contientMolecule, peutProvoquer et aContreIndication.",
+                )
+        return produced
     return answer_with_rules(store, question)
 
 
