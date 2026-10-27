@@ -4,7 +4,7 @@ Consignes complètes : `../PROMPT_CLAUDE_CODE_MEMBRE3.md`. Contexte d'équipe : 
 
 ## Décisions
 - Périmètre : modules **Pathologie** et **Personne** (slide 6 de la présentation), rien d'autre en CRUD.
-- Tout dans `membre3/`, branche `feature/membre3-pathologie-personne`. `ontologie/*` jamais modifié.
+- Tout dans `membre3/`, branche `AhmedAllaya`. `ontologie/*` jamais modifié.
 - Noms de l'ontologie centralisés dans `backend/app/config/ontology_mapping.py`.
 - `SPARQL_BACKEND=rdflib` par défaut (graphe en mémoire, aucun service) ; `fuseki` via Docker ou Java.
 - `PatientEnfant`/`PatientAdulte` jamais écrits : on stocke `:Patient` + `:age`, la classe est dérivée.
