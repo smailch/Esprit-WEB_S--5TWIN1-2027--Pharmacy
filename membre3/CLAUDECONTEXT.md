@@ -18,4 +18,4 @@ Consignes complètes : `../PROMPT_CLAUDE_CODE_MEMBRE3.md`. Contexte d'équipe : 
 - [x] Étape 4 : 36 requêtes nommées (`backend/sparql`), services, 50 tests rdflib, `docs/SPARQL.md` généré
 
 ## Reste à faire
-- Individus, SPARQL, API, NLP, frontend, docs, installation propre.
+- API, NLP, frontend, docs, installation propre.

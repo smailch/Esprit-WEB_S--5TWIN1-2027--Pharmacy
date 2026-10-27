@@ -29,7 +29,7 @@ class SparqlError(Exception):
 
 def query_kind(query: str) -> str:
     """Type de requête : SELECT, ASK, CONSTRUCT, DESCRIBE ou UPDATE."""
-    body = re.sub(r"#[^\n]*", "", query)
+    body = re.sub(r"(?m)^\s*#.*$", "", query)  # lignes de commentaire (pas le # des IRI)
     body = re.sub(r"(?is)^\s*((PREFIX|BASE)\s+\S*\s*<[^>]*>\s*)*", "", body)
     m = re.match(r"\s*(\w+)", body)
     word = m.group(1).upper() if m else ""
