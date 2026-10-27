@@ -1,0 +1,5 @@
+*.bat text eol=crlf
+*.sh text eol=lf
+*.joblib binary
+*.mp4 binary
+*.png binary

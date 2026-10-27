@@ -29,7 +29,11 @@ export default function AppShell() {
 
   useEffect(() => { setOpen(false); }, [pathname]);
   useEffect(() => {
-    api.health().then(setHealth).catch(() => setHealth({ statut: 'hors ligne' }));
+    // Vérifie l'API à chaque page et toutes les 10 s (le back-end peut démarrer après le front).
+    const check = () => api.health().then(setHealth).catch(() => setHealth({ statut: 'hors ligne' }));
+    check();
+    const t = setInterval(check, 10000);
+    return () => clearInterval(t);
   }, [pathname]);
 
   const reset = async () => {

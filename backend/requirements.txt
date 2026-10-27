@@ -6,7 +6,8 @@ owlrl==7.6.2
 python-dotenv==1.2.4
 # NLP / IA (PharmaNLU-A)
 spacy==3.8.18
-fr_core_news_sm @ https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-3.8.0/fr_core_news_sm-3.8.0-py3-none-any.whl
+# Modèle spaCy français : fichier inclus dans le dépôt (backend/vendor/), installé par scripts/setup.
+# Source : https://github.com/explosion/spacy-models/releases/tag/fr_core_news_sm-3.8.0 (sha256 7d6ad14c…)
 scikit-learn==1.9.1
 joblib==1.6.0
 RapidFuzz==3.14.6

@@ -1,44 +1,93 @@
 # PharmaSémantique — Ontologie Pharmaceutique et Santé
 
-Site vitrine (React + Vite) du projet de Web Sémantique de l’équipe **NeoCoders** — 5 TWIN · 2026–2027.
+Mini-projet de Web Sémantique — **NeoCoders**, Esprit 5 TWIN, 2026/2027.
+Ontologie OWL (Protégé / HermiT) + back-end SPARQL + application React + assistant en langage naturel.
 
-Projet académique : il présente la structure de l’ontologie (classes, relations, individus, ontographe).
-Il ne réalise aucun diagnostic et ne fournit aucune recommandation médicale.
+> Projet académique : données fictives, aucune recommandation médicale.
 
-## Installation et lancement
+---
 
-Prérequis : Node.js 18 ou plus récent.
+## Installation sur un nouveau PC (5 minutes)
+
+Prérequis : **Python 3.11 ou plus récent** (testé avec 3.13) et **Node.js 18+**. Aucune clé API, aucun serveur à installer.
 
 ```bash
-npm install
+git clone https://github.com/smailch/Esprit-WEB_S--5TWIN1-2027--Pharmacy.git
+cd Esprit-WEB_S--5TWIN1-2027--Pharmacy
+```
+
+| | Windows | macOS / Linux |
+|---|---|---|
+| Installer (une seule fois) | `scripts\setup.bat` | `./scripts/setup.sh` |
+| Lancer | `scripts\start.bat` | `./scripts/start.sh` |
+
+Puis ouvrir **http://localhost:5173** (site vitrine) → bouton « Ouvrir l'application ».
+Documentation interactive de l'API : **http://localhost:8000/docs**.
+
+L'installation télécharge automatiquement le modèle spaCy `fr_core_news_sm` (version épinglée).
+Le modèle d'intention entraîné (`backend/nlp/models/pharmanlu_intent_v1.joblib`) est déjà dans le dépôt.
+
+> **Windows** : clonez dans un dossier au chemin court (ex. `C:\projets\pharma`). Les chemins de plus de 260 caractères
+> empêchent spaCy de charger ses bibliothèques (« DLL load failed… Nom de fichier ou extension trop long »).
+
+### Lancement manuel (si besoin)
+```bash
+# Terminal 1 — API
+backend/.venv/Scripts/python -m uvicorn app.main:app --app-dir backend --port 8000   # Windows
+backend/.venv/bin/python     -m uvicorn app.main:app --app-dir backend --port 8000   # macOS/Linux
+# Terminal 2 — front
 npm run dev
 ```
 
-Puis ouvrir l’URL affichée (par défaut http://localhost:5173).
+---
 
-Build de production : `npm run build`, aperçu : `npm run preview`.
-
-## Vidéo d’arrière-plan
-
-Placer la vidéo du hero dans `public/videos/pharmacy-hero.mp4` (et, en option, une affiche
-`public/videos/pharmacy-hero-poster.png`). Les chemins se modifient dans `src/data/ontologyData.js`
-(`HERO_VIDEO_SRC`, `HERO_POSTER_SRC`).
-
-Sans fichier vidéo, ou si l’utilisateur a activé « réduire les animations », un fond vert sauge statique est affiché.
-
-## Structure
+## Architecture
 
 ```
-src/
-  components/   Navbar, Hero, ApproachSection, OntologyDiagram, ClassGrid, RelationshipTable,
-                IndividualsSection, OntoGraphSection, ValidationSection, TeamSection, Footer…
-  data/         ontologyData.js — toutes les classes, relations, individus et textes
-  hooks/        useReveal.js — apparition au défilement (IntersectionObserver)
-  App.jsx, main.jsx, styles.css
+ontologie/        pharma.ttl (source), pharma.owl (Protégé), requetes.sparql
+backend/          FastAPI + rdflib + owlrl (inférence OWL 2 RL)
+  app/modules/molecule_medicament/   module A : routes, 16 requêtes SPARQL nommées, CRUD
+  nlp/pharmanlu/                     modèle IA PharmaNLU-A (question → SPARQL)
+  nlp/data/  nlp/models/             jeux de données et modèle entraîné
+  tests/                             36 tests pytest
+src/              React + Vite : site vitrine (/) + application (/molecules, /medicaments…)
+scripts/          setup / start (Windows et macOS/Linux)
 ```
 
-Le contenu est piloté par `src/data/ontologyData.js` : modifier ce fichier suffit pour mettre à jour
-les classes, relations, individus ou l’ontographe.
+- Le graphe est chargé depuis `ontologie/pharma.ttl`, puis enrichi par le raisonneur **OWL 2 RL** (owlrl) dans un graphe nommé séparé : l'interface distingue les faits **déclarés** et **inférés**.
+- Le CRUD modifie `backend/data/runtime.ttl` (ignoré par Git) ; `pharma.ttl` n'est jamais écrasé. Bouton « Réinitialiser les données » ou `POST /api/admin/reset` pour revenir à l'état d'origine.
+- Chaque réponse de l'API contient les requêtes SPARQL exécutées, affichées dans l'interface.
+
+## Module A — Molécule + Médicament (Chemlali Ismail)
+
+| Page | Contenu |
+|---|---|
+| Molécules | liste filtrable (classe via la hiérarchie, ATC, recherche sans accents), arbre 3 niveaux, fiche, CRUD |
+| Médicaments | cartes filtrables (type, ordonnance, forme, prix), statistiques, fiche, graphe CONSTRUCT, CRUD |
+| Comparateur | princeps ↔ génériques de même composition, économie en DT et en % |
+| Interactions | interactions (propriété symétrique) et doublons de principe actif entre plusieurs médicaments |
+| Assistant IA | question en français → SPARQL → réponse (modèle PharmaNLU-A) |
+| Console SPARQL | 16 requêtes du catalogue en un clic + éditeur (lecture seule) |
+
+### Assistant IA — modèle PharmaNLU-A (aucune API de LLM)
+
+| Étape | Outil |
+|---|---|
+| Normalisation, tokenisation, lemmatisation | **spaCy 3.8** + `fr_core_news_sm` |
+| Reconnaissance des entités (dictionnaire généré depuis l'ontologie) | **spaCy EntityRuler** |
+| Correction des fautes de frappe | **RapidFuzz** (distance de Levenshtein) |
+| Classification de l'intention (12 intentions) | **scikit-learn** : TF-IDF mots + caractères → régression logistique |
+| Génération et exécution de la requête | gabarits SPARQL + **rdflib** |
+
+Résultats sur 96 questions de test écrites à la main (jamais vues à l'entraînement) : **96,9 % d'intentions correctes, 100 % d'entités reconnues**.
+
+```bash
+cd backend
+.venv/Scripts/python nlp/data/generer_donnees.py   # régénère le jeu d'entraînement
+.venv/Scripts/python -m nlp.train                  # ré-entraîne + évalue + écrit la carte du modèle
+.venv/Scripts/python -m nlp.evaluate               # évalue le modèle enregistré
+.venv/Scripts/python -m pytest -q                  # 36 tests
+```
 
 ## Équipe NeoCoders
 

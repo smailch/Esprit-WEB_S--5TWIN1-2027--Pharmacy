@@ -47,6 +47,7 @@ class GraphStore:
     def __init__(self):
         self._lock = threading.RLock()
         self.ds: Dataset | None = None
+        self.version = 0  # incrémenté à chaque changement : le NLP reconstruit alors son dictionnaire d'entités
         self.load()
 
     # ---------- chargement / inférence ----------
@@ -61,6 +62,7 @@ class GraphStore:
             self.base.parse(source, format="turtle")
             self.source = source
             self._infer()
+            self.version += 1
 
     def _infer(self):
         closure = Graph()
@@ -100,6 +102,7 @@ class GraphStore:
             self.base.update(PREFIXES + sparql)
             self._infer()
             self.save()
+            self.version += 1
 
     def exists(self, local_id: str, cls: str | None = None) -> bool:
         uri = PH[local_id]

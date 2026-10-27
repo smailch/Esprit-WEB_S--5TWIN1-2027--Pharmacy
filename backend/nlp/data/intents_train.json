@@ -1,0 +1,1258 @@
+[
+ {
+  "texte": "liste des antalgiques",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "liste des antibiotiques",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "quels sont les antalgiques opioïdes",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "quels sont les macrolides",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "donne moi tous les macrolides",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "donne moi tous les pénicillines",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "affiche les antalgiques",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "affiche les antidouleurs",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "quelles molécules sont des antibiotiques",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "quelles molécules sont des antalgiques",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "montre les macrolides de l'ontologie",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "montre les antibiotiques de l'ontologie",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "je veux la liste des macrolides",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "je veux la liste des antidouleurs",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "quelles sont les molécules",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "liste de toutes les molécules",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "quels principes actifs existent",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "énumère les macrolides",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "énumère les opioïdes",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "les antalgiques opioïdes disponibles",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "les antibiotiques disponibles",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "quelles substances actives sont des pénicillines",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "quelles substances actives sont des antidouleurs",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "affiche toutes les molécules",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "quelles molécules appartiennent à la famille des antalgiques non opioïdes",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "quelles molécules appartiennent à la famille des antalgiques opioïdes",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "pénicillines ?",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "macrolides ?",
+  "intention": "lister_molecules_classe"
+ },
+ {
+  "texte": "médicaments sans ordonnance",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "quels médicaments sont vendus sans ordonnance",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "liste des médicaments à moins de 6 dinars",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "liste des médicaments à moins de 7.5 dinars",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "médicaments sans ordonnance à moins de 3 DT",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "médicaments sans ordonnance à moins de 10 DT",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "quels sont les médicaments génériques",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "affiche les génériques",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "médicaments sur ordonnance",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "quels médicaments coûtent moins de 3 dinars",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "quels médicaments coûtent moins de 7.5 dinars",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "liste des princeps",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "médicaments en gélule",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "quels médicaments existent en comprimé",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "les médicaments pas chers sous 6 dt",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "les médicaments pas chers sous 7.5 dt",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "liste de tous les médicaments",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "médicaments génériques sans ordonnance",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "médicaments entre 7.5 et 15 dinars",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "médicaments entre 8 et 9 dinars",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "quels médicaments coûtent plus de 10 dt",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "quels médicaments coûtent plus de 4 dt",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "donne les médicaments qui nécessitent une ordonnance",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "affiche les médicaments en sachet",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "quel est le médicament le plus cher",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "le générique le moins cher",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "montre moi les médicaments",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "médicaments disponibles en vente libre",
+  "intention": "lister_medicaments_filtre"
+ },
+ {
+  "texte": "quels médicaments contiennent du ibuprofène",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "quels médicaments contiennent du azithromycine",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "dans quels médicaments trouve t on du ibuprofène",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "dans quels médicaments trouve t on du codéine",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "médicaments à base de amoxicilline",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "médicaments à base de tramadol",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "quels produits contiennent de la ibuprofène",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "quels produits contiennent de la paracétamol",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "où trouver du tramadol",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "où trouver du codéine",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "liste des médicaments avec ibuprofène",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "liste des médicaments avec tramadol",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "quel médicament contient du ibuprofène",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "quel médicament contient du azithromycine",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "le codéine est présent dans quels médicaments",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "le metformine est présent dans quels médicaments",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "médicaments contenant amoxicilline",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "médicaments contenant aspirine",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "quels médicaments ont pour principe actif le amoxicilline",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "quels médicaments ont pour principe actif le tramadol",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "les médicaments composés de codéine",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "les médicaments composés de ibuprofène",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "je cherche un médicament avec du aspirine",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "je cherche un médicament avec du tramadol",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "quelles spécialités contiennent aspirine",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "quelles spécialités contiennent metformine",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "azithromycine se trouve dans quoi",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "codéine se trouve dans quoi",
+  "intention": "medicaments_contenant"
+ },
+ {
+  "texte": "que contient le Amoxicilline Biogaran",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "que contient le Contramal",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "quelle est la composition du Zithromax",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "quelle est la composition du Doliprane",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "quelle molécule contient Contramal",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "quelle molécule contient Doliprane",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "quel est le principe actif du Zithromax",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "quel est le principe actif du Glucophage",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "de quoi est composé le Clamoxyl",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "de quoi est composé le Advil",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "quelles substances actives dans Contramal",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "quelles substances actives dans Zithromax",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "Contramal contient quelle molécule",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "Ibuprofène Mylan contient quelle molécule",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "composition du Glucophage",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "composition du Ibuprofène Mylan",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "principe actif de Aspégic",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "principe actif de Clamoxyl",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "quelles molécules y a t il dans le Aspégic",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "quelles molécules y a t il dans le Contramal",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "qu'y a t il dans le Amoxicilline Biogaran",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "qu'y a t il dans le Clamoxyl",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "le Glucophage est fait avec quelle molécule",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "le Zithromax est fait avec quelle molécule",
+  "intention": "molecules_de_medicament"
+ },
+ {
+  "texte": "quels sont les effets secondaires du Contramal",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "quels sont les effets secondaires du Aspégic",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "effets indésirables du metformine",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "effets indésirables du ibuprofène",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "quels effets graves peut provoquer le paracétamol",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "quels effets graves peut provoquer le ibuprofène",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "est ce que le Aspégic a des effets secondaires",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "est ce que le Glucophage a des effets secondaires",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "effets secondaires graves du Advil",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "effets secondaires graves du Glucophage",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "quels risques avec le azithromycine",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "quels risques avec le metformine",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "que peut provoquer le codéine",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "que peut provoquer le paracétamol",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "le Advil peut provoquer quoi",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "le Amoxicilline Biogaran peut provoquer quoi",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "liste des effets indésirables du Clamoxyl",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "liste des effets indésirables du Zithromax",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "les effets du ibuprofène",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "les effets du codéine",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "quels effets secondaires a le Glucophage",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "quels effets secondaires a le Aspégic",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "effets secondaires metformine",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "effets secondaires paracétamol",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "quels sont les effets légers du Clamoxyl",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "quels sont les effets légers du Amoxicilline Biogaran",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "le aspirine provoque t il des effets graves",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "le ibuprofène provoque t il des effets graves",
+  "intention": "effets_secondaires"
+ },
+ {
+  "texte": "quelles sont les contre indications du Clamoxyl",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "quelles sont les contre indications du Amoxicilline Biogaran",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "contre indications du tramadol",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "contre indications du aspirine",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "quand ne pas prendre le Zithromax",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "quand ne pas prendre le Aspégic",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "dans quels cas éviter le paracétamol",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "dans quels cas éviter le amoxicilline",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "le Ibuprofène Mylan est contre indiqué dans quels cas",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "le Doliprane est contre indiqué dans quels cas",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "qui ne doit pas prendre de Advil",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "qui ne doit pas prendre de Zithromax",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "précautions avec le codéine",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "précautions avec le tramadol",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "contre indication paracétamol",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "contre indication tramadol",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "quelles sont les contre indications de l'ibuprofène",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "quelles sont les contre indications de l'metformine",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "situations où le Advil est interdit",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "situations où le Amoxicilline Biogaran est interdit",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "le aspirine est déconseillé quand",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "le metformine est déconseillé quand",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "Amoxicilline Biogaran contre indications",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "Aspégic contre indications",
+  "intention": "contre_indications"
+ },
+ {
+  "texte": "quels médicaments sont contre indiqués en cas de insuffisance hépatique",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "quels médicaments sont contre indiqués en cas de problèmes de reins",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "médicaments à éviter avec problèmes de reins",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "médicaments à éviter avec ulcère gastrique",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "que ne pas prendre si j'ai un insuffisance rénale",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "que ne pas prendre si j'ai un problèmes de reins",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "médicaments déconseillés pour problème de foie",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "médicaments déconseillés pour insuffisance rénale",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "quels médicaments éviter en cas d'problème de foie",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "quels médicaments éviter en cas d'insuffisance hépatique",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "médicaments interdits avec une ulcère gastrique",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "médicaments interdits avec une problème de foie",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "patient avec problème de foie quels médicaments éviter",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "patient avec insuffisance hépatique quels médicaments éviter",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "quels produits sont dangereux en cas de ulcère gastrique",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "quels produits sont dangereux en cas de problèmes de reins",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "médicaments contre indiqués ulcère gastrique",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "médicaments contre indiqués ulcère",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "liste des médicaments interdits si insuffisance rénale",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "liste des médicaments interdits si ulcère",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "j'ai une insuffisance hépatique que dois je éviter",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "j'ai une ulcère que dois je éviter",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "quels médicaments ne pas donner à un patient qui a problèmes de reins",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "quels médicaments ne pas donner à un patient qui a insuffisance rénale",
+  "intention": "contre_indiques_pour_pathologie"
+ },
+ {
+  "texte": "y a t il un générique moins cher que le Contramal",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "y a t il un générique moins cher que le Doliprane",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "existe t il un générique du Advil",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "existe t il un générique du Doliprane",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "quelle alternative moins chère au Contramal",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "quelle alternative moins chère au Advil",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "générique du Doliprane",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "générique du Zithromax",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "équivalent moins cher du Advil",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "équivalent moins cher du Amoxicilline Biogaran",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "par quoi remplacer le Contramal",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "par quoi remplacer le Clamoxyl",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "quel est le générique de Ibuprofène Mylan",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "quel est le générique de Contramal",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "le Amoxicilline Biogaran a t il un générique",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "le Aspégic a t il un générique",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "comparer le prix du Ibuprofène Mylan avec ses génériques",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "comparer le prix du Contramal avec ses génériques",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "alternative au Ibuprofène Mylan",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "alternative au Glucophage",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "médicament équivalent au Contramal",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "médicament équivalent au Advil",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "comment économiser sur le Advil",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "comment économiser sur le Glucophage",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "un autre médicament comme le Zithromax mais moins cher",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "un autre médicament comme le Glucophage mais moins cher",
+  "intention": "generique_alternative"
+ },
+ {
+  "texte": "Ibuprofène Mylan et Contramal interagissent ils",
+  "intention": "interaction"
+ },
+ {
+  "texte": "Advil et Aspégic interagissent ils",
+  "intention": "interaction"
+ },
+ {
+  "texte": "peut on prendre Glucophage avec Aspégic",
+  "intention": "interaction"
+ },
+ {
+  "texte": "peut on prendre Advil avec Advil",
+  "intention": "interaction"
+ },
+ {
+  "texte": "interaction entre tramadol et ibuprofène",
+  "intention": "interaction"
+ },
+ {
+  "texte": "interaction entre metformine et ibuprofène",
+  "intention": "interaction"
+ },
+ {
+  "texte": "est ce dangereux de mélanger Glucophage et Doliprane",
+  "intention": "interaction"
+ },
+ {
+  "texte": "est ce dangereux de mélanger Clamoxyl et Doliprane",
+  "intention": "interaction"
+ },
+ {
+  "texte": "le metformine interagit avec quoi",
+  "intention": "interaction"
+ },
+ {
+  "texte": "le tramadol interagit avec quoi",
+  "intention": "interaction"
+ },
+ {
+  "texte": "quelles interactions pour le ibuprofène",
+  "intention": "interaction"
+ },
+ {
+  "texte": "quelles interactions pour le metformine",
+  "intention": "interaction"
+ },
+ {
+  "texte": "puis je associer Doliprane et Aspégic",
+  "intention": "interaction"
+ },
+ {
+  "texte": "puis je associer Advil et Aspégic",
+  "intention": "interaction"
+ },
+ {
+  "texte": "y a t il une interaction entre Aspégic et Doliprane",
+  "intention": "interaction"
+ },
+ {
+  "texte": "y a t il une interaction entre Ibuprofène Mylan et Contramal",
+  "intention": "interaction"
+ },
+ {
+  "texte": "avec quoi le metformine interagit il",
+  "intention": "interaction"
+ },
+ {
+  "texte": "avec quoi le tramadol interagit il",
+  "intention": "interaction"
+ },
+ {
+  "texte": "association Doliprane Contramal risquée",
+  "intention": "interaction"
+ },
+ {
+  "texte": "association Glucophage Doliprane risquée",
+  "intention": "interaction"
+ },
+ {
+  "texte": "prendre Glucophage en même temps que Aspégic",
+  "intention": "interaction"
+ },
+ {
+  "texte": "prendre Ibuprofène Mylan en même temps que Advil",
+  "intention": "interaction"
+ },
+ {
+  "texte": "interactions médicamenteuses du Clamoxyl",
+  "intention": "interaction"
+ },
+ {
+  "texte": "interactions médicamenteuses du Glucophage",
+  "intention": "interaction"
+ },
+ {
+  "texte": "aspirine et tramadol ensemble c'est risqué",
+  "intention": "interaction"
+ },
+ {
+  "texte": "codéine et ibuprofène ensemble c'est risqué",
+  "intention": "interaction"
+ },
+ {
+  "texte": "peut on combiner paracétamol et ibuprofène",
+  "intention": "interaction"
+ },
+ {
+  "texte": "peut on combiner amoxicilline et aspirine",
+  "intention": "interaction"
+ },
+ {
+  "texte": "quel est le prix du Doliprane",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "quel est le prix du Ibuprofène Mylan",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "combien coûte le Amoxicilline Biogaran",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "combien coûte le Aspégic",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "quel est le code ATC du paracétamol",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "quel est le code ATC du ibuprofène",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "code atc du aspirine",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "code atc du ibuprofène",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "dose maximale de ibuprofène par jour",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "dose maximale de tramadol par jour",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "quelle est la dose max du azithromycine",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "quelle est la dose max du ibuprofène",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "quel est le dosage du Contramal",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "quel est le dosage du Doliprane",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "sous quelle forme est vendu le Advil",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "sous quelle forme est vendu le Glucophage",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "le Amoxicilline Biogaran est il sur ordonnance",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "le Zithromax est il sur ordonnance",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "faut il une ordonnance pour le Clamoxyl",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "faut il une ordonnance pour le Contramal",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "prix du Zithromax",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "prix du Contramal",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "le Clamoxyl coûte combien",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "le Glucophage coûte combien",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "forme galénique du Aspégic",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "forme galénique du Clamoxyl",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "le Ibuprofène Mylan est vendu sans ordonnance",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "le Zithromax est vendu sans ordonnance",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "donne moi les informations sur le Advil",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "donne moi les informations sur le Doliprane",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "fiche du metformine",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "fiche du ibuprofène",
+  "intention": "info_attribut"
+ },
+ {
+  "texte": "pour quoi est indiqué le Advil",
+  "intention": "indication"
+ },
+ {
+  "texte": "pour quoi est indiqué le Amoxicilline Biogaran",
+  "intention": "indication"
+ },
+ {
+  "texte": "à quoi sert le Contramal",
+  "intention": "indication"
+ },
+ {
+  "texte": "à quoi sert le Amoxicilline Biogaran",
+  "intention": "indication"
+ },
+ {
+  "texte": "le Clamoxyl soigne quoi",
+  "intention": "indication"
+ },
+ {
+  "texte": "le Aspégic soigne quoi",
+  "intention": "indication"
+ },
+ {
+  "texte": "quelles maladies traite le Zithromax",
+  "intention": "indication"
+ },
+ {
+  "texte": "quelles maladies traite le Advil",
+  "intention": "indication"
+ },
+ {
+  "texte": "quel médicament pour la angine",
+  "intention": "indication"
+ },
+ {
+  "texte": "quel médicament pour la pneumonie",
+  "intention": "indication"
+ },
+ {
+  "texte": "quels médicaments sont indiqués pour la pneumonie",
+  "intention": "indication"
+ },
+ {
+  "texte": "quels médicaments sont indiqués pour la angine",
+  "intention": "indication"
+ },
+ {
+  "texte": "que prendre contre la douleur dentaire",
+  "intention": "indication"
+ },
+ {
+  "texte": "que prendre contre la mal de gorge",
+  "intention": "indication"
+ },
+ {
+  "texte": "médicament pour soigner une diabète",
+  "intention": "indication"
+ },
+ {
+  "texte": "médicament pour soigner une mal de tête",
+  "intention": "indication"
+ },
+ {
+  "texte": "indications du Clamoxyl",
+  "intention": "indication"
+ },
+ {
+  "texte": "indications du Amoxicilline Biogaran",
+  "intention": "indication"
+ },
+ {
+  "texte": "dans quel cas utiliser le Doliprane",
+  "intention": "indication"
+ },
+ {
+  "texte": "dans quel cas utiliser le Amoxicilline Biogaran",
+  "intention": "indication"
+ },
+ {
+  "texte": "quel traitement pour la pneumonie",
+  "intention": "indication"
+ },
+ {
+  "texte": "quel traitement pour la mal de tête",
+  "intention": "indication"
+ },
+ {
+  "texte": "le Advil est utilisé pour quoi",
+  "intention": "indication"
+ },
+ {
+  "texte": "le Aspégic est utilisé pour quoi",
+  "intention": "indication"
+ },
+ {
+  "texte": "j'ai une pneumonie que prendre",
+  "intention": "indication"
+ },
+ {
+  "texte": "j'ai une migraine que prendre",
+  "intention": "indication"
+ },
+ {
+  "texte": "que me conseilles tu pour une migraine",
+  "intention": "indication"
+ },
+ {
+  "texte": "que me conseilles tu pour une mal de tête",
+  "intention": "indication"
+ },
+ {
+  "texte": "combien de médicaments génériques",
+  "intention": "statistiques"
+ },
+ {
+  "texte": "combien de molécules dans l'ontologie",
+  "intention": "statistiques"
+ },
+ {
+  "texte": "nombre de médicaments",
+  "intention": "statistiques"
+ },
+ {
+  "texte": "combien y a t il de princeps",
+  "intention": "statistiques"
+ },
+ {
+  "texte": "prix moyen des médicaments",
+  "intention": "statistiques"
+ },
+ {
+  "texte": "statistiques des médicaments",
+  "intention": "statistiques"
+ },
+ {
+  "texte": "combien de médicaments sans ordonnance",
+  "intention": "statistiques"
+ },
+ {
+  "texte": "quel est le prix moyen des génériques",
+  "intention": "statistiques"
+ },
+ {
+  "texte": "combien d'pénicillines",
+  "intention": "statistiques"
+ },
+ {
+  "texte": "combien d'antalgiques opioïdes",
+  "intention": "statistiques"
+ },
+ {
+  "texte": "nombre de antalgiques opioïdes",
+  "intention": "statistiques"
+ },
+ {
+  "texte": "nombre de macrolides",
+  "intention": "statistiques"
+ },
+ {
+  "texte": "combien de médicaments sur ordonnance",
+  "intention": "statistiques"
+ },
+ {
+  "texte": "combien de molécules existent",
+  "intention": "statistiques"
+ },
+ {
+  "texte": "quel est le nombre total de médicaments",
+  "intention": "statistiques"
+ },
+ {
+  "texte": "moyenne des prix des princeps",
+  "intention": "statistiques"
+ }
+]
