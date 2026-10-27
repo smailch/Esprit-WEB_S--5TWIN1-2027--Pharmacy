@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
 import { FlaskConical, Pill, Scale, ShieldAlert, MessageSquareText, Database, Menu, X, Home, RotateCcw,
-  HeartPulse, Stethoscope, Users, MessagesSquare } from 'lucide-react';
+  ClipboardList, Stethoscope, Route, Bot, TerminalSquare, HeartPulse, Activity, Users, MessagesSquare } from 'lucide-react';
 import Logo from '../components/Logo.jsx';
 import { api } from '../api/client.js';
 import { useToast } from './Toast.jsx';
@@ -13,12 +13,19 @@ const links = [
   { to: '/interactions', label: 'Interactions', icon: ShieldAlert },
   { to: '/assistant', label: 'Assistant IA', icon: MessageSquareText },
   { to: '/sparql', label: 'Console SPARQL', icon: Database },
+  // Module D — Prescription + Donnée clinique
+  { to: '/prescriptions', label: 'Prescriptions', icon: ClipboardList, module: 'D' },
+  { to: '/donnees-cliniques', label: 'Données cliniques', icon: Stethoscope, module: 'D' },
+  { to: '/scenario', label: 'Scénario & alertes', icon: Route, module: 'D' },
+  { to: '/module-d/assistant', label: 'Assistant IA (D)', icon: Bot, module: 'D' },
+  { to: '/module-d/sparql', label: 'Console SPARQL (D)', icon: TerminalSquare, module: 'D' },
   // Module Pathologie + Personne
   { to: '/sante', label: 'Tableau santé', icon: HeartPulse, section: 'Pathologie + Personne' },
-  { to: '/pathologies', label: 'Pathologies', icon: Stethoscope },
+  { to: '/pathologies', label: 'Pathologies', icon: Activity },
   { to: '/personnes', label: 'Personnes', icon: Users },
   { to: '/assistant-sante', label: 'Assistant santé', icon: MessagesSquare },
 ];
+const MODULE_D = links.filter((l) => l.module === 'D').map((l) => l.to);
 
 const SANTE_PATHS = ['/sante', '/pathologies', '/personnes', '/patients', '/assistant-sante'];
 
@@ -57,7 +64,9 @@ export default function AppShell() {
           <Logo size={28} />
           <span>PharmaSémantique</span>
         </Link>
-        <span className="app-module-tag">{SANTE_PATHS.some((p) => pathname.startsWith(p)) ? 'Pathologie + Personne' : 'Module A · Molécule + Médicament'}</span>
+        <span className="app-module-tag">{MODULE_D.some((p) => pathname.startsWith(p))
+          ? 'Module D · Prescription + Donnée clinique'
+          : SANTE_PATHS.some((p) => pathname.startsWith(p)) ? 'Pathologie + Personne' : 'Module A · Molécule + Médicament'}</span>
         <button type="button" className="nav-toggle app-toggle" aria-expanded={open} aria-controls="app-nav" aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'} onClick={() => setOpen((v) => !v)}>
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -67,8 +76,9 @@ export default function AppShell() {
         <aside id="app-nav" className={`app-nav ${open ? 'is-open' : ''}`} aria-label="Navigation de l’application">
           <nav>
             <ul>
-              {links.map(({ to, label, icon: Icon, section }) => (
+              {links.map(({ to, label, icon: Icon, module, section }, i) => (
                 <li key={to}>
+                  {module && !links[i - 1].module && <p className="app-nav-group">Module D</p>}
                   {section && <p className="app-nav-section">{section}</p>}
                   <NavLink to={to} className={({ isActive }) => `app-link ${isActive ? 'is-active' : ''}`}>
                     <Icon size={18} strokeWidth={1.5} aria-hidden="true" /> {label}
