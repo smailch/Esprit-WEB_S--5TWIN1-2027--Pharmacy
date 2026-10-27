@@ -74,6 +74,12 @@ export default function Assistant() {
   const inputRef = useRef(null);
 
   useEffect(() => { inputRef.current?.focus(); }, []);
+  // Si le back-end démarre encore (chargement de spaCy), on retente les suggestions.
+  useEffect(() => {
+    if (!sugg.error) return undefined;
+    const t = setTimeout(sugg.reload, 3000);
+    return () => clearTimeout(t);
+  }, [sugg.error, sugg.reload]);
 
   const ask = async (q) => {
     const text = (q ?? question).trim();
