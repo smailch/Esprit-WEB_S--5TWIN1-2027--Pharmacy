@@ -1,0 +1,71 @@
+@prefix :     <http://example.org/pharma#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+#################################################################
+#  Extension membre 3 (Ahmed Allaya) — modules Pathologie et Personne
+#  Chargée EN PLUS de ../ontologie/pharma.ttl (qui n'est pas modifié).
+#  Données FICTIVES — aucun conseil médical.
+#
+#  - Les patients ne portent que :Patient ou :PatientAdulte en type asserté :
+#    PatientEnfant / PatientAdulte sont des classes définies par l'âge
+#    (le raisonneur HermiT les infère).
+#  - Les professionnels de santé n'ont ni :age ni :sexe (domaine :Patient,
+#    disjoint de :ProfessionnelSante → sinon incohérence).
+#  - Aucune prescription ici (module d'un autre membre).
+#################################################################
+
+# ---------- Pathologies (10 nouvelles → 19 au total) ----------
+# Infection aiguë (5 au total)
+:Bronchite a owl:NamedIndividual , :InfectionAigue ; rdfs:label "Bronchite aiguë"@fr ; :codeCIM10 "J20.9" .
+:Otite a owl:NamedIndividual , :InfectionAigue ; rdfs:label "Otite moyenne aiguë"@fr ; :codeCIM10 "H66.9" .
+:Cystite a owl:NamedIndividual , :InfectionAigue ; rdfs:label "Cystite aiguë"@fr ; :codeCIM10 "N30.0" .
+# Douleur aiguë (4 au total)
+:Lombalgie a owl:NamedIndividual , :DouleurAigue ; rdfs:label "Lombalgie aiguë"@fr ; :codeCIM10 "M54.5" .
+:ColiqueNephretique a owl:NamedIndividual , :DouleurAigue ; rdfs:label "Colique néphrétique"@fr ; :codeCIM10 "N23" .
+# Maladie métabolique (4 au total)
+:Hypercholesterolemie a owl:NamedIndividual , :MaladieMetabolique ; rdfs:label "Hypercholestérolémie"@fr ; :codeCIM10 "E78.0" .
+:Hypothyroidie a owl:NamedIndividual , :MaladieMetabolique ; rdfs:label "Hypothyroïdie"@fr ; :codeCIM10 "E03.9" .
+# Insuffisance d'organe (4 au total)
+:InsuffisanceCardiaque a owl:NamedIndividual , :InsuffisanceOrgane ; rdfs:label "Insuffisance cardiaque"@fr ; :codeCIM10 "I50.9" .
+:InsuffisanceRespiratoire a owl:NamedIndividual , :InsuffisanceOrgane ; rdfs:label "Insuffisance respiratoire chronique"@fr ; :codeCIM10 "J96.1" .
+# Maladie chronique sans sous-type de niveau 3 (comme l'ulcère de pharma.ttl)
+:HypertensionArterielle a owl:NamedIndividual , :MaladieChronique ; rdfs:label "Hypertension artérielle"@fr ; :codeCIM10 "I10" .
+
+# ---------- Patients (7 nouveaux → 11 au total) ----------
+:Patient_Amine a owl:NamedIndividual , :Patient ; rdfs:label "Amine Bouazizi"@fr ;      # inféré PatientEnfant
+    :nom "Bouazizi" ; :age 6 ; :sexe "M" ; :souffreDe :Otite .
+:Patient_Nour a owl:NamedIndividual , :Patient ; rdfs:label "Nour Ayari"@fr ;           # inféré PatientEnfant
+    :nom "Ayari" ; :age 15 ; :sexe "F" ; :souffreDe :Migraine , :Bronchite .
+:Patient_Salma a owl:NamedIndividual , :Patient ; rdfs:label "Salma Dridi"@fr ;         # inféré PatientAdulte, sans pathologie
+    :nom "Dridi" ; :age 26 ; :sexe "F" .
+:Patient_Rania a owl:NamedIndividual , :Patient ; rdfs:label "Rania Ferchichi"@fr ;     # inféré PatientAdulte
+    :nom "Ferchichi" ; :age 38 ; :sexe "F" ; :souffreDe :Hypothyroidie , :Cystite .
+:Patient_Karim a owl:NamedIndividual , :PatientAdulte ; rdfs:label "Karim Jaziri"@fr ;
+    :nom "Jaziri" ; :age 45 ; :sexe "M" ; :souffreDe :Lombalgie , :Hypercholesterolemie .
+:Patient_Fatma a owl:NamedIndividual , :PatientAdulte ; rdfs:label "Fatma Chaabane"@fr ;
+    :nom "Chaabane" ; :age 72 ; :sexe "F" ;
+    :souffreDe :HypertensionArterielle , :InsuffisanceCardiaque , :DiabeteType2 .
+:Patient_Hedi a owl:NamedIndividual , :PatientAdulte ; rdfs:label "Hédi Mejri"@fr ;
+    :nom "Mejri" ; :age 81 ; :sexe "M" ;
+    :souffreDe :InsuffisanceRespiratoire , :HypertensionArterielle , :Obesite .
+
+# ---------- Médecins (3 nouveaux → 5 au total) ----------
+:Dr_Hammami a owl:NamedIndividual , :Medecin ; rdfs:label "Dr Hammami"@fr ; :nom "Hammami" ; :specialite "Pédiatrie" .
+:Dr_Gharsallah a owl:NamedIndividual , :Medecin ; rdfs:label "Dr Gharsallah"@fr ; :nom "Gharsallah" ; :specialite "Cardiologie" .
+:Dr_Zouari a owl:NamedIndividual , :Medecin ; rdfs:label "Dr Zouari"@fr ; :nom "Zouari" ; :specialite "Endocrinologie" .
+
+# ---------- Pharmaciens (1 nouveau → 3 au total) ----------
+:Ph_Belhaj a owl:NamedIndividual , :Pharmacien ; rdfs:label "Pharmacienne Belhaj"@fr ; :nom "Belhaj" ; :specialite "Officine" .
+
+# ---------- Unicité des noms (pas d'UNA en OWL) ----------
+[] a owl:AllDifferent ; owl:distinctMembers (
+    :Bronchite :Otite :Cystite :Lombalgie :ColiqueNephretique :Hypercholesterolemie :Hypothyroidie
+    :InsuffisanceCardiaque :InsuffisanceRespiratoire :HypertensionArterielle
+    :Patient_Amine :Patient_Nour :Patient_Salma :Patient_Rania :Patient_Karim :Patient_Fatma :Patient_Hedi
+    :Dr_Hammami :Dr_Gharsallah :Dr_Zouari :Ph_Belhaj ) .
+
+# Démo en direct (non écrit ici) : ajouter « :Patient_Lina :souffreDe :InsuffisanceHepatique »
+# déclenche une alerte sur Presc_004 (Zithromax → Azithromycine → CI_InsuffisanceHepatique).
