@@ -1,0 +1,5 @@
+node_modules
+dist
+.claude
+/*.mp4
+/*.png
