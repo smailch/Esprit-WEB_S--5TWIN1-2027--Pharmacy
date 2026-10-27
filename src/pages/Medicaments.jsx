@@ -25,7 +25,9 @@ export default function Medicaments() {
     [dq, type, ordonnance, forme, dPrix, tri],
   );
   const ref = useApi(() => api.referentiels(), []);
+  const stats = useApi(() => api.stats(), []);
   const rows = list.data || [];
+  const st = stats.data;
 
   return (
     <>
@@ -36,6 +38,20 @@ export default function Medicaments() {
       >
         <p>Chaque filtre ajoute une contrainte à la requête SPARQL (FILTER, motif de triplet ou chemin de classe).</p>
       </PageHeader>
+
+      {st && (
+        <div className="kpis" aria-label="Statistiques (agrégats SPARQL)">
+          <div className="kpi"><span className="kpi-label">Médicaments</span><span className="kpi-value">{st.totaux.medicaments}</span></div>
+          <div className="kpi"><span className="kpi-label">Molécules</span><span className="kpi-value">{st.totaux.molecules}</span></div>
+          {st.parType.filter((t) => t.type.startsWith('Generique')).length > 0 && (
+            <div className="kpi">
+              <span className="kpi-label">Prix moyen générique</span>
+              <span className="kpi-value">{fmtPrix(st.parType.filter((t) => t.type.startsWith('Generique')).reduce((a, t) => a + t.prixMoyen * t.nombre, 0) / st.parType.filter((t) => t.type.startsWith('Generique')).reduce((a, t) => a + t.nombre, 0))}</span>
+            </div>
+          )}
+          <div className="kpi"><span className="kpi-label">Molécules sans médicament</span><span className="kpi-value">{st.moleculesOrphelines.map((m) => m.label).join(', ') || '—'}</span></div>
+        </div>
+      )}
 
       <div className="filter-bar">
         <label className="search">
@@ -86,7 +102,7 @@ export default function Medicaments() {
           ))}
         </ul>
       )}
-      <SparqlPanel items={list.sparql} />
+      <SparqlPanel items={[...list.sparql, ...stats.sparql]} />
 
       {creating && (
         <MedicamentForm
