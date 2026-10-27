@@ -24,5 +24,7 @@ Consignes complètes : `../PROMPT_CLAUDE_CODE_MEMBRE3.md`. Contexte d'équipe : 
 - [x] Étape 7 : frontend React 18 + Vite (port **5174**, 5173 = site vitrine) : tableau de bord, pathologies,
   personnes (3 onglets), fiche patient + alertes, assistant NLP, graphe SVG, console SPARQL ; lint 0 avertissement.
 
+- [x] Étape 8 : `docs/SCENARIO_DEMO.md` (rejoué via l API), `docs/ORAL_QA.md`, `README.md`, scripts setup/start
+
 ## Reste à faire
-- Docs (scénario, Q&A, README), installation propre.
+- Installation propre (check_clean_install), push.
