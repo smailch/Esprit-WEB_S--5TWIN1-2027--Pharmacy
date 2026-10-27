@@ -1,4 +1,4 @@
-"""API PharmaSémantique — modules Pathologie et Personne (membre 3).
+"""API PharmaSémantique — modules Pathologie et Personne (Ahmed Allaya).
 
 Lancement : uvicorn app.main:app --reload   (documentation OpenAPI : /docs)
 """

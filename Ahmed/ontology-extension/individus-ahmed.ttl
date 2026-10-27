@@ -5,7 +5,7 @@
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
 #################################################################
-#  Extension membre 3 (Ahmed Allaya) — modules Pathologie et Personne
+#  Extension Ahmed Allaya (membre 3) — modules Pathologie et Personne
 #  Chargée EN PLUS de ../ontologie/pharma.ttl (qui n'est pas modifié).
 #  Données FICTIVES — aucun conseil médical.
 #

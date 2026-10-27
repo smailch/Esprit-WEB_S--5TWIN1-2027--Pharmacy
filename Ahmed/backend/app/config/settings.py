@@ -3,12 +3,12 @@ from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-MEMBRE3_DIR = Path(__file__).resolve().parents[3]
-REPO_DIR = MEMBRE3_DIR.parent
+PROJECT_DIR = Path(__file__).resolve().parents[3]
+REPO_DIR = PROJECT_DIR.parent
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=MEMBRE3_DIR / ".env", extra="ignore")
+    model_config = SettingsConfigDict(env_file=PROJECT_DIR / ".env", extra="ignore")
 
     # "rdflib" (graphe en mémoire, aucun service requis) ou "fuseki"
     sparql_backend: str = "rdflib"
@@ -18,7 +18,7 @@ class Settings(BaseSettings):
     fuseki_password: str = "admin"
 
     ontology_file: Path = REPO_DIR / "ontologie" / "pharma.ttl"
-    extension_dir: Path = MEMBRE3_DIR / "ontology-extension"
+    extension_dir: Path = PROJECT_DIR / "ontology-extension"
 
     cors_origins: str = "http://localhost:5173"
 

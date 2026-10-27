@@ -28,7 +28,7 @@ def table(res, n=5):
     return "\n".join(lines)
 
 
-out = ["# Requêtes SPARQL — modules Pathologie et Personne (membre 3)", "",
+out = ["# Requêtes SPARQL — modules Pathologie et Personne (Ahmed Allaya)", "",
        "Fichier généré par `scripts/gen_sparql_doc.py` : chaque exemple de résultat est **réellement exécuté**",
        "sur `pharma.ttl` + `ontology-extension/*.ttl` (graphe rdflib neuf).", "",
        "Les requêtes de référence Q1–Q8 de l'équipe sont dans `ontologie/requetes.sparql` ; ici,",

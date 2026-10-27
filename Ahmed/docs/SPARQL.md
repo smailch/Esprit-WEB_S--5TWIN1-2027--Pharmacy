@@ -1,4 +1,4 @@
-# Requêtes SPARQL — modules Pathologie et Personne (membre 3)
+# Requêtes SPARQL — modules Pathologie et Personne (Ahmed Allaya)
 
 Fichier généré par `scripts/gen_sparql_doc.py` : chaque exemple de résultat est **réellement exécuté**
 sur `pharma.ttl` + `ontology-extension/*.ttl` (graphe rdflib neuf).
