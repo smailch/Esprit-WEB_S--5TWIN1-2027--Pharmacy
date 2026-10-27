@@ -1,4 +1,4 @@
-# Installation complète (Windows) : venv Python, dépendances épinglées, modèles NLP, dépendances front.
+﻿# Installation complète (Windows) : venv Python, dépendances épinglées, modèles NLP, dépendances front.
 # Usage (depuis Ahmed/) : .\scripts\setup.ps1
 $ErrorActionPreference = "Stop"
 Set-Location (Join-Path $PSScriptRoot "..")

@@ -1,4 +1,4 @@
-# Lance le backend (nouvelle fenêtre) puis le frontend. Usage (depuis Ahmed/) : .\scripts\start.ps1
+﻿# Lance le backend (nouvelle fenêtre) puis le frontend. Usage (depuis Ahmed/) : .\scripts\start.ps1
 $root = Resolve-Path (Join-Path $PSScriptRoot "..")
 Start-Process powershell -ArgumentList "-NoExit", "-Command",
     "Set-Location '$root/backend'; .venv/Scripts/python.exe -m uvicorn app.main:app --port 8000"

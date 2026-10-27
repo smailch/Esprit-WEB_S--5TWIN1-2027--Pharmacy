@@ -1,4 +1,4 @@
-# Vérifie qu'un clone NEUF fonctionne : clone (état commité) → installation → tests → lint/build → démarrage → /api/health.
+﻿# Vérifie qu'un clone NEUF fonctionne : clone (état commité) → installation → tests → lint/build → démarrage → /api/health.
 # Usage (depuis Ahmed/) : .\scripts\check_clean_install.ps1 [-Source <url ou chemin du dépôt>] [-Branch <branche>]
 param(
     [string]$Source = (git -C $PSScriptRoot rev-parse --show-toplevel),
