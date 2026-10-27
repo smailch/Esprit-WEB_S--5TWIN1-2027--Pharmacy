@@ -7,3 +7,4 @@ node_modules/
 dist/
 fuseki-data/
 .tools/
+backend/nlp/model/

@@ -65,6 +65,8 @@ def _from_json(b: dict):
 
 
 class SparqlClient(ABC):
+    version = 0  # incrémenté à chaque écriture (invalide les caches, ex. vocabulaire NLP)
+
     @abstractmethod
     def select(self, query: str) -> SelectResult: ...
 
@@ -106,6 +108,7 @@ class RdflibClient(SparqlClient):
             g.parse(f, format="turtle")
         with self.lock:
             self.g = g
+            self.version += 1
 
     def _query(self, query):
         try:
@@ -137,6 +140,7 @@ class RdflibClient(SparqlClient):
         try:
             with self.lock:
                 self.g.update(query)
+                self.version += 1
         except Exception as e:
             raise SparqlError(str(e)) from e
 
@@ -176,6 +180,7 @@ class FusekiClient(SparqlClient):
             raise SparqlError(f"Fuseki injoignable : {e}") from e
         if r.status_code >= 400:
             raise SparqlError(r.text[:500])
+        self.version += 1
 
     def is_empty(self) -> bool:
         return not self.ask("ASK { ?s ?p ?o }")
@@ -188,6 +193,7 @@ class FusekiClient(SparqlClient):
                        headers={"Content-Type": "text/turtle; charset=utf-8"})
             if r.status_code >= 400:
                 raise SparqlError(f"Chargement de {f.name} refusé : {r.text[:300]}")
+        self.version += 1
 
 
 def build_client(settings) -> SparqlClient:

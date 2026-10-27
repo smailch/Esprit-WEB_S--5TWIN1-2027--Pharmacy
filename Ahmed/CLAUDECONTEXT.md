@@ -18,6 +18,8 @@ Consignes complètes : `../PROMPT_CLAUDE_CODE_MEMBRE3.md`. Contexte d'équipe : 
 - [x] Étape 4 : 36 requêtes nommées (`backend/sparql`), services, 50 tests rdflib, `docs/SPARQL.md` généré
 - [x] Étape 5 : API FastAPI (`/api/...`, OpenAPI sur `/docs`), erreurs `{code, message, details}`,
   201/204/404/409/422, console SPARQL lecture seule ; 58 tests (dont 8 d'intégration TestClient)
+- [x] Étape 6 : NLP spaCy + RapidFuzz + scikit-learn (`app/nlp/`, `POST /api/nlp/ask`), 14 intentions,
+  232 exemples, 78 questions de test → 100 % (`scripts/eval_nlp.py`) ; 65 tests au total. Voir `docs/NLP.md`.
 
 ## Reste à faire
-- NLP (`/api/nlp/ask`), frontend, docs, installation propre.
+- Frontend, docs (scénario, Q&A, README), installation propre.

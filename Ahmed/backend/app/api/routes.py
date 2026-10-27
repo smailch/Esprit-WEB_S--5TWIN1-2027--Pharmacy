@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Query, Request, Response
 
 from app.config.ontology_mapping import C
-from app.schemas.models import (Created, Page, PathologieCreate, PathologieItem, PathologieUpdate,
+from app.schemas.models import (AskRequest, Created, Page, PathologieCreate, PathologieItem, PathologieUpdate,
                                 PatientCreate, PatientDetail, PatientItem, PatientUpdate, ProCreate,
                                 ProItem, ProUpdate, SparqlRequest)
 from app.services.repository import Repository
@@ -168,6 +168,26 @@ def search(q: str = Query(min_length=1, max_length=100), r: Repository = Depends
 @router.get("/graph/{eid}", tags=["graphe"])
 def graph(eid: str, r: Repository = Depends(repo)):
     return r.graph(eid)
+
+
+# ---------- NLP : question en français → SPARQL ----------
+def nlp_pipeline(request: Request, r: Repository = Depends(repo)):
+    from app.nlp.pipeline import NlpPipeline  # import tardif : spaCy n'est chargé qu'au premier appel
+
+    state = request.app.state
+    if getattr(state, "nlp", None) is None or state.nlp.client is not r.sparql:
+        state.nlp = NlpPipeline(r.sparql)
+    return state.nlp
+
+
+@router.post("/nlp/ask", tags=["nlp"])
+def nlp_ask(body: AskRequest, nlp=Depends(nlp_pipeline)):
+    return nlp.ask(body.question)
+
+
+@router.get("/nlp/exemples", tags=["nlp"])
+def nlp_examples(nlp=Depends(nlp_pipeline)):
+    return nlp.examples
 
 
 # ---------- Console SPARQL (lecture seule) ----------
