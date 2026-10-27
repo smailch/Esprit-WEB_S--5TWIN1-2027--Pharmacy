@@ -12,8 +12,42 @@ from dataclasses import dataclass, field
 from decimal import Decimal
 
 from rdflib import BNode, Graph, Literal
+from rdflib.plugins.sparql import prepareQuery
+from rdflib.plugins.sparql.parserutils import CompValue
 
-from ...graph_store import GraphStore
+from ...graph_store import PREFIXES, GraphStore, to_python
+
+CONSOLE_KINDS = {"SelectQuery": "select", "AskQuery": "ask", "ConstructQuery": "graphe"}
+
+
+def _nodes(node):
+    if isinstance(node, CompValue):
+        yield node
+        for value in node.values():
+            yield from _nodes(value)
+    elif isinstance(node, (list, tuple)):
+        for value in node:
+            yield from _nodes(value)
+
+
+def validate_readonly(query: str) -> str:
+    """Console : la requête est analysée (parseur rdflib) et son algèbre inspectée.
+
+    Seules SELECT, ASK et CONSTRUCT passent ; toute mise à jour est rejetée par le parseur de requêtes ;
+    SERVICE (appel réseau) et FROM / FROM NAMED (graphe externe) sont interdits.
+    """
+    try:
+        parsed = prepareQuery(PREFIXES + query)
+    except Exception as e:
+        raise SparqlError(f"Requête refusée : seules SELECT, ASK et CONSTRUCT sont acceptées ({e})") from e
+    kind = CONSOLE_KINDS.get(parsed.algebra.name)
+    if not kind:
+        raise SparqlError(f"Forme de requête non autorisée : {parsed.algebra.name}")
+    if parsed.algebra.get("datasetClause"):
+        raise SparqlError("FROM / FROM NAMED interdits : la requête porte uniquement sur l'ontologie chargée")
+    if any(n.name == "ServiceGraphPattern" for n in _nodes(parsed.algebra)):
+        raise SparqlError("SERVICE interdit : aucune requête vers un serveur distant")
+    return kind
 
 
 @dataclass
@@ -86,6 +120,28 @@ class StoreClient:
 
     def reset(self) -> None:
         self.store.load(reset=True)
+
+    def console(self, query: str, limite: int = 500) -> dict:
+        """Exécution contrôlée (lecture seule) pour la console ; même format que les consoles des autres modules."""
+        kind = validate_readonly(query)
+        with self.store._lock:
+            res = self.store.base.query(PREFIXES + query)
+            if kind == "ask":
+                return {"type": "ask", "resultat": bool(res.askAnswer)}
+            if kind == "graphe":
+                g = Graph()
+                g.bind("", "http://example.org/pharma#")
+                for t in res:
+                    g.add(t)
+                return {"type": "graphe", "triplets": len(g), "turtle": g.serialize(format="turtle")}
+            columns = [str(v) for v in res.vars]
+            rows, truncated = [], False
+            for i, row in enumerate(res):
+                if i >= limite:
+                    truncated = True
+                    break
+                rows.append({c: to_python(row[c]) for c in columns})
+        return {"type": "select", "colonnes": columns, "lignes": rows, "tronque": truncated}
 
     def run(self, query: str):
         kind = query_kind(query)

@@ -79,3 +79,21 @@ def test_shared_graph_with_module_a(fresh):
     assert r.json()["data"]["resultat"] is True
     fresh.post("/api/admin/reset")
     assert fresh.get("/api/patients/Patient_Yassine").status_code == 404
+
+
+def test_console_sparql_sante(fresh):
+    cat = fresh.get("/api/sante/requetes").json()["data"]
+    assert len(cat) == 36 and all(not q["requete"].startswith("PREFIX") for q in cat)
+    for q in cat:  # chaque requête de lecture du catalogue s'exécute
+        r = fresh.post(f"/api/sante/requetes/{q['nom']}/executer")
+        assert r.status_code == (200 if q["lectureSeule"] else 400), (q["nom"], r.text)
+    alertes = next(q for q in cat if q["nom"].endswith("_alertes"))
+    assert len(fresh.post(f"/api/sante/requetes/{alertes['nom']}/executer").json()["data"]["lignes"]) == 3
+    r = fresh.post("/api/sante/sparql", json={"requete": "SELECT ?p WHERE { ?p a :Medecin }"})
+    assert r.json()["data"]["type"] == "select" and len(r.json()["data"]["lignes"]) == 5
+    assert fresh.post("/api/sante/sparql", json={"requete": "ASK { :Patient_Sara :age 9 }"}).json()["data"]["resultat"] is True
+    for interdit in ["DELETE WHERE { ?s ?p ?o }", "INSERT DATA { :a :b :c }", "DROP ALL",
+                     "SELECT * WHERE { SERVICE <http://evil.example/sparql> { ?s ?p ?o } }",
+                     "SELECT * FROM <http://evil.example/g> WHERE { ?s ?p ?o }"]:
+        assert fresh.post("/api/sante/sparql", json={"requete": interdit}).status_code == 400, interdit
+    assert fresh.get("/api/patients", params={"limit": 1}).json()["total"] == 11  # rien n'a été modifié

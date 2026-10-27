@@ -9,11 +9,12 @@ from fastapi.responses import JSONResponse
 
 from ...graph_store import store
 from .client import SparqlError, StoreClient
-from .mapping import C
+from .mapping import C, PREFIXES
 from .schemas import (AskRequest, Created, Page, PathologieCreate, PathologieItem, PathologieUpdate,
-                      PatientCreate, PatientDetail, PatientItem, PatientUpdate, ProCreate, ProItem, ProUpdate)
+                      PatientCreate, PatientDetail, PatientItem, PatientUpdate, ProCreate, ProItem, ProUpdate,
+                      SparqlRequest)
 from .service import Conflict, NotFound, Repository
-from .templates import InvalidParam
+from .templates import QUERIES, InvalidParam
 
 TAG = "Module Pathologie + Personne (Ahmed)"
 router = APIRouter(tags=[TAG])
@@ -175,6 +176,44 @@ def stats():
 @router.get("/sante/recherche")
 def search(q: str = Query(min_length=1, max_length=100)):
     return repo.search(q)
+
+
+# ---------- Console SPARQL (même format que les consoles des modules A et D) ----------
+CATEGORIES = ["Read", "Filtre", "Recherche", "Hierarchie", "Agregat", "Chemin", "Alerte", "ASK",
+              "Create", "Update", "Delete"]
+MUTATIONS = {"Create", "Update", "Delete"}
+
+
+def _catalogue() -> list[dict]:
+    ordered = sorted(QUERIES.values(), key=lambda q: (CATEGORIES.index(q.categorie), q.name))
+    return [{
+        "nom": f"S{i:02d}_{q.name}",
+        "titre": q.name.replace("_", " ").capitalize(),
+        "notion": f"{q.categorie} — {q.objectif}",
+        "requete": q.render(**q.exemple)[len(PREFIXES):].strip(),  # préfixes ajoutés à l'exécution
+        "lectureSeule": q.categorie not in MUTATIONS,
+    } for i, q in enumerate(ordered, 1)]
+
+
+@router.get("/sante/requetes")
+def requetes():
+    return {"data": _catalogue(), "sparql": []}
+
+
+@router.post("/sante/requetes/{nom}/executer")
+def requete_executer(nom: str):
+    entry = next((q for q in _catalogue() if q["nom"] == nom), None)
+    if entry is None:
+        raise NotFound("Requête inconnue")
+    if not entry["lectureSeule"]:
+        raise SparqlError("Requête de mise à jour : utilisez les formulaires (exemple affiché à titre pédagogique).")
+    return {"data": repo.sparql.console(entry["requete"]), "sparql": [{"titre": entry["titre"], "requete": entry["requete"]}]}
+
+
+@router.post("/sante/sparql")
+def sparql_console(body: SparqlRequest):
+    """SELECT / ASK / CONSTRUCT uniquement, sur le graphe déclaré : requête analysée avant exécution."""
+    return {"data": repo.sparql.console(body.requete), "sparql": [{"titre": "Console", "requete": body.requete}]}
 
 
 # ---------- NLP : question en français → SPARQL ----------

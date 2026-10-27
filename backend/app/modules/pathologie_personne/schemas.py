@@ -116,7 +116,7 @@ class PathologieItem(Out):
 
 # ---------- Console SPARQL / NLP ----------
 class SparqlRequest(BaseModel):
-    query: str = Field(min_length=1, max_length=20000)
+    requete: str = Field(min_length=1, max_length=20000)
 
 
 class AskRequest(BaseModel):

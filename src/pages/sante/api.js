@@ -62,4 +62,8 @@ export const api = {
   search: (q, o) => request('GET', '/sante/recherche', { ...o, params: { q } }),
   ask: (question, o) => request('POST', '/sante/nlp/ask', { ...o, body: { question } }),
   exemples: (o) => request('GET', '/sante/nlp/exemples', o),
+  // Console SPARQL : réponses au format { data, sparql }, comme les consoles des modules A et D
+  requetes: () => request('GET', '/sante/requetes'),
+  executerRequete: (nom) => request('POST', `/sante/requetes/${enc(nom)}/executer`),
+  sparql: (requete) => request('POST', '/sante/sparql', { body: { requete } }),
 };
