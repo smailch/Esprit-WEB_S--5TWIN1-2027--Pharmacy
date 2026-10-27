@@ -1,0 +1,299 @@
+{
+  "nom": "PharmaNLU-A",
+  "version": "1",
+  "fichier": "pharmanlu_intent_v1.joblib",
+  "type": "Hybride : classifieur supervisé (TF-IDF mots + caractères → régression logistique) + règles linguistiques et dictionnaire issu de l'ontologie",
+  "date_entrainement": "2026-10-27",
+  "graine": 42,
+  "donnees": {
+    "entrainement": 314,
+    "test": 96,
+    "source_test": "questions écrites à la main, jamais vues à l'entraînement (fautes de frappe incluses)"
+  },
+  "intentions": [
+    {
+      "id": "contre_indications",
+      "label": "Contre-indications"
+    },
+    {
+      "id": "contre_indiques_pour_pathologie",
+      "label": "Médicaments contre-indiqués pour une pathologie"
+    },
+    {
+      "id": "effets_secondaires",
+      "label": "Effets secondaires"
+    },
+    {
+      "id": "generique_alternative",
+      "label": "Alternative / générique moins cher"
+    },
+    {
+      "id": "indication",
+      "label": "Indications thérapeutiques"
+    },
+    {
+      "id": "info_attribut",
+      "label": "Attribut d'un médicament ou d'une molécule"
+    },
+    {
+      "id": "interaction",
+      "label": "Interactions médicamenteuses"
+    },
+    {
+      "id": "lister_medicaments_filtre",
+      "label": "Lister / filtrer les médicaments"
+    },
+    {
+      "id": "lister_molecules_classe",
+      "label": "Lister les molécules d'une classe"
+    },
+    {
+      "id": "medicaments_contenant",
+      "label": "Médicaments contenant une molécule"
+    },
+    {
+      "id": "molecules_de_medicament",
+      "label": "Composition d'un médicament"
+    },
+    {
+      "id": "statistiques",
+      "label": "Statistiques"
+    }
+  ],
+  "metriques": {
+    "precision_test": 0.969,
+    "f1_macro_test": 0.969,
+    "reconnaissance_entites_test": 1.0,
+    "f1_par_intention": {
+      "contre_indications": 0.933,
+      "contre_indiques_pour_pathologie": 0.875,
+      "effets_secondaires": 1.0,
+      "generique_alternative": 1.0,
+      "indication": 0.875,
+      "info_attribut": 1.0,
+      "interaction": 1.0,
+      "lister_medicaments_filtre": 1.0,
+      "lister_molecules_classe": 1.0,
+      "medicaments_contenant": 0.941,
+      "molecules_de_medicament": 1.0,
+      "statistiques": 1.0
+    },
+    "matrice_confusion": {
+      "labels": [
+        "contre_indications",
+        "contre_indiques_pour_pathologie",
+        "effets_secondaires",
+        "generique_alternative",
+        "indication",
+        "info_attribut",
+        "interaction",
+        "lister_medicaments_filtre",
+        "lister_molecules_classe",
+        "medicaments_contenant",
+        "molecules_de_medicament",
+        "statistiques"
+      ],
+      "valeurs": [
+        [
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          7,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          8,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          8,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          8,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          8,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          8,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          8,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          8
+        ]
+      ]
+    }
+  },
+  "bibliotheques": [
+    {
+      "nom": "spaCy",
+      "version": "3.8.18",
+      "role": "tokenisation, lemmatisation, EntityRuler (spaCy 3.8.18 / core_news_sm 3.8.0)"
+    },
+    {
+      "nom": "scikit-learn",
+      "version": "1.9.1",
+      "role": "TF-IDF + régression logistique (classification d'intention)"
+    },
+    {
+      "nom": "RapidFuzz",
+      "version": "3.14.6",
+      "role": "correction des fautes de frappe (distance de Levenshtein normalisée)"
+    },
+    {
+      "nom": "rdflib",
+      "version": "7.6.0",
+      "role": "exécution de la requête SPARQL générée"
+    }
+  ],
+  "pipeline": [
+    "Normalisation spaCy : minuscules, accents, tokenisation, lemmatisation",
+    "Entités : EntityRuler (dictionnaire généré depuis l'ontologie) + RapidFuzz pour les fautes",
+    "Délexicalisation : les entités deviennent xmed / xmol / xpatho / xclasse",
+    "Intention : TF-IDF (mots 1–2 + caractères 3–5) → régression logistique (probabilité = confiance)",
+    "Filtres par règles : prix, ordonnance, type, forme, gravité, attribut",
+    "Gabarit SPARQL de l'intention rempli avec les URI → exécution rdflib → réponse en français"
+  ],
+  "llm_externe": false
+}

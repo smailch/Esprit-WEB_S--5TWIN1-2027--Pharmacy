@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import Logo from './Logo.jsx';
 import { navLinks } from '../data/ontologyData.js';
@@ -54,9 +55,9 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <a href="#ontologie" className="btn btn-compact nav-cta" onClick={(e) => go(e, 'ontologie')}>
-          Explorer le projet <ArrowUpRight size={15} strokeWidth={1.6} aria-hidden="true" />
-        </a>
+        <Link to="/molecules" className="btn btn-compact nav-cta">
+          Ouvrir l’application <ArrowUpRight size={15} strokeWidth={1.6} aria-hidden="true" />
+        </Link>
 
         <button
           type="button"
@@ -78,7 +79,7 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-        <a href="#ontologie" className="btn btn-primary" onClick={(e) => go(e, 'ontologie')}>Explorer le projet</a>
+        <Link to="/molecules" className="btn btn-primary">Ouvrir l’application</Link>
       </div>
     </header>
   );

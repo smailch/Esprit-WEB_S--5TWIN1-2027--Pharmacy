@@ -62,8 +62,25 @@ Note : la grille est individuelle → chaque membre doit pouvoir présenter sa p
 - Idéalement : un script de démarrage unique (ou docker-compose) qui lance back + front + triplestore.
 - Tester une installation « propre » (clone neuf dans un dossier temporaire) avant chaque livraison.
 
+## Module choisi par Ismail : A — Molécule + Médicament
+- Ontologie v2 dans `ontologie/` (pharma.ttl = source, pharma.owl = Protégé, requetes.sparql). 8 modules A–D, 2 classes par membre.
+- Plan détaillé : `PLAN_MODULE_A.md` (v2) — EN ATTENTE DU « GO » FINAL d'Ismail avant tout code.
+- Décisions (2026-10-27) : back FastAPI + rdflib ; une seule application commune (mon module isolé, intégration à la fin) ; valeurs ajoutées proposées par Claude ; site vitrine = page d'accueil `/`.
+- Modèle IA : « PharmaNLU-A » = spaCy fr_core_news_sm + classifieur scikit-learn (TF-IDF mots+caractères → régression logistique) + EntityRuler + RapidFuzz → gabarits SPARQL. Fichier pharmanlu_intent_v1.joblib commité.
+- Python dispo sur ce PC : 3.13 (aussi 3.10) ; Java 17 dispo mais non utilisé.
+
+## Avancement module A (2026-10-27) — plan v2 réalisé
+- [x] Back-end FastAPI + rdflib + owlrl (graphes nommés base / inferred), 16 requêtes SPARQL nommées, CRUD validé
+- [x] Front React : /molecules, /medicaments, /comparateur, /interactions, /assistant, /sparql ; site vitrine sur /
+- [x] PharmaNLU-A : spaCy + EntityRuler + RapidFuzz + scikit-learn ; test 96,9 % (96 questions), entités 100 %
+- [x] 36 tests pytest ; scripts/setup + start (Windows et sh) ; README ; docs/PRESENTATION_MODULE_A.md
+- Lancement dev : `.claude/launch.json` (configs « api » et « dev »). Back-end à relancer après modif Python (pas de --reload).
+- Points techniques : rdflib ne gère pas EXISTS{GRAPH} dans SELECT ni GROUP_CONCAT sur variable non liée → contourné (Python / COALESCE).
+- Branche Git du module A : `Molecule-Medicament` (créée le 2026-10-27 depuis main @ c9d58ce, poussée sur GitHub). Travailler dessus pour le module A.
+- Reste : intégration avec les modules B, C, D des coéquipiers (même application) quand ils seront prêts.
+
 ## Prochaine étape
-Attendre le fichier de l'ontologie et la description des deux modules d'Ismail. Ne rien coder de ces modules avant.
+Module A terminé et poussé. Prochaine étape : intégrer les modules des coéquipiers dans la même application (chacun ajoute son dossier `backend/app/modules/<module>/` et ses pages), puis répéter le scénario de `docs/PRESENTATION_MODULE_A.md`.
 
 ## Journal
 - 2026-10-27 : ontologie v2 réécrite à partir de ontograf.rdf (corrections : classe Voie non déclarée, codeATC/idPatient à la fois Object et Datatype property, Personne à 3 sous-classes, accents dans les URI). Répartition proposée 2 modules/membre dans ontologie/README.md (à confirmer par l'équipe).
