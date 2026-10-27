@@ -20,7 +20,7 @@ class Settings(BaseSettings):
     ontology_file: Path = REPO_DIR / "ontologie" / "pharma.ttl"
     extension_dir: Path = PROJECT_DIR / "ontology-extension"
 
-    cors_origins: str = "http://localhost:5173"
+    cors_origins: str = "http://localhost:5174"
 
     def ontology_files(self) -> list[Path]:
         return [self.ontology_file, *sorted(self.extension_dir.glob("*.ttl"))]

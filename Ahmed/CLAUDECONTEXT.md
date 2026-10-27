@@ -21,5 +21,8 @@ Consignes complètes : `../PROMPT_CLAUDE_CODE_MEMBRE3.md`. Contexte d'équipe : 
 - [x] Étape 6 : NLP spaCy + RapidFuzz + scikit-learn (`app/nlp/`, `POST /api/nlp/ask`), 14 intentions,
   232 exemples, 78 questions de test → 100 % (`scripts/eval_nlp.py`) ; 65 tests au total. Voir `docs/NLP.md`.
 
+- [x] Étape 7 : frontend React 18 + Vite (port **5174**, 5173 = site vitrine) : tableau de bord, pathologies,
+  personnes (3 onglets), fiche patient + alertes, assistant NLP, graphe SVG, console SPARQL ; lint 0 avertissement.
+
 ## Reste à faire
-- Frontend, docs (scénario, Q&A, README), installation propre.
+- Docs (scénario, Q&A, README), installation propre.
