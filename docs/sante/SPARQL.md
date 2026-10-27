@@ -110,7 +110,7 @@ Résultat (Turtle, extrait) :
 
 ### `entity_graph`
 
-**Objectif** : Voisinage d'une entité (relations sortantes et entrantes) pour la vue graphe.
+**Objectif** : Voisinage d'une entité (relations sortantes et entrantes) (utilisé pour expliquer un refus de suppression : « lié à … »).
 
 Paramètres : `s` (iri) — exemple `{'s': 'Patient_Ali'}`
 

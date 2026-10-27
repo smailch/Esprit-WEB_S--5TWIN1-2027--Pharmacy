@@ -1,7 +1,6 @@
 // Pages du module Pathologie + Personne, branchées dans src/App.jsx (sous AppShell).
 import { Outlet, useParams, useSearchParams } from 'react-router-dom';
 import AssistantSante from './AssistantSante';
-import Graphe from './Graphe';
 import PatientFiche from './PatientFiche';
 import Personnes from './Personnes';
 import './sante.css';
@@ -24,11 +23,6 @@ export function PersonnesPage() {
 export function PatientPage() {
   const { id } = useParams();
   return <PatientFiche key={id} id={id} />;
-}
-
-export function GraphePage() {
-  const { id } = useParams();
-  return <Graphe id={id} />;
 }
 
 export function AssistantSantePage() {

@@ -60,7 +60,6 @@ export const api = {
   patientRdf: (pid) => request('GET', `/patients/${enc(pid)}/rdf`, { raw: true }),
   alertes: (params, o) => request('GET', '/alertes', { ...o, params }),
   search: (q, o) => request('GET', '/sante/recherche', { ...o, params: { q } }),
-  graph: (id, o) => request('GET', `/sante/graphe/${enc(id)}`, o),
   ask: (question, o) => request('POST', '/sante/nlp/ask', { ...o, body: { question } }),
   exemples: (o) => request('GET', '/sante/nlp/exemples', o),
 };

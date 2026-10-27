@@ -216,7 +216,7 @@ function Professionnels({ resource }) {
                 <tbody>
                   {data.items.map((p) => (
                     <tr key={p.id}>
-                      <td><Link to={`/graphe/${p.id}`}>{p.label}</Link></td>
+                      <td>{p.label}</td>
                       <td>{p.specialite}</td>
                       <td>{p.nbPrescriptions}</td>
                       <td className="row-actions">

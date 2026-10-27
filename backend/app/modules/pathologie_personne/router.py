@@ -177,11 +177,6 @@ def search(q: str = Query(min_length=1, max_length=100)):
     return repo.search(q)
 
 
-@router.get("/sante/graphe/{eid}")
-def graph(eid: str):
-    return repo.graph(eid)
-
-
 # ---------- NLP : question en français → SPARQL ----------
 @router.post("/sante/nlp/ask")
 def nlp_ask(body: AskRequest):

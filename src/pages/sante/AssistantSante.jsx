@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { api } from './api';
 import { storage, useApi } from './hooks';
@@ -104,7 +103,6 @@ export default function AssistantSante({ initial }) {
     }
   };
 
-  const firstEntity = result?.entites.find((e) => !['SPECIALITE', 'CLASSE', 'TYPE'].includes(e.type));
   const suggestionsList = [...(examples.data || []), ...history];
 
   return (
@@ -145,7 +143,6 @@ export default function AssistantSante({ initial }) {
                 <span className="bar"><span style={{ width: `${result.confiance * 100}%` }} /></span>
                 {Math.round(result.confiance * 100)} %
               </span>
-              {firstEntity && <Link className="btn small" to={`/graphe/${firstEntity.id}`}>Graphe de {firstEntity.text}</Link>}
             </div>
             {result.suggestions.length > 0 && (
               <div className="chips-row">

@@ -64,12 +64,10 @@ def test_pathologies_and_professionals(fresh):
     assert fresh.get("/api/pharmaciens").json()["total"] == 3
 
 
-def test_stats_search_graph_rdf(fresh):
+def test_stats_search_rdf(fresh):
     assert fresh.get("/api/sante/stats").json()["alertes"] == 3
     hits = {x["id"] for x in fresh.get("/api/sante/recherche", params={"q": "cardiaque"}).json()}
     assert "InsuffisanceCardiaque" in hits
-    g = fresh.get("/api/sante/graphe/Patient_Ali").json()
-    assert {"souffreDe", "concernePatient"} <= {e["prop"] for e in g["edges"]}
     r = fresh.get("/api/patients/Patient_Sara/rdf")
     assert r.headers["content-type"].startswith("text/turtle") and "Jlassi" in r.text
 

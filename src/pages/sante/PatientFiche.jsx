@@ -44,7 +44,6 @@ export default function PatientFiche({ id }) {
             <div className="page-head">
               <h1>{pat.label}</h1>
               <div className="actions">
-                <Link className="btn" to={`/graphe/${id}`}>Graphe</Link>
                 <button className="btn" onClick={exportTurtle}>Export Turtle</button>
                 <button className="btn" onClick={() => setEditing(true)}>Modifier</button>
                 <button className="btn danger" onClick={remove}>Supprimer</button>
@@ -101,8 +100,8 @@ export default function PatientFiche({ id }) {
                       {pat.prescriptions.map((x) => (
                         <tr key={x.id} className={pat.alertes.some((a) => a.prescId === x.id) ? 'row-danger' : ''}>
                           <td>{x.label}</td><td>{x.date}</td><td>{x.medicaments}</td>
-                          <td>{x.medecinId ? <Link to={`/graphe/${x.medecinId}`}>{x.medecin}</Link> : '—'}</td>
-                          <td>{x.pharmacienId ? <Link to={`/graphe/${x.pharmacienId}`}>{x.pharmacien}</Link> : '—'}</td>
+                          <td>{x.medecin || '—'}</td>
+                          <td>{x.pharmacien || '—'}</td>
                         </tr>
                       ))}
                     </tbody>

@@ -1,4 +1,4 @@
-# objectif: Voisinage d'une entité (relations sortantes et entrantes) pour la vue graphe.
+# objectif: Voisinage d'une entité (relations sortantes et entrantes) (utilisé pour expliquer un refus de suppression : « lié à … »).
 # categorie: Read
 # params: s:iri
 # exemple: {"s": "Patient_Ali"}

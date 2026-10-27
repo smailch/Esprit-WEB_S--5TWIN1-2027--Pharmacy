@@ -231,18 +231,6 @@ class Repository:
     def search(self, q: str) -> list[dict]:
         return self._select("search", q=normalize(q))
 
-    def graph(self, local: str) -> dict:
-        check_local(local)
-        if not self.exists(local):
-            raise NotFound(f"{local} introuvable")
-        center = self._select("entity_graph", s=local)
-        label = local
-        rows = self.sparql.select(
-            f"SELECT ?l WHERE {{ {iri(local)} <http://www.w3.org/2000/01/rdf-schema#label> ?l }} LIMIT 1").rows
-        if rows:
-            label = rows[0]["l"]
-        return {"id": local, "label": label, "edges": center}
-
     def describe_patient(self, pid: str) -> str:
         self.get_patient(pid)
         return self.sparql.graph(render("describe_patient", s=pid))

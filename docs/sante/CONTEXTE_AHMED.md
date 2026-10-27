@@ -10,7 +10,7 @@ Consignes d'origine : `PROMPT_CLAUDE_CODE_MEMBRE3.md` (non versionné). Contexte
   Mes lectures portent sur le graphe déclaré (`store.base`) ; mes écritures passent par `store.update`.
 - **Individus** : `ontologie/extensions/individus-ahmed.ttl`, chargé par `graph_store.load` en plus de `pharma.ttl` (non modifié).
 - **Un seul frontend** (React + react-router) : mes pages sont dans `src/pages/sante/` (routes `/sante`, `/pathologies`,
-  `/personnes`, `/patients/:id`, `/assistant-sante`, `/graphe/:id`), dans le menu d'`AppShell`. Style confiné sous `.sante`.
+  `/personnes`, `/patients/:id`, `/assistant-sante`), dans le menu d'`AppShell`. Style confiné sous `.sante`.
 - spaCy : modèle commun `fr_core_news_sm` (fourni dans `backend/vendor/`).
 
 ## Décisions

@@ -104,10 +104,9 @@ Section **Pathologie + Personne** du menu de l'application. Individus : `ontolog
 | Personnes | onglets Patients / Médecins / Pharmaciens, filtres (âge, sexe, pathologie, spécialité), CRUD ; classe Enfant/Adulte **dérivée de l'âge** (badge « inféré ») |
 | Fiche patient | pathologies (ajout/retrait), prescriptions, **alerte de sécurité en direct** (contre-indication ou allergie), export Turtle |
 | Assistant santé | question en français → SPARQL → résultats, avec entités surlignées, confiance et étapes du pipeline |
-| Graphe | relations entrantes et sortantes d'une entité |
 
 - **API** : `/api/pathologies`, `/api/patients`, `/api/medecins`, `/api/pharmaciens` (CRUD, 201/204/404/409/422),
-  `/api/alertes`, `/api/sante/stats`, `/api/sante/recherche`, `/api/sante/graphe/{id}`, `/api/sante/nlp/ask`.
+  `/api/alertes`, `/api/sante/stats`, `/api/sante/recherche`, `/api/sante/nlp/ask`.
 - **SPARQL** : 36 requêtes nommées et paramétrées (aucune concaténation de texte utilisateur), documentées avec leurs vrais résultats dans `docs/sante/SPARQL.md`.
 - **Assistant santé (aucune API de LLM)** : spaCy (`fr_core_news_sm`, PhraseMatcher, Matcher), RapidFuzz, scikit-learn
   (TF-IDF → régression logistique, 14 intentions) ; **100 % sur 78 questions de test**. Détails : `docs/sante/NLP.md`.

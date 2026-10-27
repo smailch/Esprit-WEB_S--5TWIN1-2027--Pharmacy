@@ -125,18 +125,6 @@
 .sante .steps { margin-top: 1rem; }
 .sante .steps summary { cursor: pointer; font-weight: 600; }
 .sante .steps ol { display: grid; gap: .7rem; margin-top: .8rem; }
-.sante .graph { width: 100%; height: auto; background: #fff; border-radius: var(--radius-sm); border: 1px solid var(--line); }
-.sante .graph .edge { stroke: var(--line-strong); stroke-width: 1.5; }
-.sante .graph .edge.in { stroke-dasharray: 5 4; }
-.sante .graph .edge-label { font-size: 10px; fill: var(--ink-soft); text-anchor: middle; }
-.sante .graph .node circle { fill: var(--green); stroke: #fff; stroke-width: 2; }
-.sante .graph .node { cursor: pointer; }
-.sante .graph .node.class { cursor: default; }
-.sante .graph .node.class circle { fill: var(--gold); }
-.sante .graph .node text { font-size: 11px; fill: var(--forest); }
-.sante .graph .node:focus-visible circle, .sante .graph .node:hover circle { stroke: var(--gold); stroke-width: 4; }
-.sante .graph .center { fill: var(--forest); }
-.sante .graph .center-label { font-family: var(--font-display); font-weight: 700; font-size: 14px; fill: var(--forest); }
 @media (max-width: 600px) {
 .sante .row { grid-template-columns: 1fr; }
 .sante .ask { flex-direction: column; }

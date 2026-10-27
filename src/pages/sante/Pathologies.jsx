@@ -90,7 +90,6 @@ function Detail({ id, onEdit, onDeleted }) {
           ) : <Empty>Aucun patient.</Empty>}
           <ErrorBox error={error} />
           <div className="actions">
-            <Link className="btn" to={`/graphe/${id}`}>Graphe</Link>
             <button className="btn" onClick={() => onEdit(p)}>Modifier</button>
             <button className="btn danger" onClick={remove}>Supprimer</button>
           </div>

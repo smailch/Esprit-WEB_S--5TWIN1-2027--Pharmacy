@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
 import { FlaskConical, Pill, Scale, ShieldAlert, MessageSquareText, Database, Menu, X, Home, RotateCcw,
-  HeartPulse, Stethoscope, Users, MessagesSquare, Network } from 'lucide-react';
+  HeartPulse, Stethoscope, Users, MessagesSquare } from 'lucide-react';
 import Logo from '../components/Logo.jsx';
 import { api } from '../api/client.js';
 import { useToast } from './Toast.jsx';
@@ -18,10 +18,9 @@ const links = [
   { to: '/pathologies', label: 'Pathologies', icon: Stethoscope },
   { to: '/personnes', label: 'Personnes', icon: Users },
   { to: '/assistant-sante', label: 'Assistant santé', icon: MessagesSquare },
-  { to: '/graphe', label: 'Graphe', icon: Network },
 ];
 
-const SANTE_PATHS = ['/sante', '/pathologies', '/personnes', '/patients', '/assistant-sante', '/graphe'];
+const SANTE_PATHS = ['/sante', '/pathologies', '/personnes', '/patients', '/assistant-sante'];
 
 export default function AppShell() {
   const [open, setOpen] = useState(false);
