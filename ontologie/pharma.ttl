@@ -1,0 +1,409 @@
+@prefix :     <http://example.org/pharma#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+#################################################################
+#  Ontologie PharmaSémantique — NeoCoders (Esprit 5 TWIN, 2026/2027)
+#  Thème : modélisation des molécules, des effets secondaires,
+#          des contre-indications et des données cliniques.
+#
+#  Règles de nommage :
+#   - URI sans accent ni espace (ex. :EffetSecondaire) ;
+#     le texte accentué est dans rdfs:label (ex. "Effet secondaire"@fr).
+#   - Classes en PascalCase, propriétés en camelCase,
+#     individus en PascalCase avec "_" (ex. :Patient_Ali).
+#   - Propriétés objet = verbe (contientMolecule, peutProvoquer…),
+#     propriétés de données = nom de l'attribut (age, codeATC…).
+#
+#  8 classes principales × 2 sous-classes × 2 sous-sous-classes
+#  => 3 niveaux de hiérarchie pour chaque classe.
+#################################################################
+
+<http://example.org/pharma> a owl:Ontology ;
+    rdfs:label "PharmaSémantique"@fr ;
+    rdfs:comment "Ontologie des molécules, médicaments, effets secondaires, contre-indications, pathologies, personnes, prescriptions et données cliniques."@fr ;
+    owl:versionInfo "2.0" .
+
+#################################################################
+#  1. CLASSES (rdfs:subClassOf)
+#################################################################
+
+# ---------- Module 1 : Molécule ----------
+:Molecule a owl:Class ; rdfs:label "Molécule"@fr ;
+    rdfs:comment "Substance active (principe actif) contenue dans un médicament."@fr .
+:Antibiotique a owl:Class ; rdfs:subClassOf :Molecule ; rdfs:label "Antibiotique"@fr .
+:Penicilline  a owl:Class ; rdfs:subClassOf :Antibiotique ; rdfs:label "Pénicilline"@fr ;
+    # Axiome : toute pénicilline est contre-indiquée en cas d'allergie aux pénicillines
+    rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :aContreIndication ; owl:hasValue :CI_AllergiePenicilline ] .
+:Macrolide    a owl:Class ; rdfs:subClassOf :Antibiotique ; rdfs:label "Macrolide"@fr .
+:Antalgique   a owl:Class ; rdfs:subClassOf :Molecule ; rdfs:label "Antalgique"@fr .
+:AntalgiqueNonOpioide a owl:Class ; rdfs:subClassOf :Antalgique ; rdfs:label "Antalgique non opioïde"@fr .
+:AntalgiqueOpioide    a owl:Class ; rdfs:subClassOf :Antalgique ; rdfs:label "Antalgique opioïde"@fr .
+
+# ---------- Module 2 : Médicament ----------
+:Medicament a owl:Class ; rdfs:label "Médicament"@fr ;
+    rdfs:comment "Produit commercialisé contenant au moins une molécule."@fr ;
+    rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :contientMolecule ; owl:someValuesFrom :Molecule ] .
+:Princeps  a owl:Class ; rdfs:subClassOf :Medicament ; rdfs:label "Princeps (médicament d'origine)"@fr .
+:Generique a owl:Class ; rdfs:subClassOf :Medicament ; rdfs:label "Générique"@fr .
+:PrincepsSurOrdonnance a owl:Class ; rdfs:subClassOf :Princeps ; rdfs:label "Princeps sur ordonnance"@fr ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( :Princeps
+        [ a owl:Restriction ; owl:onProperty :surOrdonnance ; owl:hasValue true ] ) ] .
+:PrincepsSansOrdonnance a owl:Class ; rdfs:subClassOf :Princeps ; rdfs:label "Princeps sans ordonnance"@fr ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( :Princeps
+        [ a owl:Restriction ; owl:onProperty :surOrdonnance ; owl:hasValue false ] ) ] .
+:GeneriqueSurOrdonnance a owl:Class ; rdfs:subClassOf :Generique ; rdfs:label "Générique sur ordonnance"@fr ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( :Generique
+        [ a owl:Restriction ; owl:onProperty :surOrdonnance ; owl:hasValue true ] ) ] .
+:GeneriqueSansOrdonnance a owl:Class ; rdfs:subClassOf :Generique ; rdfs:label "Générique sans ordonnance"@fr ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( :Generique
+        [ a owl:Restriction ; owl:onProperty :surOrdonnance ; owl:hasValue false ] ) ] .
+
+# ---------- Module 3 : Effet secondaire ----------
+:EffetSecondaire a owl:Class ; rdfs:label "Effet secondaire"@fr ;
+    rdfs:comment "Effet indésirable que peut provoquer une molécule."@fr .
+:EffetLeger a owl:Class ; rdfs:subClassOf :EffetSecondaire ; rdfs:label "Effet léger"@fr ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( :EffetSecondaire
+        [ a owl:Restriction ; owl:onProperty :niveauGravite ; owl:hasValue "léger" ] ) ] .
+:EffetGrave a owl:Class ; rdfs:subClassOf :EffetSecondaire ; rdfs:label "Effet grave"@fr ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( :EffetSecondaire
+        [ a owl:Restriction ; owl:onProperty :niveauGravite ; owl:hasValue "grave" ] ) ] .
+:EffetLegerDigestif      a owl:Class ; rdfs:subClassOf :EffetLeger ; rdfs:label "Effet léger digestif"@fr .
+:EffetLegerCutane        a owl:Class ; rdfs:subClassOf :EffetLeger ; rdfs:label "Effet léger cutané"@fr .
+:EffetGraveDigestif      a owl:Class ; rdfs:subClassOf :EffetGrave ; rdfs:label "Effet grave digestif"@fr .
+:EffetGraveNeurologique  a owl:Class ; rdfs:subClassOf :EffetGrave ; rdfs:label "Effet grave neurologique"@fr .
+
+# ---------- Module 4 : Contre-indication ----------
+:ContreIndication a owl:Class ; rdfs:label "Contre-indication"@fr ;
+    rdfs:comment "Situation dans laquelle une molécule ne doit pas (ou doit prudemment) être utilisée."@fr .
+:ContreIndicationAbsolue a owl:Class ; rdfs:subClassOf :ContreIndication ; rdfs:label "Contre-indication absolue"@fr ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( :ContreIndication
+        [ a owl:Restriction ; owl:onProperty :niveauRisque ; owl:hasValue "absolu" ] ) ] .
+:ContreIndicationRelative a owl:Class ; rdfs:subClassOf :ContreIndication ; rdfs:label "Contre-indication relative"@fr ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( :ContreIndication
+        [ a owl:Restriction ; owl:onProperty :niveauRisque ; owl:hasValue "relatif" ] ) ] .
+:ContreIndicationAllergique a owl:Class ; rdfs:subClassOf :ContreIndicationAbsolue ; rdfs:label "Contre-indication allergique"@fr .
+:ContreIndicationDigestive  a owl:Class ; rdfs:subClassOf :ContreIndicationAbsolue ; rdfs:label "Contre-indication digestive"@fr .
+:ContreIndicationRenale     a owl:Class ; rdfs:subClassOf :ContreIndicationRelative ; rdfs:label "Contre-indication rénale"@fr .
+:ContreIndicationHepatique  a owl:Class ; rdfs:subClassOf :ContreIndicationRelative ; rdfs:label "Contre-indication hépatique"@fr .
+
+# ---------- Module 5 : Pathologie ----------
+:Pathologie a owl:Class ; rdfs:label "Pathologie"@fr ;
+    rdfs:comment "Maladie ou état de santé d'un patient."@fr .
+:MaladieAigue     a owl:Class ; rdfs:subClassOf :Pathologie ; rdfs:label "Maladie aiguë"@fr .
+:MaladieChronique a owl:Class ; rdfs:subClassOf :Pathologie ; rdfs:label "Maladie chronique"@fr .
+:InfectionAigue      a owl:Class ; rdfs:subClassOf :MaladieAigue ; rdfs:label "Infection aiguë"@fr .
+:DouleurAigue        a owl:Class ; rdfs:subClassOf :MaladieAigue ; rdfs:label "Douleur aiguë"@fr .
+:MaladieMetabolique  a owl:Class ; rdfs:subClassOf :MaladieChronique ; rdfs:label "Maladie métabolique"@fr .
+:InsuffisanceOrgane  a owl:Class ; rdfs:subClassOf :MaladieChronique ; rdfs:label "Insuffisance d'organe"@fr .
+
+# ---------- Module 6 : Personne ----------
+:Personne a owl:Class ; rdfs:label "Personne"@fr .
+:Patient a owl:Class ; rdfs:subClassOf :Personne ; rdfs:label "Patient"@fr .
+:ProfessionnelSante a owl:Class ; rdfs:subClassOf :Personne ; rdfs:label "Professionnel de santé"@fr .
+:PatientEnfant a owl:Class ; rdfs:subClassOf :Patient ; rdfs:label "Patient enfant (< 18 ans)"@fr ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( :Patient
+        [ a owl:Restriction ; owl:onProperty :age ;
+          owl:someValuesFrom [ a rdfs:Datatype ; owl:onDatatype xsd:integer ;
+                               owl:withRestrictions ( [ xsd:maxExclusive 18 ] ) ] ] ) ] .
+:PatientAdulte a owl:Class ; rdfs:subClassOf :Patient ; rdfs:label "Patient adulte (≥ 18 ans)"@fr ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( :Patient
+        [ a owl:Restriction ; owl:onProperty :age ;
+          owl:someValuesFrom [ a rdfs:Datatype ; owl:onDatatype xsd:integer ;
+                               owl:withRestrictions ( [ xsd:minInclusive 18 ] ) ] ] ) ] .
+:Medecin    a owl:Class ; rdfs:subClassOf :ProfessionnelSante ; rdfs:label "Médecin"@fr .
+:Pharmacien a owl:Class ; rdfs:subClassOf :ProfessionnelSante ; rdfs:label "Pharmacien"@fr .
+
+# ---------- Module 7 : Prescription ----------
+:Prescription a owl:Class ; rdfs:label "Prescription"@fr ;
+    rdfs:comment "Ordonnance : un médecin prescrit un ou plusieurs médicaments à un patient."@fr ;
+    rdfs:subClassOf
+        [ a owl:Restriction ; owl:onProperty :prescritPar ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass :Medecin ] ,
+        [ a owl:Restriction ; owl:onProperty :concernePatient ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass :Patient ] ,
+        [ a owl:Restriction ; owl:onProperty :prescritMedicament ; owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass :Medicament ] .
+:PrescriptionSimple a owl:Class ; rdfs:subClassOf :Prescription ; rdfs:label "Prescription simple"@fr ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( :Prescription
+        [ a owl:Restriction ; owl:onProperty :estRenouvelable ; owl:hasValue false ] ) ] .
+:PrescriptionRenouvelable a owl:Class ; rdfs:subClassOf :Prescription ; rdfs:label "Prescription renouvelable"@fr ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( :Prescription
+        [ a owl:Restriction ; owl:onProperty :estRenouvelable ; owl:hasValue true ] ) ] .
+:PrescriptionNormale      a owl:Class ; rdfs:subClassOf :PrescriptionSimple ; rdfs:label "Prescription normale"@fr .
+:PrescriptionUrgente      a owl:Class ; rdfs:subClassOf :PrescriptionSimple ; rdfs:label "Prescription urgente"@fr .
+:RenouvellementCourt      a owl:Class ; rdfs:subClassOf :PrescriptionRenouvelable ; rdfs:label "Renouvellement court (≤ 3 mois)"@fr .
+:RenouvellementLong       a owl:Class ; rdfs:subClassOf :PrescriptionRenouvelable ; rdfs:label "Renouvellement long (> 3 mois)"@fr .
+
+# ---------- Module 8 : Donnée clinique (remplace « Administration ») ----------
+:DonneeClinique a owl:Class ; rdfs:label "Donnée clinique"@fr ;
+    rdfs:comment "Information médicale mesurée ou déclarée pour un patient."@fr .
+:ExamenClinique     a owl:Class ; rdfs:subClassOf :DonneeClinique ; rdfs:label "Examen clinique"@fr .
+:HistoriqueMedical  a owl:Class ; rdfs:subClassOf :DonneeClinique ; rdfs:label "Historique médical"@fr .
+:SigneVital         a owl:Class ; rdfs:subClassOf :ExamenClinique ; rdfs:label "Signe vital"@fr .
+:AnalyseBiologique  a owl:Class ; rdfs:subClassOf :ExamenClinique ; rdfs:label "Analyse biologique"@fr .
+:Allergie           a owl:Class ; rdfs:subClassOf :HistoriqueMedical ; rdfs:label "Allergie"@fr .
+:Antecedent         a owl:Class ; rdfs:subClassOf :HistoriqueMedical ; rdfs:label "Antécédent médical"@fr .
+
+#################################################################
+#  2. AXIOMES DE DISJONCTION (owl:disjointWith / AllDisjointClasses)
+#################################################################
+
+[] a owl:AllDisjointClasses ; owl:members ( :Molecule :Medicament :EffetSecondaire :ContreIndication
+                                            :Pathologie :Personne :Prescription :DonneeClinique ) .
+:Antibiotique owl:disjointWith :Antalgique .
+:Penicilline owl:disjointWith :Macrolide .
+:AntalgiqueNonOpioide owl:disjointWith :AntalgiqueOpioide .
+:Princeps owl:disjointWith :Generique .
+:EffetLeger owl:disjointWith :EffetGrave .
+:EffetLegerDigestif owl:disjointWith :EffetLegerCutane .
+:EffetGraveDigestif owl:disjointWith :EffetGraveNeurologique .
+:ContreIndicationAbsolue owl:disjointWith :ContreIndicationRelative .
+:ContreIndicationAllergique owl:disjointWith :ContreIndicationDigestive .
+:ContreIndicationRenale owl:disjointWith :ContreIndicationHepatique .
+:MaladieAigue owl:disjointWith :MaladieChronique .
+:InfectionAigue owl:disjointWith :DouleurAigue .
+:MaladieMetabolique owl:disjointWith :InsuffisanceOrgane .
+:Patient owl:disjointWith :ProfessionnelSante .
+:PatientEnfant owl:disjointWith :PatientAdulte .
+:Medecin owl:disjointWith :Pharmacien .
+:PrescriptionSimple owl:disjointWith :PrescriptionRenouvelable .
+:PrescriptionNormale owl:disjointWith :PrescriptionUrgente .
+:RenouvellementCourt owl:disjointWith :RenouvellementLong .
+:ExamenClinique owl:disjointWith :HistoriqueMedical .
+:SigneVital owl:disjointWith :AnalyseBiologique .
+:Allergie owl:disjointWith :Antecedent .
+
+#################################################################
+#  3. OBJECT PROPERTIES (rdfs:domain / rdfs:range / owl:inverseOf…)
+#################################################################
+
+:contientMolecule a owl:ObjectProperty ; rdfs:label "contient la molécule"@fr ;
+    rdfs:domain :Medicament ; rdfs:range :Molecule ; owl:inverseOf :estContenuDans .
+:estContenuDans a owl:ObjectProperty ; rdfs:label "est contenue dans"@fr ;
+    rdfs:domain :Molecule ; rdfs:range :Medicament .
+
+:peutProvoquer a owl:ObjectProperty ; rdfs:label "peut provoquer"@fr ;
+    rdfs:domain :Molecule ; rdfs:range :EffetSecondaire ; owl:inverseOf :estProvoquePar .
+:estProvoquePar a owl:ObjectProperty ; rdfs:label "est provoqué par"@fr ;
+    rdfs:domain :EffetSecondaire ; rdfs:range :Molecule .
+
+:aContreIndication a owl:ObjectProperty ; rdfs:label "a pour contre-indication"@fr ;
+    rdfs:domain :Molecule ; rdfs:range :ContreIndication .
+:concernePathologie a owl:ObjectProperty ; rdfs:label "concerne la pathologie"@fr ;
+    rdfs:domain :ContreIndication ; rdfs:range :Pathologie .
+
+:interagitAvec a owl:ObjectProperty , owl:SymmetricProperty ; rdfs:label "interagit avec"@fr ;
+    rdfs:comment "Interaction médicamenteuse entre deux molécules (symétrique)."@fr ;
+    rdfs:domain :Molecule ; rdfs:range :Molecule .
+
+:estIndiquePour a owl:ObjectProperty ; rdfs:label "est indiqué pour"@fr ;
+    rdfs:domain :Medicament ; rdfs:range :Pathologie .
+:estContreIndiquePour a owl:ObjectProperty ; rdfs:label "est contre-indiqué pour"@fr ;
+    rdfs:comment "Inféré par le raisonneur : médicament → molécule → contre-indication → pathologie."@fr ;
+    rdfs:domain :Medicament ; rdfs:range :Pathologie ;
+    owl:propertyChainAxiom ( :contientMolecule :aContreIndication :concernePathologie ) .
+
+:souffreDe a owl:ObjectProperty ; rdfs:label "souffre de"@fr ;
+    rdfs:domain :Patient ; rdfs:range :Pathologie .
+:aDonneeClinique a owl:ObjectProperty ; rdfs:label "a pour donnée clinique"@fr ;
+    rdfs:domain :Patient ; rdfs:range :DonneeClinique ; owl:inverseOf :estDonneeDe .
+:estDonneeDe a owl:ObjectProperty , owl:FunctionalProperty ; rdfs:label "est une donnée de"@fr ;
+    rdfs:domain :DonneeClinique ; rdfs:range :Patient .
+:allergiqueA a owl:ObjectProperty ; rdfs:label "allergique à"@fr ;
+    rdfs:domain :Allergie ; rdfs:range :Molecule .
+:porteSur a owl:ObjectProperty ; rdfs:label "porte sur"@fr ;
+    rdfs:domain :Antecedent ; rdfs:range :Pathologie .
+
+:prescritPar a owl:ObjectProperty , owl:FunctionalProperty ; rdfs:label "prescrit par"@fr ;
+    rdfs:domain :Prescription ; rdfs:range :Medecin ; owl:inverseOf :aPrescrit .
+:aPrescrit a owl:ObjectProperty ; rdfs:label "a prescrit"@fr ;
+    rdfs:domain :Medecin ; rdfs:range :Prescription .
+:concernePatient a owl:ObjectProperty , owl:FunctionalProperty ; rdfs:label "concerne le patient"@fr ;
+    rdfs:domain :Prescription ; rdfs:range :Patient ; owl:inverseOf :aPrescription .
+:aPrescription a owl:ObjectProperty ; rdfs:label "a pour prescription"@fr ;
+    rdfs:domain :Patient ; rdfs:range :Prescription .
+:prescritMedicament a owl:ObjectProperty ; rdfs:label "prescrit le médicament"@fr ;
+    rdfs:domain :Prescription ; rdfs:range :Medicament .
+:estDelivreePar a owl:ObjectProperty ; rdfs:label "est délivrée par"@fr ;
+    rdfs:domain :Prescription ; rdfs:range :Pharmacien .
+
+#################################################################
+#  4. DATATYPE PROPERTIES
+#################################################################
+
+:codeATC a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "code ATC"@fr ;
+    rdfs:domain :Molecule ; rdfs:range xsd:string .
+:doseMaxJourMg a owl:DatatypeProperty ; rdfs:label "dose maximale par jour (mg)"@fr ;
+    rdfs:domain :Molecule ; rdfs:range xsd:decimal .
+
+:nomCommercial a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "nom commercial"@fr ;
+    rdfs:domain :Medicament ; rdfs:range xsd:string .
+:dosage a owl:DatatypeProperty ; rdfs:label "dosage"@fr ; rdfs:domain :Medicament ; rdfs:range xsd:string .
+:formeGalenique a owl:DatatypeProperty ; rdfs:label "forme galénique"@fr ;
+    rdfs:comment "Comprimé, gélule, sirop, injectable…"@fr ; rdfs:domain :Medicament ; rdfs:range xsd:string .
+:surOrdonnance a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "sur ordonnance"@fr ;
+    rdfs:domain :Medicament ; rdfs:range xsd:boolean .
+:prixDT a owl:DatatypeProperty ; rdfs:label "prix (DT)"@fr ; rdfs:domain :Medicament ; rdfs:range xsd:decimal .
+
+:niveauGravite a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "niveau de gravité"@fr ;
+    rdfs:comment "\"léger\" ou \"grave\""@fr ; rdfs:domain :EffetSecondaire ; rdfs:range xsd:string .
+:frequence a owl:DatatypeProperty ; rdfs:label "fréquence"@fr ; rdfs:domain :EffetSecondaire ; rdfs:range xsd:string .
+
+:niveauRisque a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "niveau de risque"@fr ;
+    rdfs:comment "\"absolu\" ou \"relatif\""@fr ; rdfs:domain :ContreIndication ; rdfs:range xsd:string .
+
+:codeCIM10 a owl:DatatypeProperty ; rdfs:label "code CIM-10"@fr ; rdfs:domain :Pathologie ; rdfs:range xsd:string .
+
+:nom a owl:DatatypeProperty ; rdfs:label "nom"@fr ; rdfs:domain :Personne ; rdfs:range xsd:string .
+:age a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "âge"@fr ; rdfs:domain :Patient ; rdfs:range xsd:integer .
+:sexe a owl:DatatypeProperty ; rdfs:label "sexe"@fr ; rdfs:domain :Patient ; rdfs:range xsd:string .
+:specialite a owl:DatatypeProperty ; rdfs:label "spécialité"@fr ; rdfs:domain :ProfessionnelSante ; rdfs:range xsd:string .
+
+:datePrescription a owl:DatatypeProperty ; rdfs:label "date de prescription"@fr ; rdfs:domain :Prescription ; rdfs:range xsd:date .
+:dureeJours a owl:DatatypeProperty ; rdfs:label "durée du traitement (jours)"@fr ; rdfs:domain :Prescription ; rdfs:range xsd:integer .
+:posologie a owl:DatatypeProperty ; rdfs:label "posologie"@fr ; rdfs:domain :Prescription ; rdfs:range xsd:string .
+:estRenouvelable a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "est renouvelable"@fr ;
+    rdfs:domain :Prescription ; rdfs:range xsd:boolean .
+
+:valeur a owl:DatatypeProperty ; rdfs:label "valeur"@fr ; rdfs:domain :ExamenClinique ; rdfs:range xsd:decimal .
+:unite a owl:DatatypeProperty ; rdfs:label "unité"@fr ; rdfs:domain :ExamenClinique ; rdfs:range xsd:string .
+:dateMesure a owl:DatatypeProperty ; rdfs:label "date"@fr ; rdfs:domain :DonneeClinique ; rdfs:range xsd:date .
+
+#################################################################
+#  5. INDIVIDUS
+#################################################################
+
+# ---------- Molécules ----------
+:Paracetamol a owl:NamedIndividual , :AntalgiqueNonOpioide ; rdfs:label "Paracétamol"@fr ;
+    :codeATC "N02BE01" ; :doseMaxJourMg 4000 ;
+    :peutProvoquer :EruptionCutanee ; :aContreIndication :CI_InsuffisanceHepatique .
+:Ibuprofene a owl:NamedIndividual , :AntalgiqueNonOpioide ; rdfs:label "Ibuprofène"@fr ;
+    :codeATC "M01AE01" ; :doseMaxJourMg 1200 ;
+    :peutProvoquer :Nausee , :HemorragieDigestive ;
+    :aContreIndication :CI_UlcereGastrique , :CI_InsuffisanceRenale ;
+    :interagitAvec :Aspirine .
+:Aspirine a owl:NamedIndividual , :AntalgiqueNonOpioide ; rdfs:label "Aspirine (acide acétylsalicylique)"@fr ;
+    :codeATC "N02BA01" ; :doseMaxJourMg 3000 ;
+    :peutProvoquer :HemorragieDigestive ; :aContreIndication :CI_UlcereGastrique .
+:Tramadol a owl:NamedIndividual , :AntalgiqueOpioide ; rdfs:label "Tramadol"@fr ;
+    :codeATC "N02AX02" ; :doseMaxJourMg 400 ;
+    :peutProvoquer :Nausee , :Convulsion ; :aContreIndication :CI_InsuffisanceHepatique .
+:Codeine a owl:NamedIndividual , :AntalgiqueOpioide ; rdfs:label "Codéine"@fr ;
+    :codeATC "R05DA04" ; :doseMaxJourMg 240 ;
+    :peutProvoquer :DepressionRespiratoire , :Nausee .
+:Amoxicilline a owl:NamedIndividual , :Penicilline ; rdfs:label "Amoxicilline"@fr ;
+    :codeATC "J01CA04" ; :doseMaxJourMg 3000 ;
+    :peutProvoquer :Diarrhee , :EruptionCutanee ;
+    :aContreIndication :CI_AllergiePenicilline .   # aussi inférable via l'axiome de :Penicilline
+:Azithromycine a owl:NamedIndividual , :Macrolide ; rdfs:label "Azithromycine"@fr ;
+    :codeATC "J01FA10" ; :doseMaxJourMg 500 ;
+    :peutProvoquer :Diarrhee , :Nausee ; :aContreIndication :CI_InsuffisanceHepatique .
+:Metformine a owl:NamedIndividual , :Molecule ; rdfs:label "Metformine (antidiabétique)"@fr ;
+    :codeATC "A10BA02" ; :doseMaxJourMg 3000 ;
+    :peutProvoquer :Diarrhee ; :aContreIndication :CI_InsuffisanceRenale .
+
+# ---------- Médicaments ----------
+:Doliprane a owl:NamedIndividual , :PrincepsSansOrdonnance ; rdfs:label "Doliprane 1000 mg"@fr ;
+    :nomCommercial "Doliprane" ; :dosage "1000 mg" ; :formeGalenique "comprimé" ; :surOrdonnance false ; :prixDT 3.2 ;
+    :contientMolecule :Paracetamol ; :estIndiquePour :Migraine , :DouleurDentaire .
+:Advil a owl:NamedIndividual , :PrincepsSansOrdonnance ; rdfs:label "Advil 400 mg"@fr ;
+    :nomCommercial "Advil" ; :dosage "400 mg" ; :formeGalenique "comprimé" ; :surOrdonnance false ; :prixDT 6.5 ;
+    :contientMolecule :Ibuprofene ; :estIndiquePour :Migraine , :DouleurDentaire .
+:IbuprofeneMylan a owl:NamedIndividual , :GeneriqueSansOrdonnance ; rdfs:label "Ibuprofène Mylan 400 mg"@fr ;
+    :nomCommercial "Ibuprofène Mylan" ; :dosage "400 mg" ; :formeGalenique "comprimé" ; :surOrdonnance false ; :prixDT 3.9 ;
+    :contientMolecule :Ibuprofene ; :estIndiquePour :DouleurDentaire .
+:Aspegic a owl:NamedIndividual , :PrincepsSansOrdonnance ; rdfs:label "Aspégic 500 mg"@fr ;
+    :nomCommercial "Aspégic" ; :dosage "500 mg" ; :formeGalenique "sachet" ; :surOrdonnance false ; :prixDT 4.1 ;
+    :contientMolecule :Aspirine ; :estIndiquePour :Migraine .
+:Contramal a owl:NamedIndividual , :PrincepsSurOrdonnance ; rdfs:label "Contramal 50 mg"@fr ;
+    :nomCommercial "Contramal" ; :dosage "50 mg" ; :formeGalenique "gélule" ; :surOrdonnance true ; :prixDT 9.8 ;
+    :contientMolecule :Tramadol ; :estIndiquePour :DouleurDentaire .
+:Clamoxyl a owl:NamedIndividual , :PrincepsSurOrdonnance ; rdfs:label "Clamoxyl 1 g"@fr ;
+    :nomCommercial "Clamoxyl" ; :dosage "1 g" ; :formeGalenique "comprimé" ; :surOrdonnance true ; :prixDT 8.7 ;
+    :contientMolecule :Amoxicilline ; :estIndiquePour :Angine , :Pneumonie .
+:AmoxicillineBiogaran a owl:NamedIndividual , :GeneriqueSurOrdonnance ; rdfs:label "Amoxicilline Biogaran 500 mg"@fr ;
+    :nomCommercial "Amoxicilline Biogaran" ; :dosage "500 mg" ; :formeGalenique "gélule" ; :surOrdonnance true ; :prixDT 5.4 ;
+    :contientMolecule :Amoxicilline ; :estIndiquePour :Angine .
+:Zithromax a owl:NamedIndividual , :PrincepsSurOrdonnance ; rdfs:label "Zithromax 250 mg"@fr ;
+    :nomCommercial "Zithromax" ; :dosage "250 mg" ; :formeGalenique "comprimé" ; :surOrdonnance true ; :prixDT 14.0 ;
+    :contientMolecule :Azithromycine ; :estIndiquePour :Angine , :Pneumonie .
+:Glucophage a owl:NamedIndividual , :PrincepsSurOrdonnance ; rdfs:label "Glucophage 850 mg"@fr ;
+    :nomCommercial "Glucophage" ; :dosage "850 mg" ; :formeGalenique "comprimé" ; :surOrdonnance true ; :prixDT 7.3 ;
+    :contientMolecule :Metformine ; :estIndiquePour :DiabeteType2 .
+
+# ---------- Effets secondaires ----------
+:Nausee a owl:NamedIndividual , :EffetLegerDigestif ; rdfs:label "Nausée"@fr ; :niveauGravite "léger" ; :frequence "fréquent" .
+:Diarrhee a owl:NamedIndividual , :EffetLegerDigestif ; rdfs:label "Diarrhée"@fr ; :niveauGravite "léger" ; :frequence "fréquent" .
+:EruptionCutanee a owl:NamedIndividual , :EffetLegerCutane ; rdfs:label "Éruption cutanée"@fr ; :niveauGravite "léger" ; :frequence "peu fréquent" .
+:Demangeaison a owl:NamedIndividual , :EffetLegerCutane ; rdfs:label "Démangeaison"@fr ; :niveauGravite "léger" ; :frequence "peu fréquent" .
+:HemorragieDigestive a owl:NamedIndividual , :EffetGraveDigestif ; rdfs:label "Hémorragie digestive"@fr ; :niveauGravite "grave" ; :frequence "rare" .
+:UlcerePerfore a owl:NamedIndividual , :EffetGraveDigestif ; rdfs:label "Ulcère perforé"@fr ; :niveauGravite "grave" ; :frequence "très rare" .
+:Convulsion a owl:NamedIndividual , :EffetGraveNeurologique ; rdfs:label "Convulsion"@fr ; :niveauGravite "grave" ; :frequence "rare" .
+:DepressionRespiratoire a owl:NamedIndividual , :EffetGraveNeurologique ; rdfs:label "Dépression respiratoire"@fr ; :niveauGravite "grave" ; :frequence "rare" .
+
+# ---------- Contre-indications ----------
+:CI_AllergiePenicilline a owl:NamedIndividual , :ContreIndicationAllergique ; rdfs:label "Allergie aux pénicillines"@fr ;
+    :niveauRisque "absolu" .
+:CI_UlcereGastrique a owl:NamedIndividual , :ContreIndicationDigestive ; rdfs:label "Ulcère gastro-duodénal évolutif"@fr ;
+    :niveauRisque "absolu" ; :concernePathologie :UlcereGastroduodenal .
+:CI_InsuffisanceRenale a owl:NamedIndividual , :ContreIndicationRenale ; rdfs:label "Insuffisance rénale"@fr ;
+    :niveauRisque "relatif" ; :concernePathologie :InsuffisanceRenale .
+:CI_InsuffisanceHepatique a owl:NamedIndividual , :ContreIndicationHepatique ; rdfs:label "Insuffisance hépatique"@fr ;
+    :niveauRisque "relatif" ; :concernePathologie :InsuffisanceHepatique .
+
+# ---------- Pathologies ----------
+:Angine a owl:NamedIndividual , :InfectionAigue ; rdfs:label "Angine bactérienne"@fr ; :codeCIM10 "J03.9" .
+:Pneumonie a owl:NamedIndividual , :InfectionAigue ; rdfs:label "Pneumonie"@fr ; :codeCIM10 "J18.9" .
+:Migraine a owl:NamedIndividual , :DouleurAigue ; rdfs:label "Migraine"@fr ; :codeCIM10 "G43.9" .
+:DouleurDentaire a owl:NamedIndividual , :DouleurAigue ; rdfs:label "Douleur dentaire"@fr ; :codeCIM10 "K08.8" .
+:DiabeteType2 a owl:NamedIndividual , :MaladieMetabolique ; rdfs:label "Diabète de type 2"@fr ; :codeCIM10 "E11" .
+:Obesite a owl:NamedIndividual , :MaladieMetabolique ; rdfs:label "Obésité"@fr ; :codeCIM10 "E66" .
+:InsuffisanceRenale a owl:NamedIndividual , :InsuffisanceOrgane ; rdfs:label "Insuffisance rénale chronique"@fr ; :codeCIM10 "N18" .
+:InsuffisanceHepatique a owl:NamedIndividual , :InsuffisanceOrgane ; rdfs:label "Insuffisance hépatique"@fr ; :codeCIM10 "K72" .
+:UlcereGastroduodenal a owl:NamedIndividual , :MaladieChronique ; rdfs:label "Ulcère gastro-duodénal"@fr ; :codeCIM10 "K27" .
+
+# ---------- Personnes ----------
+:Patient_Ali a owl:NamedIndividual , :PatientAdulte ; rdfs:label "Ali Ben Salah"@fr ;
+    :nom "Ben Salah" ; :age 58 ; :sexe "M" ; :souffreDe :DiabeteType2 , :InsuffisanceRenale .
+:Patient_Sara a owl:NamedIndividual , :PatientEnfant ; rdfs:label "Sara Jlassi"@fr ;
+    :nom "Jlassi" ; :age 9 ; :sexe "F" ; :souffreDe :Angine .
+:Patient_Youssef a owl:NamedIndividual , :PatientAdulte ; rdfs:label "Youssef Hamdi"@fr ;
+    :nom "Hamdi" ; :age 67 ; :sexe "M" ; :souffreDe :UlcereGastroduodenal , :Migraine .
+:Patient_Lina a owl:NamedIndividual , :Patient ; rdfs:label "Lina Gharbi"@fr ;   # classée PatientAdulte par le raisonneur (âge 31)
+    :nom "Gharbi" ; :age 31 ; :sexe "F" ; :souffreDe :Pneumonie .
+
+:Dr_Benali a owl:NamedIndividual , :Medecin ; rdfs:label "Dr Benali"@fr ; :nom "Benali" ; :specialite "Médecine générale" .
+:Dr_Trabelsi a owl:NamedIndividual , :Medecin ; rdfs:label "Dr Trabelsi"@fr ; :nom "Trabelsi" ; :specialite "Pneumologie" .
+:Ph_Mansour a owl:NamedIndividual , :Pharmacien ; rdfs:label "Pharmacien Mansour"@fr ; :nom "Mansour" ; :specialite "Officine" .
+:Ph_Khelifi a owl:NamedIndividual , :Pharmacien ; rdfs:label "Pharmacienne Khelifi"@fr ; :nom "Khelifi" ; :specialite "Hôpital" .
+
+# ---------- Prescriptions ----------
+:Presc_001 a owl:NamedIndividual , :RenouvellementLong ; rdfs:label "Ordonnance 001 (alerte : rénale)"@fr ;
+    :datePrescription "2026-09-02"^^xsd:date ; :dureeJours 180 ; :posologie "1 comprimé matin et soir" ; :estRenouvelable true ;
+    :prescritPar :Dr_Benali ; :concernePatient :Patient_Ali ; :prescritMedicament :Glucophage ; :estDelivreePar :Ph_Mansour .
+:Presc_002 a owl:NamedIndividual , :PrescriptionUrgente ; rdfs:label "Ordonnance 002 (conflit : allergie)"@fr ;
+    :datePrescription "2026-10-12"^^xsd:date ; :dureeJours 7 ; :posologie "1 g trois fois par jour" ; :estRenouvelable false ;
+    :prescritPar :Dr_Benali ; :concernePatient :Patient_Sara ; :prescritMedicament :Clamoxyl .
+:Presc_003 a owl:NamedIndividual , :PrescriptionNormale ; rdfs:label "Ordonnance 003 (conflit : ulcère)"@fr ;
+    :datePrescription "2026-10-15"^^xsd:date ; :dureeJours 5 ; :posologie "1 comprimé si douleur" ; :estRenouvelable false ;
+    :prescritPar :Dr_Benali ; :concernePatient :Patient_Youssef ; :prescritMedicament :Advil , :Doliprane ; :estDelivreePar :Ph_Mansour .
+:Presc_004 a owl:NamedIndividual , :RenouvellementCourt ; rdfs:label "Ordonnance 004"@fr ;
+    :datePrescription "2026-10-20"^^xsd:date ; :dureeJours 30 ; :posologie "500 mg par jour" ; :estRenouvelable true ;
+    :prescritPar :Dr_Trabelsi ; :concernePatient :Patient_Lina ; :prescritMedicament :Zithromax ; :estDelivreePar :Ph_Khelifi .
+
+# ---------- Données cliniques ----------
+:Glycemie_Ali a owl:NamedIndividual , :AnalyseBiologique ; rdfs:label "Glycémie à jeun"@fr ;
+    :valeur 1.92 ; :unite "g/L" ; :dateMesure "2026-09-01"^^xsd:date ; :estDonneeDe :Patient_Ali .
+:Creatinine_Ali a owl:NamedIndividual , :AnalyseBiologique ; rdfs:label "Clairance de la créatinine"@fr ;
+    :valeur 38 ; :unite "mL/min" ; :dateMesure "2026-09-01"^^xsd:date ; :estDonneeDe :Patient_Ali .
+:Tension_Youssef a owl:NamedIndividual , :SigneVital ; rdfs:label "Tension artérielle systolique"@fr ;
+    :valeur 145 ; :unite "mmHg" ; :dateMesure "2026-10-15"^^xsd:date ; :estDonneeDe :Patient_Youssef .
+:Temperature_Sara a owl:NamedIndividual , :SigneVital ; rdfs:label "Température"@fr ;
+    :valeur 39.2 ; :unite "°C" ; :dateMesure "2026-10-12"^^xsd:date ; :estDonneeDe :Patient_Sara .
+:Allergie_Sara a owl:NamedIndividual , :Allergie ; rdfs:label "Allergie à l'amoxicilline"@fr ;
+    :dateMesure "2024-03-10"^^xsd:date ; :allergiqueA :Amoxicilline ; :estDonneeDe :Patient_Sara .
+:Antecedent_Youssef a owl:NamedIndividual , :Antecedent ; rdfs:label "Antécédent d'ulcère"@fr ;
+    :dateMesure "2019-06-01"^^xsd:date ; :porteSur :UlcereGastroduodenal ; :estDonneeDe :Patient_Youssef .
+
+[] a owl:AllDifferent ; owl:distinctMembers ( :Patient_Ali :Patient_Sara :Patient_Youssef :Patient_Lina
+                                              :Dr_Benali :Dr_Trabelsi :Ph_Mansour :Ph_Khelifi ) .

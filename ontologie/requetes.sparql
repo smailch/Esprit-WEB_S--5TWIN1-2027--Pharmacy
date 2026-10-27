@@ -1,0 +1,78 @@
+PREFIX :     <http://example.org/pharma#>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+# ===== Q1 (RDFS) : hiérarchie — toutes les sous-classes (tous niveaux) de Molecule
+SELECT ?classe ?label WHERE {
+  ?classe rdfs:subClassOf+ :Molecule ; rdfs:label ?label .
+}
+
+# ===== Q2 (RDFS) : tous les antibiotiques (Pénicilline, Macrolide…), y compris via la hiérarchie
+SELECT ?m ?label WHERE {
+  ?m rdf:type/rdfs:subClassOf* :Antibiotique ; rdfs:label ?label .
+}
+
+# ===== Q3 (FILTRE) : médicaments vendus sans ordonnance à moins de 5 DT
+SELECT ?med ?nom ?prix WHERE {
+  ?med :nomCommercial ?nom ; :surOrdonnance false ; :prixDT ?prix .
+  FILTER(?prix < 5)
+} ORDER BY ?prix
+
+# ===== Q4 (RECHERCHE) : effets secondaires graves d'une molécule (recherche texte)
+SELECT ?molecule ?effet WHERE {
+  ?m rdfs:label ?molecule ; :peutProvoquer ?e .
+  ?e :niveauGravite "grave" ; rdfs:label ?effet .
+  FILTER(CONTAINS(LCASE(STR(?molecule)), "ibupro"))
+}
+
+# ===== Q5 (RAISONNEMENT) : médicaments contre-indiqués pour une pathologie
+#       (équivalent SPARQL de la chaîne OWL estContreIndiquePour)
+SELECT ?medicament ?pathologie WHERE {
+  ?med :contientMolecule/:aContreIndication/:concernePathologie ?p .
+  ?med rdfs:label ?medicament . ?p rdfs:label ?pathologie .
+}
+
+# ===== Q6 (VALEUR AJOUTÉE) : alertes — prescriptions dangereuses pour le patient
+SELECT ?ordonnance ?patient ?medicament ?raison WHERE {
+  {
+    ?presc :concernePatient ?pat ; :prescritMedicament ?med .
+    ?med :contientMolecule ?mol .
+    ?mol :aContreIndication ?ci .
+    ?ci :concernePathologie ?patho .
+    ?pat :souffreDe ?patho .
+    ?patho rdfs:label ?r . BIND(CONCAT("Contre-indiqué : ", STR(?r)) AS ?raison)
+  } UNION {
+    ?a a :Allergie ; :estDonneeDe ?pat ; :allergiqueA ?mol .
+    ?presc :concernePatient ?pat ; :prescritMedicament ?med .
+    ?med :contientMolecule ?mol .
+    BIND("Allergie connue à la molécule" AS ?raison)
+  }
+  ?presc rdfs:label ?ordonnance . ?pat rdfs:label ?patient . ?med rdfs:label ?medicament .
+}
+
+# ===== Q7 (AGRÉGATION) : nombre d'effets secondaires par molécule
+SELECT ?molecule (COUNT(?e) AS ?nbEffets) WHERE {
+  ?m a/rdfs:subClassOf* :Molecule ; rdfs:label ?molecule ; :peutProvoquer ?e .
+} GROUP BY ?molecule ORDER BY DESC(?nbEffets)
+
+# ===== Q8 (DONNÉES CLINIQUES) : patients dont la clairance de la créatinine < 60 mL/min
+SELECT ?patient ?valeur ?unite WHERE {
+  ?d a :AnalyseBiologique ; rdfs:label "Clairance de la créatinine"@fr ;
+     :valeur ?valeur ; :unite ?unite ; :estDonneeDe ?p .
+  ?p rdfs:label ?patient .
+  FILTER(?valeur < 60)
+}
+
+# ===== CRUD — CREATE
+INSERT DATA {
+  :Grippe a owl:NamedIndividual , :InfectionAigue ; rdfs:label "Grippe"@fr ; :codeCIM10 "J11" .
+}
+
+# ===== CRUD — UPDATE (changer le prix d'un médicament)
+DELETE { :Doliprane :prixDT ?old } INSERT { :Doliprane :prixDT 3.5 }
+WHERE  { :Doliprane :prixDT ?old }
+
+# ===== CRUD — DELETE
+DELETE WHERE { :Grippe ?p ?o }

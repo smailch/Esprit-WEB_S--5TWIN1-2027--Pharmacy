@@ -1,0 +1,1444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns="http://example.org/pharma#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+>
+  <rdf:Description rdf:about="http://example.org/pharma#Clamoxyl">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#PrincepsSurOrdonnance"/>
+    <rdfs:label xml:lang="fr">Clamoxyl 1 g</rdfs:label>
+    <nomCommercial>Clamoxyl</nomCommercial>
+    <dosage>1 g</dosage>
+    <formeGalenique>comprimé</formeGalenique>
+    <surOrdonnance rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</surOrdonnance>
+    <prixDT rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.7</prixDT>
+    <contientMolecule rdf:resource="http://example.org/pharma#Amoxicilline"/>
+    <estIndiquePour rdf:resource="http://example.org/pharma#Angine"/>
+    <estIndiquePour rdf:resource="http://example.org/pharma#Pneumonie"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Ph_Khelifi">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#Pharmacien"/>
+    <rdfs:label xml:lang="fr">Pharmacienne Khelifi</rdfs:label>
+    <nom>Khelifi</nom>
+    <specialite>Hôpital</specialite>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#MaladieMetabolique">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#MaladieChronique"/>
+    <rdfs:label xml:lang="fr">Maladie métabolique</rdfs:label>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#InsuffisanceOrgane"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#RenouvellementCourt">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#PrescriptionRenouvelable"/>
+    <rdfs:label xml:lang="fr">Renouvellement court (≤ 3 mois)</rdfs:label>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#RenouvellementLong"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Glycemie_Ali">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#AnalyseBiologique"/>
+    <rdfs:label xml:lang="fr">Glycémie à jeun</rdfs:label>
+    <valeur rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.92</valeur>
+    <unite>g/L</unite>
+    <dateMesure rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-09-01</dateMesure>
+    <estDonneeDe rdf:resource="http://example.org/pharma#Patient_Ali"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db24">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/pharma#niveauGravite"/>
+    <owl:hasValue>grave</owl:hasValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Antecedent_Youssef">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#Antecedent"/>
+    <rdfs:label xml:lang="fr">Antécédent d'ulcère</rdfs:label>
+    <dateMesure rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-06-01</dateMesure>
+    <porteSur rdf:resource="http://example.org/pharma#UlcereGastroduodenal"/>
+    <estDonneeDe rdf:resource="http://example.org/pharma#Patient_Youssef"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db35">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:intersectionOf rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db40"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Tension_Youssef">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#SigneVital"/>
+    <rdfs:label xml:lang="fr">Tension artérielle systolique</rdfs:label>
+    <valeur rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">145</valeur>
+    <unite>mmHg</unite>
+    <dateMesure rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-10-15</dateMesure>
+    <estDonneeDe rdf:resource="http://example.org/pharma#Patient_Youssef"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#EffetGraveDigestif">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#EffetGrave"/>
+    <rdfs:label xml:lang="fr">Effet grave digestif</rdfs:label>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#EffetGraveNeurologique"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Zithromax">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#PrincepsSurOrdonnance"/>
+    <rdfs:label xml:lang="fr">Zithromax 250 mg</rdfs:label>
+    <nomCommercial>Zithromax</nomCommercial>
+    <dosage>250 mg</dosage>
+    <formeGalenique>comprimé</formeGalenique>
+    <surOrdonnance rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</surOrdonnance>
+    <prixDT rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.0</prixDT>
+    <contientMolecule rdf:resource="http://example.org/pharma#Azithromycine"/>
+    <estIndiquePour rdf:resource="http://example.org/pharma#Angine"/>
+    <estIndiquePour rdf:resource="http://example.org/pharma#Pneumonie"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Creatinine_Ali">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#AnalyseBiologique"/>
+    <rdfs:label xml:lang="fr">Clairance de la créatinine</rdfs:label>
+    <valeur rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">38</valeur>
+    <unite>mL/min</unite>
+    <dateMesure rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-09-01</dateMesure>
+    <estDonneeDe rdf:resource="http://example.org/pharma#Patient_Ali"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#EffetLeger">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#EffetSecondaire"/>
+    <rdfs:label xml:lang="fr">Effet léger</rdfs:label>
+    <owl:equivalentClass rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db19"/>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#EffetGrave"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/pharma#contientMolecule"/>
+    <owl:someValuesFrom rdf:resource="http://example.org/pharma#Molecule"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db51">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/pharma#prescritMedicament"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onClass rdf:resource="http://example.org/pharma#Medicament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Convulsion">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#EffetGraveNeurologique"/>
+    <rdfs:label xml:lang="fr">Convulsion</rdfs:label>
+    <niveauGravite>grave</niveauGravite>
+    <frequence>rare</frequence>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db49">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/pharma#prescritPar"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="http://example.org/pharma#Medecin"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/pharma#surOrdonnance"/>
+    <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Pneumonie">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#InfectionAigue"/>
+    <rdfs:label xml:lang="fr">Pneumonie</rdfs:label>
+    <codeCIM10>J18.9</codeCIM10>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Aspegic">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#PrincepsSansOrdonnance"/>
+    <rdfs:label xml:lang="fr">Aspégic 500 mg</rdfs:label>
+    <nomCommercial>Aspégic</nomCommercial>
+    <dosage>500 mg</dosage>
+    <formeGalenique>sachet</formeGalenique>
+    <surOrdonnance rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</surOrdonnance>
+    <prixDT rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.1</prixDT>
+    <contientMolecule rdf:resource="http://example.org/pharma#Aspirine"/>
+    <estIndiquePour rdf:resource="http://example.org/pharma#Migraine"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#prixDT">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="fr">prix (DT)</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Medicament"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#AmoxicillineBiogaran">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#GeneriqueSurOrdonnance"/>
+    <rdfs:label xml:lang="fr">Amoxicilline Biogaran 500 mg</rdfs:label>
+    <nomCommercial>Amoxicilline Biogaran</nomCommercial>
+    <dosage>500 mg</dosage>
+    <formeGalenique>gélule</formeGalenique>
+    <surOrdonnance rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</surOrdonnance>
+    <prixDT rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.4</prixDT>
+    <contientMolecule rdf:resource="http://example.org/pharma#Amoxicilline"/>
+    <estIndiquePour rdf:resource="http://example.org/pharma#Angine"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#dureeJours">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="fr">durée du traitement (jours)</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Prescription"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db72">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+    <owl:distinctMembers rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db73"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Aspirine">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#AntalgiqueNonOpioide"/>
+    <rdfs:label xml:lang="fr">Aspirine (acide acétylsalicylique)</rdfs:label>
+    <codeATC>N02BA01</codeATC>
+    <doseMaxJourMg rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3000</doseMaxJourMg>
+    <peutProvoquer rdf:resource="http://example.org/pharma#HemorragieDigestive"/>
+    <aContreIndication rdf:resource="http://example.org/pharma#CI_UlcereGastrique"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#estDelivreePar">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="fr">est délivrée par</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Prescription"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#Pharmacien"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Amoxicilline">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#Penicilline"/>
+    <rdfs:label xml:lang="fr">Amoxicilline</rdfs:label>
+    <codeATC>J01CA04</codeATC>
+    <doseMaxJourMg rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3000</doseMaxJourMg>
+    <peutProvoquer rdf:resource="http://example.org/pharma#Diarrhee"/>
+    <peutProvoquer rdf:resource="http://example.org/pharma#EruptionCutanee"/>
+    <aContreIndication rdf:resource="http://example.org/pharma#CI_AllergiePenicilline"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db13">
+    <rdf:first rdf:resource="http://example.org/pharma#Generique"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db14"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Glucophage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#PrincepsSurOrdonnance"/>
+    <rdfs:label xml:lang="fr">Glucophage 850 mg</rdfs:label>
+    <nomCommercial>Glucophage</nomCommercial>
+    <dosage>850 mg</dosage>
+    <formeGalenique>comprimé</formeGalenique>
+    <surOrdonnance rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</surOrdonnance>
+    <prixDT rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.3</prixDT>
+    <contientMolecule rdf:resource="http://example.org/pharma#Metformine"/>
+    <estIndiquePour rdf:resource="http://example.org/pharma#DiabeteType2"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db32">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/pharma#niveauRisque"/>
+    <owl:hasValue>relatif</owl:hasValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#datePrescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="fr">date de prescription</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Prescription"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#porteSur">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="fr">porte sur</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Antecedent"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#Pathologie"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#EruptionCutanee">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#EffetLegerCutane"/>
+    <rdfs:label xml:lang="fr">Éruption cutanée</rdfs:label>
+    <niveauGravite>léger</niveauGravite>
+    <frequence>peu fréquent</frequence>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#estDonneeDe">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label xml:lang="fr">est une donnée de</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#DonneeClinique"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#Patient"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Codeine">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#AntalgiqueOpioide"/>
+    <rdfs:label xml:lang="fr">Codéine</rdfs:label>
+    <codeATC>R05DA04</codeATC>
+    <doseMaxJourMg rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">240</doseMaxJourMg>
+    <peutProvoquer rdf:resource="http://example.org/pharma#DepressionRespiratoire"/>
+    <peutProvoquer rdf:resource="http://example.org/pharma#Nausee"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Molecule">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="fr">Molécule</rdfs:label>
+    <rdfs:comment xml:lang="fr">Substance active (principe actif) contenue dans un médicament.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#contientMolecule">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="fr">contient la molécule</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Medicament"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#Molecule"/>
+    <owl:inverseOf rdf:resource="http://example.org/pharma#estContenuDans"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db23">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:intersectionOf rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db25"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#ContreIndicationAllergique">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#ContreIndicationAbsolue"/>
+    <rdfs:label xml:lang="fr">Contre-indication allergique</rdfs:label>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#ContreIndicationDigestive"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#souffreDe">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="fr">souffre de</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Patient"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#Pathologie"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#codeCIM10">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="fr">code CIM-10</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Pathologie"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Patient_Youssef">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#PatientAdulte"/>
+    <rdfs:label xml:lang="fr">Youssef Hamdi</rdfs:label>
+    <nom>Hamdi</nom>
+    <age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">67</age>
+    <sexe>M</sexe>
+    <souffreDe rdf:resource="http://example.org/pharma#UlcereGastroduodenal"/>
+    <souffreDe rdf:resource="http://example.org/pharma#Migraine"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#DouleurDentaire">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#DouleurAigue"/>
+    <rdfs:label xml:lang="fr">Douleur dentaire</rdfs:label>
+    <codeCIM10>K08.8</codeCIM10>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#estProvoquePar">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="fr">est provoqué par</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#EffetSecondaire"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#Molecule"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Dr_Benali">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#Medecin"/>
+    <rdfs:label xml:lang="fr">Dr Benali</rdfs:label>
+    <nom>Benali</nom>
+    <specialite>Médecine générale</specialite>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#EffetLegerDigestif">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#EffetLeger"/>
+    <rdfs:label xml:lang="fr">Effet léger digestif</rdfs:label>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#EffetLegerCutane"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db71">
+    <rdf:first rdf:resource="http://example.org/pharma#concernePathologie"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db57">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/pharma#estRenouvelable"/>
+    <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#prescritPar">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label xml:lang="fr">prescrit par</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Prescription"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#Medecin"/>
+    <owl:inverseOf rdf:resource="http://example.org/pharma#aPrescrit"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db18">
+    <rdf:first rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db16"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Patient_Lina">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#Patient"/>
+    <rdfs:label xml:lang="fr">Lina Gharbi</rdfs:label>
+    <nom>Gharbi</nom>
+    <age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">31</age>
+    <sexe>F</sexe>
+    <souffreDe rdf:resource="http://example.org/pharma#Pneumonie"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#PrescriptionUrgente">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#PrescriptionSimple"/>
+    <rdfs:label xml:lang="fr">Prescription urgente</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#AnalyseBiologique">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#ExamenClinique"/>
+    <rdfs:label xml:lang="fr">Analyse biologique</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#PrescriptionNormale">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#PrescriptionSimple"/>
+    <rdfs:label xml:lang="fr">Prescription normale</rdfs:label>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#PrescriptionUrgente"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#niveauRisque">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label xml:lang="fr">niveau de risque</rdfs:label>
+    <rdfs:comment xml:lang="fr">"absolu" ou "relatif"</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/pharma#ContreIndication"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db77">
+    <rdf:first rdf:resource="http://example.org/pharma#Dr_Benali"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db78"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Advil">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#PrincepsSansOrdonnance"/>
+    <rdfs:label xml:lang="fr">Advil 400 mg</rdfs:label>
+    <nomCommercial>Advil</nomCommercial>
+    <dosage>400 mg</dosage>
+    <formeGalenique>comprimé</formeGalenique>
+    <surOrdonnance rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</surOrdonnance>
+    <prixDT rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.5</prixDT>
+    <contientMolecule rdf:resource="http://example.org/pharma#Ibuprofene"/>
+    <estIndiquePour rdf:resource="http://example.org/pharma#Migraine"/>
+    <estIndiquePour rdf:resource="http://example.org/pharma#DouleurDentaire"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#ContreIndication">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="fr">Contre-indication</rdfs:label>
+    <rdfs:comment xml:lang="fr">Situation dans laquelle une molécule ne doit pas (ou doit prudemment) être utilisée.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#UlcereGastroduodenal">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#MaladieChronique"/>
+    <rdfs:label xml:lang="fr">Ulcère gastro-duodénal</rdfs:label>
+    <codeCIM10>K27</codeCIM10>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db30">
+    <rdf:first rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db28"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#surOrdonnance">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label xml:lang="fr">sur ordonnance</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Medicament"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#EffetGraveNeurologique">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#EffetGrave"/>
+    <rdfs:label xml:lang="fr">Effet grave neurologique</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Demangeaison">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#EffetLegerCutane"/>
+    <rdfs:label xml:lang="fr">Démangeaison</rdfs:label>
+    <niveauGravite>léger</niveauGravite>
+    <frequence>peu fréquent</frequence>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#EffetSecondaire">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="fr">Effet secondaire</rdfs:label>
+    <rdfs:comment xml:lang="fr">Effet indésirable que peut provoquer une molécule.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#PatientEnfant">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Patient"/>
+    <rdfs:label xml:lang="fr">Patient enfant (&lt; 18 ans)</rdfs:label>
+    <owl:equivalentClass rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db35"/>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#PatientAdulte"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Presc_004">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#RenouvellementCourt"/>
+    <rdfs:label xml:lang="fr">Ordonnance 004</rdfs:label>
+    <datePrescription rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-10-20</datePrescription>
+    <dureeJours rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</dureeJours>
+    <posologie>500 mg par jour</posologie>
+    <estRenouvelable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</estRenouvelable>
+    <prescritPar rdf:resource="http://example.org/pharma#Dr_Trabelsi"/>
+    <concernePatient rdf:resource="http://example.org/pharma#Patient_Lina"/>
+    <prescritMedicament rdf:resource="http://example.org/pharma#Zithromax"/>
+    <estDelivreePar rdf:resource="http://example.org/pharma#Ph_Khelifi"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#concernePathologie">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="fr">concerne la pathologie</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#ContreIndication"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#Pathologie"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Presc_003">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#PrescriptionNormale"/>
+    <rdfs:label xml:lang="fr">Ordonnance 003 (conflit : ulcère)</rdfs:label>
+    <datePrescription rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-10-15</datePrescription>
+    <dureeJours rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</dureeJours>
+    <posologie>1 comprimé si douleur</posologie>
+    <estRenouvelable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</estRenouvelable>
+    <prescritPar rdf:resource="http://example.org/pharma#Dr_Benali"/>
+    <concernePatient rdf:resource="http://example.org/pharma#Patient_Youssef"/>
+    <prescritMedicament rdf:resource="http://example.org/pharma#Advil"/>
+    <prescritMedicament rdf:resource="http://example.org/pharma#Doliprane"/>
+    <estDelivreePar rdf:resource="http://example.org/pharma#Ph_Mansour"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Patient_Sara">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#PatientEnfant"/>
+    <rdfs:label xml:lang="fr">Sara Jlassi</rdfs:label>
+    <nom>Jlassi</nom>
+    <age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</age>
+    <sexe>F</sexe>
+    <souffreDe rdf:resource="http://example.org/pharma#Angine"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Antalgique">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Molecule"/>
+    <rdfs:label xml:lang="fr">Antalgique</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Presc_001">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#RenouvellementLong"/>
+    <rdfs:label xml:lang="fr">Ordonnance 001 (alerte : rénale)</rdfs:label>
+    <datePrescription rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-09-02</datePrescription>
+    <dureeJours rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">180</dureeJours>
+    <posologie>1 comprimé matin et soir</posologie>
+    <estRenouvelable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</estRenouvelable>
+    <prescritPar rdf:resource="http://example.org/pharma#Dr_Benali"/>
+    <concernePatient rdf:resource="http://example.org/pharma#Patient_Ali"/>
+    <prescritMedicament rdf:resource="http://example.org/pharma#Glucophage"/>
+    <estDelivreePar rdf:resource="http://example.org/pharma#Ph_Mansour"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db16">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/pharma#surOrdonnance"/>
+    <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</owl:hasValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#estContreIndiquePour">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="fr">est contre-indiqué pour</rdfs:label>
+    <rdfs:comment xml:lang="fr">Inféré par le raisonneur : médicament → molécule → contre-indication → pathologie.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Medicament"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#Pathologie"/>
+    <owl:propertyChainAxiom rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db69"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Allergie_Sara">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#Allergie"/>
+    <rdfs:label xml:lang="fr">Allergie à l'amoxicilline</rdfs:label>
+    <dateMesure rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-03-10</dateMesure>
+    <allergiqueA rdf:resource="http://example.org/pharma#Amoxicilline"/>
+    <estDonneeDe rdf:resource="http://example.org/pharma#Patient_Sara"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#dosage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="fr">dosage</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Medicament"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Azithromycine">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#Macrolide"/>
+    <rdfs:label xml:lang="fr">Azithromycine</rdfs:label>
+    <codeATC>J01FA10</codeATC>
+    <doseMaxJourMg rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">500</doseMaxJourMg>
+    <peutProvoquer rdf:resource="http://example.org/pharma#Diarrhee"/>
+    <peutProvoquer rdf:resource="http://example.org/pharma#Nausee"/>
+    <aContreIndication rdf:resource="http://example.org/pharma#CI_InsuffisanceHepatique"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Doliprane">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#PrincepsSansOrdonnance"/>
+    <rdfs:label xml:lang="fr">Doliprane 1000 mg</rdfs:label>
+    <nomCommercial>Doliprane</nomCommercial>
+    <dosage>1000 mg</dosage>
+    <formeGalenique>comprimé</formeGalenique>
+    <surOrdonnance rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</surOrdonnance>
+    <prixDT rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.2</prixDT>
+    <contientMolecule rdf:resource="http://example.org/pharma#Paracetamol"/>
+    <estIndiquePour rdf:resource="http://example.org/pharma#Migraine"/>
+    <estIndiquePour rdf:resource="http://example.org/pharma#DouleurDentaire"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#DonneeClinique">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="fr">Donnée clinique</rdfs:label>
+    <rdfs:comment xml:lang="fr">Information médicale mesurée ou déclarée pour un patient.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#allergiqueA">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="fr">allergique à</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Allergie"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#Molecule"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#CI_InsuffisanceHepatique">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#ContreIndicationHepatique"/>
+    <rdfs:label xml:lang="fr">Insuffisance hépatique</rdfs:label>
+    <niveauRisque>relatif</niveauRisque>
+    <concernePathologie rdf:resource="http://example.org/pharma#InsuffisanceHepatique"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#ContreIndicationHepatique">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#ContreIndicationRelative"/>
+    <rdfs:label xml:lang="fr">Contre-indication hépatique</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db76">
+    <rdf:first rdf:resource="http://example.org/pharma#Patient_Lina"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db77"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#codeATC">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label xml:lang="fr">code ATC</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Molecule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#frequence">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="fr">fréquence</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#EffetSecondaire"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Metformine">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#Molecule"/>
+    <rdfs:label xml:lang="fr">Metformine (antidiabétique)</rdfs:label>
+    <codeATC>A10BA02</codeATC>
+    <doseMaxJourMg rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3000</doseMaxJourMg>
+    <peutProvoquer rdf:resource="http://example.org/pharma#Diarrhee"/>
+    <aContreIndication rdf:resource="http://example.org/pharma#CI_InsuffisanceRenale"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#HistoriqueMedical">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#DonneeClinique"/>
+    <rdfs:label xml:lang="fr">Historique médical</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db33">
+    <rdf:first rdf:resource="http://example.org/pharma#ContreIndication"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db34"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#SigneVital">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#ExamenClinique"/>
+    <rdfs:label xml:lang="fr">Signe vital</rdfs:label>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#AnalyseBiologique"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db79">
+    <rdf:first rdf:resource="http://example.org/pharma#Ph_Mansour"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db80"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#EffetGrave">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#EffetSecondaire"/>
+    <rdfs:label xml:lang="fr">Effet grave</rdfs:label>
+    <owl:equivalentClass rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db23"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Paracetamol">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#AntalgiqueNonOpioide"/>
+    <rdfs:label xml:lang="fr">Paracétamol</rdfs:label>
+    <codeATC>N02BE01</codeATC>
+    <doseMaxJourMg rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4000</doseMaxJourMg>
+    <peutProvoquer rdf:resource="http://example.org/pharma#EruptionCutanee"/>
+    <aContreIndication rdf:resource="http://example.org/pharma#CI_InsuffisanceHepatique"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/pharma#aContreIndication"/>
+    <owl:hasValue rdf:resource="http://example.org/pharma#CI_AllergiePenicilline"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#ProfessionnelSante">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Personne"/>
+    <rdfs:label xml:lang="fr">Professionnel de santé</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Obesite">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#MaladieMetabolique"/>
+    <rdfs:label xml:lang="fr">Obésité</rdfs:label>
+    <codeCIM10>E66</codeCIM10>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Nausee">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#EffetLegerDigestif"/>
+    <rdfs:label xml:lang="fr">Nausée</rdfs:label>
+    <niveauGravite>léger</niveauGravite>
+    <frequence>fréquent</frequence>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#formeGalenique">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="fr">forme galénique</rdfs:label>
+    <rdfs:comment xml:lang="fr">Comprimé, gélule, sirop, injectable…</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Medicament"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#CI_AllergiePenicilline">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#ContreIndicationAllergique"/>
+    <rdfs:label xml:lang="fr">Allergie aux pénicillines</rdfs:label>
+    <niveauRisque>absolu</niveauRisque>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Tramadol">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#AntalgiqueOpioide"/>
+    <rdfs:label xml:lang="fr">Tramadol</rdfs:label>
+    <codeATC>N02AX02</codeATC>
+    <doseMaxJourMg rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">400</doseMaxJourMg>
+    <peutProvoquer rdf:resource="http://example.org/pharma#Nausee"/>
+    <peutProvoquer rdf:resource="http://example.org/pharma#Convulsion"/>
+    <aContreIndication rdf:resource="http://example.org/pharma#CI_InsuffisanceHepatique"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Patient_Ali">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#PatientAdulte"/>
+    <rdfs:label xml:lang="fr">Ali Ben Salah</rdfs:label>
+    <nom>Ben Salah</nom>
+    <age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">58</age>
+    <sexe>M</sexe>
+    <souffreDe rdf:resource="http://example.org/pharma#DiabeteType2"/>
+    <souffreDe rdf:resource="http://example.org/pharma#InsuffisanceRenale"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#sexe">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="fr">sexe</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Patient"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Migraine">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#DouleurAigue"/>
+    <rdfs:label xml:lang="fr">Migraine</rdfs:label>
+    <codeCIM10>G43.9</codeCIM10>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Penicilline">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Antibiotique"/>
+    <rdfs:subClassOf rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db1"/>
+    <rdfs:label xml:lang="fr">Pénicilline</rdfs:label>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#Macrolide"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#aDonneeClinique">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="fr">a pour donnée clinique</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Patient"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#DonneeClinique"/>
+    <owl:inverseOf rdf:resource="http://example.org/pharma#estDonneeDe"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db75">
+    <rdf:first rdf:resource="http://example.org/pharma#Patient_Youssef"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db76"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#age">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label xml:lang="fr">âge</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Patient"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Patient">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Personne"/>
+    <rdfs:label xml:lang="fr">Patient</rdfs:label>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#ProfessionnelSante"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Temperature_Sara">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#SigneVital"/>
+    <rdfs:label xml:lang="fr">Température</rdfs:label>
+    <valeur rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">39.2</valeur>
+    <unite>°C</unite>
+    <dateMesure rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-10-12</dateMesure>
+    <estDonneeDe rdf:resource="http://example.org/pharma#Patient_Sara"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#DepressionRespiratoire">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#EffetGraveNeurologique"/>
+    <rdfs:label xml:lang="fr">Dépression respiratoire</rdfs:label>
+    <niveauGravite>grave</niveauGravite>
+    <frequence>rare</frequence>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db67">
+    <rdf:first rdf:resource="http://example.org/pharma#Prescription"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db68"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Pathologie">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="fr">Pathologie</rdfs:label>
+    <rdfs:comment xml:lang="fr">Maladie ou état de santé d'un patient.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Allergie">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#HistoriqueMedical"/>
+    <rdfs:label xml:lang="fr">Allergie</rdfs:label>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#Antecedent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#InsuffisanceOrgane">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#MaladieChronique"/>
+    <rdfs:label xml:lang="fr">Insuffisance d'organe</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db9">
+    <rdf:first rdf:resource="http://example.org/pharma#Princeps"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db10"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#nomCommercial">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label xml:lang="fr">nom commercial</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Medicament"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db80">
+    <rdf:first rdf:resource="http://example.org/pharma#Ph_Khelifi"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db39">
+    <rdf:first rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db38"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#peutProvoquer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="fr">peut provoquer</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Molecule"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#EffetSecondaire"/>
+    <owl:inverseOf rdf:resource="http://example.org/pharma#estProvoquePar"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#niveauGravite">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label xml:lang="fr">niveau de gravité</rdfs:label>
+    <rdfs:comment xml:lang="fr">"léger" ou "grave"</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/pharma#EffetSecondaire"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#IbuprofeneMylan">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#GeneriqueSansOrdonnance"/>
+    <rdfs:label xml:lang="fr">Ibuprofène Mylan 400 mg</rdfs:label>
+    <nomCommercial>Ibuprofène Mylan</nomCommercial>
+    <dosage>400 mg</dosage>
+    <formeGalenique>comprimé</formeGalenique>
+    <surOrdonnance rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</surOrdonnance>
+    <prixDT rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.9</prixDT>
+    <contientMolecule rdf:resource="http://example.org/pharma#Ibuprofene"/>
+    <estIndiquePour rdf:resource="http://example.org/pharma#DouleurDentaire"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:intersectionOf rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db21"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db61">
+    <rdf:first rdf:resource="http://example.org/pharma#Molecule"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db62"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db54">
+    <rdf:first rdf:resource="http://example.org/pharma#Prescription"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db55"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Diarrhee">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#EffetLegerDigestif"/>
+    <rdfs:label xml:lang="fr">Diarrhée</rdfs:label>
+    <niveauGravite>léger</niveauGravite>
+    <frequence>fréquent</frequence>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#DouleurAigue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#MaladieAigue"/>
+    <rdfs:label xml:lang="fr">Douleur aiguë</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Antecedent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#HistoriqueMedical"/>
+    <rdfs:label xml:lang="fr">Antécédent médical</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#ContreIndicationDigestive">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#ContreIndicationAbsolue"/>
+    <rdfs:label xml:lang="fr">Contre-indication digestive</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#UlcerePerfore">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#EffetGraveDigestif"/>
+    <rdfs:label xml:lang="fr">Ulcère perforé</rdfs:label>
+    <niveauGravite>grave</niveauGravite>
+    <frequence>très rare</frequence>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Presc_002">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#PrescriptionUrgente"/>
+    <rdfs:label xml:lang="fr">Ordonnance 002 (conflit : allergie)</rdfs:label>
+    <datePrescription rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-10-12</datePrescription>
+    <dureeJours rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</dureeJours>
+    <posologie>1 g trois fois par jour</posologie>
+    <estRenouvelable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</estRenouvelable>
+    <prescritPar rdf:resource="http://example.org/pharma#Dr_Benali"/>
+    <concernePatient rdf:resource="http://example.org/pharma#Patient_Sara"/>
+    <prescritMedicament rdf:resource="http://example.org/pharma#Clamoxyl"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db28">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/pharma#niveauRisque"/>
+    <owl:hasValue>absolu</owl:hasValue>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db56">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:intersectionOf rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db58"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:intersectionOf rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db5"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#estRenouvelable">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label xml:lang="fr">est renouvelable</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Prescription"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#ContreIndicationAbsolue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#ContreIndication"/>
+    <rdfs:label xml:lang="fr">Contre-indication absolue</rdfs:label>
+    <owl:equivalentClass rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db27"/>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#ContreIndicationRelative"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Ibuprofene">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#AntalgiqueNonOpioide"/>
+    <rdfs:label xml:lang="fr">Ibuprofène</rdfs:label>
+    <codeATC>M01AE01</codeATC>
+    <doseMaxJourMg rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1200</doseMaxJourMg>
+    <peutProvoquer rdf:resource="http://example.org/pharma#Nausee"/>
+    <peutProvoquer rdf:resource="http://example.org/pharma#HemorragieDigestive"/>
+    <aContreIndication rdf:resource="http://example.org/pharma#CI_UlcereGastrique"/>
+    <aContreIndication rdf:resource="http://example.org/pharma#CI_InsuffisanceRenale"/>
+    <interagitAvec rdf:resource="http://example.org/pharma#Aspirine"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#CI_UlcereGastrique">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#ContreIndicationDigestive"/>
+    <rdfs:label xml:lang="fr">Ulcère gastro-duodénal évolutif</rdfs:label>
+    <niveauRisque>absolu</niveauRisque>
+    <concernePathologie rdf:resource="http://example.org/pharma#UlcereGastroduodenal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#PrescriptionSimple">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Prescription"/>
+    <rdfs:label xml:lang="fr">Prescription simple</rdfs:label>
+    <owl:equivalentClass rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db52"/>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#PrescriptionRenouvelable"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Angine">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#InfectionAigue"/>
+    <rdfs:label xml:lang="fr">Angine bactérienne</rdfs:label>
+    <codeCIM10>J03.9</codeCIM10>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Medecin">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#ProfessionnelSante"/>
+    <rdfs:label xml:lang="fr">Médecin</rdfs:label>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#Pharmacien"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#prescritMedicament">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="fr">prescrit le médicament</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Prescription"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#Medicament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#ExamenClinique">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#DonneeClinique"/>
+    <rdfs:label xml:lang="fr">Examen clinique</rdfs:label>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#HistoriqueMedical"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#PrescriptionRenouvelable">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Prescription"/>
+    <rdfs:label xml:lang="fr">Prescription renouvelable</rdfs:label>
+    <owl:equivalentClass rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db56"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#interagitAvec">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:label xml:lang="fr">interagit avec</rdfs:label>
+    <rdfs:comment xml:lang="fr">Interaction médicamenteuse entre deux molécules (symétrique).</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Molecule"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#Molecule"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#AntalgiqueNonOpioide">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Antalgique"/>
+    <rdfs:label xml:lang="fr">Antalgique non opioïde</rdfs:label>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#AntalgiqueOpioide"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#nom">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="fr">nom</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Personne"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#CI_InsuffisanceRenale">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#ContreIndicationRenale"/>
+    <rdfs:label xml:lang="fr">Insuffisance rénale</rdfs:label>
+    <niveauRisque>relatif</niveauRisque>
+    <concernePathologie rdf:resource="http://example.org/pharma#InsuffisanceRenale"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#valeur">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="fr">valeur</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#ExamenClinique"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db15">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:intersectionOf rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db17"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db14">
+    <rdf:first rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db12"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db69">
+    <rdf:first rdf:resource="http://example.org/pharma#contientMolecule"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db70"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#posologie">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="fr">posologie</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Prescription"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#InsuffisanceHepatique">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#InsuffisanceOrgane"/>
+    <rdfs:label xml:lang="fr">Insuffisance hépatique</rdfs:label>
+    <codeCIM10>K72</codeCIM10>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Contramal">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#PrincepsSurOrdonnance"/>
+    <rdfs:label xml:lang="fr">Contramal 50 mg</rdfs:label>
+    <nomCommercial>Contramal</nomCommercial>
+    <dosage>50 mg</dosage>
+    <formeGalenique>gélule</formeGalenique>
+    <surOrdonnance rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</surOrdonnance>
+    <prixDT rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.8</prixDT>
+    <contientMolecule rdf:resource="http://example.org/pharma#Tramadol"/>
+    <estIndiquePour rdf:resource="http://example.org/pharma#DouleurDentaire"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db73">
+    <rdf:first rdf:resource="http://example.org/pharma#Patient_Ali"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db74"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db55">
+    <rdf:first rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db53"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db63">
+    <rdf:first rdf:resource="http://example.org/pharma#EffetSecondaire"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db64"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#aContreIndication">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="fr">a pour contre-indication</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Molecule"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#ContreIndication"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db66">
+    <rdf:first rdf:resource="http://example.org/pharma#Personne"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db67"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Antibiotique">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Molecule"/>
+    <rdfs:label xml:lang="fr">Antibiotique</rdfs:label>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#Antalgique"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db53">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/pharma#estRenouvelable"/>
+    <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</owl:hasValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#PatientAdulte">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Patient"/>
+    <rdfs:label xml:lang="fr">Patient adulte (≥ 18 ans)</rdfs:label>
+    <owl:equivalentClass rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db42"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#ContreIndicationRenale">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#ContreIndicationRelative"/>
+    <rdfs:label xml:lang="fr">Contre-indication rénale</rdfs:label>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#ContreIndicationHepatique"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db40">
+    <rdf:first rdf:resource="http://example.org/pharma#Patient"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db41"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#InfectionAigue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#MaladieAigue"/>
+    <rdfs:label xml:lang="fr">Infection aiguë</rdfs:label>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#DouleurAigue"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db29">
+    <rdf:first rdf:resource="http://example.org/pharma#ContreIndication"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db30"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db27">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:intersectionOf rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db29"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db7">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:intersectionOf rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db9"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:label xml:lang="fr">PharmaSémantique</rdfs:label>
+    <rdfs:comment xml:lang="fr">Ontologie des molécules, médicaments, effets secondaires, contre-indications, pathologies, personnes, prescriptions et données cliniques.</rdfs:comment>
+    <owl:versionInfo>2.0</owl:versionInfo>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Macrolide">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Antibiotique"/>
+    <rdfs:label xml:lang="fr">Macrolide</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db47">
+    <rdf:first rdf:resource="http://example.org/pharma#Patient"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db48"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db5">
+    <rdf:first rdf:resource="http://example.org/pharma#Princeps"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db6"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#PrincepsSurOrdonnance">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Princeps"/>
+    <rdfs:label xml:lang="fr">Princeps sur ordonnance</rdfs:label>
+    <owl:equivalentClass rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db3"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db43">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/pharma#age"/>
+    <owl:someValuesFrom rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db44"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db52">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:intersectionOf rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db54"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db21">
+    <rdf:first rdf:resource="http://example.org/pharma#EffetSecondaire"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db22"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Ph_Mansour">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#Pharmacien"/>
+    <rdfs:label xml:lang="fr">Pharmacien Mansour</rdfs:label>
+    <nom>Mansour</nom>
+    <specialite>Officine</specialite>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db50">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/pharma#concernePatient"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="http://example.org/pharma#Patient"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#specialite">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="fr">spécialité</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#ProfessionnelSante"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Princeps">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Medicament"/>
+    <rdfs:label xml:lang="fr">Princeps (médicament d'origine)</rdfs:label>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#Generique"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db74">
+    <rdf:first rdf:resource="http://example.org/pharma#Patient_Sara"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db75"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db70">
+    <rdf:first rdf:resource="http://example.org/pharma#aContreIndication"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db71"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#EffetLegerCutane">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#EffetLeger"/>
+    <rdfs:label xml:lang="fr">Effet léger cutané</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#concernePatient">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label xml:lang="fr">concerne le patient</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Prescription"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#Patient"/>
+    <owl:inverseOf rdf:resource="http://example.org/pharma#aPrescription"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Medicament">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="fr">Médicament</rdfs:label>
+    <rdfs:comment xml:lang="fr">Produit commercialisé contenant au moins une molécule.</rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#ContreIndicationRelative">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#ContreIndication"/>
+    <rdfs:label xml:lang="fr">Contre-indication relative</rdfs:label>
+    <owl:equivalentClass rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db31"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#estIndiquePour">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="fr">est indiqué pour</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Medicament"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#Pathologie"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#DiabeteType2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#MaladieMetabolique"/>
+    <rdfs:label xml:lang="fr">Diabète de type 2</rdfs:label>
+    <codeCIM10>E11</codeCIM10>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db65">
+    <rdf:first rdf:resource="http://example.org/pharma#Pathologie"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db66"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#aPrescrit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="fr">a prescrit</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Medecin"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#Prescription"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#doseMaxJourMg">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="fr">dose maximale par jour (mg)</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Molecule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#MaladieChronique">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Pathologie"/>
+    <rdfs:label xml:lang="fr">Maladie chronique</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#HemorragieDigestive">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#EffetGraveDigestif"/>
+    <rdfs:label xml:lang="fr">Hémorragie digestive</rdfs:label>
+    <niveauGravite>grave</niveauGravite>
+    <frequence>rare</frequence>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db8">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/pharma#surOrdonnance"/>
+    <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</owl:hasValue>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db41">
+    <rdf:first rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db36"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db62">
+    <rdf:first rdf:resource="http://example.org/pharma#Medicament"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db63"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db12">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/pharma#surOrdonnance"/>
+    <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db38">
+    <xsd:maxExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">18</xsd:maxExclusive>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db78">
+    <rdf:first rdf:resource="http://example.org/pharma#Dr_Trabelsi"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db79"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Prescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="fr">Prescription</rdfs:label>
+    <rdfs:comment xml:lang="fr">Ordonnance : un médecin prescrit un ou plusieurs médicaments à un patient.</rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db49"/>
+    <rdfs:subClassOf rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db50"/>
+    <rdfs:subClassOf rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db51"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db44">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <owl:withRestrictions rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db46"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#dateMesure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="fr">date</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#DonneeClinique"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#unite">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="fr">unité</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#ExamenClinique"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Personne">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="fr">Personne</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db20">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/pharma#niveauGravite"/>
+    <owl:hasValue>léger</owl:hasValue>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#GeneriqueSurOrdonnance">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Generique"/>
+    <rdfs:label xml:lang="fr">Générique sur ordonnance</rdfs:label>
+    <owl:equivalentClass rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db11"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db34">
+    <rdf:first rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db32"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db60">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+    <owl:members rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db61"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#GeneriqueSansOrdonnance">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Generique"/>
+    <rdfs:label xml:lang="fr">Générique sans ordonnance</rdfs:label>
+    <owl:equivalentClass rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db15"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db64">
+    <rdf:first rdf:resource="http://example.org/pharma#ContreIndication"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db65"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db6">
+    <rdf:first rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db4"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db42">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:intersectionOf rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db47"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#InsuffisanceRenale">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#InsuffisanceOrgane"/>
+    <rdfs:label xml:lang="fr">Insuffisance rénale chronique</rdfs:label>
+    <codeCIM10>N18</codeCIM10>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#AntalgiqueOpioide">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Antalgique"/>
+    <rdfs:label xml:lang="fr">Antalgique opioïde</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Dr_Trabelsi">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://example.org/pharma#Medecin"/>
+    <rdfs:label xml:lang="fr">Dr Trabelsi</rdfs:label>
+    <nom>Trabelsi</nom>
+    <specialite>Pneumologie</specialite>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Pharmacien">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#ProfessionnelSante"/>
+    <rdfs:label xml:lang="fr">Pharmacien</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db36">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/pharma#age"/>
+    <owl:someValuesFrom rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db37"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db37">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <owl:withRestrictions rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db39"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#estContenuDans">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="fr">est contenue dans</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Molecule"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#Medicament"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db26">
+    <rdf:first rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db24"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#Generique">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Medicament"/>
+    <rdfs:label xml:lang="fr">Générique</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#MaladieAigue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Pathologie"/>
+    <rdfs:label xml:lang="fr">Maladie aiguë</rdfs:label>
+    <owl:disjointWith rdf:resource="http://example.org/pharma#MaladieChronique"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#RenouvellementLong">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#PrescriptionRenouvelable"/>
+    <rdfs:label xml:lang="fr">Renouvellement long (&gt; 3 mois)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db17">
+    <rdf:first rdf:resource="http://example.org/pharma#Generique"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db18"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db68">
+    <rdf:first rdf:resource="http://example.org/pharma#DonneeClinique"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db46">
+    <rdf:first rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db45"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db10">
+    <rdf:first rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db8"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db58">
+    <rdf:first rdf:resource="http://example.org/pharma#Prescription"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db59"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#PrincepsSansOrdonnance">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pharma#Princeps"/>
+    <rdfs:label xml:lang="fr">Princeps sans ordonnance</rdfs:label>
+    <owl:equivalentClass rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db7"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db31">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:intersectionOf rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db33"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db25">
+    <rdf:first rdf:resource="http://example.org/pharma#EffetSecondaire"/>
+    <rdf:rest rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db26"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db11">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:intersectionOf rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db13"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db59">
+    <rdf:first rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db57"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pharma#aPrescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="fr">a pour prescription</rdfs:label>
+    <rdfs:domain rdf:resource="http://example.org/pharma#Patient"/>
+    <rdfs:range rdf:resource="http://example.org/pharma#Prescription"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db45">
+    <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">18</xsd:minInclusive>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db48">
+    <rdf:first rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db43"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db22">
+    <rdf:first rdf:nodeID="n88cf5819272f434b8dcb87f43c6ee47db20"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+</rdf:RDF>

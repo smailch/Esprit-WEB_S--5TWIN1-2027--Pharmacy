@@ -40,7 +40,7 @@ Note : la grille est individuelle → chaque membre doit pouvoir présenter sa p
 
 ## État d'avancement
 - [x] Site vitrine React + Vite (présentation de l'ontologie) — poussé sur GitHub
-- [ ] Ontologie complète (.owl) — EN COURS par l'équipe ; Ismail la fournira une fois terminée
+- [x] Ontologie v2 corrigée : `ontologie/pharma.ttl` + `pharma.owl` + `requetes.sparql` (8 modules × 3 niveaux, Administration remplacé par DonneeClinique, URI sans accents)
 - [ ] Ismail donnera ensuite les deux modules dont il est responsable → à développer
 - [ ] Back-end + SPARQL (CRUD, filtres, recherche)
 - [ ] Front-end applicatif branché au back-end
@@ -66,4 +66,5 @@ Note : la grille est individuelle → chaque membre doit pouvoir présenter sa p
 Attendre le fichier de l'ontologie et la description des deux modules d'Ismail. Ne rien coder de ces modules avant.
 
 ## Journal
+- 2026-10-27 : ontologie v2 réécrite à partir de ontograf.rdf (corrections : classe Voie non déclarée, codeATC/idPatient à la fois Object et Datatype property, Personne à 3 sous-classes, accents dans les URI). Répartition proposée 2 modules/membre dans ontologie/README.md (à confirmer par l'équipe).
 - 2026-10-27 : site vitrine créé et poussé ; consignes et grille notées ici.
