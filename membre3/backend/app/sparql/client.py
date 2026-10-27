@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import re
+import threading
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from decimal import Decimal
@@ -95,6 +96,7 @@ class SparqlClient(ABC):
 class RdflibClient(SparqlClient):
     def __init__(self, files: list[Path]):
         self.files = files
+        self.lock = threading.RLock()  # rdflib n'est pas sûr en lecture/écriture concurrentes
         self.g = Graph()
         self.reset()
 
@@ -102,38 +104,39 @@ class RdflibClient(SparqlClient):
         g = Graph()
         for f in self.files:
             g.parse(f, format="turtle")
-        self.g = g
+        with self.lock:
+            self.g = g
 
-    def select(self, query):
+    def _query(self, query):
         try:
-            res = self.g.query(query)
+            with self.lock:
+                res = self.g.query(query)
+                return res, list(res) if res.type != "ASK" else None
         except Exception as e:  # erreur de syntaxe, etc.
             raise SparqlError(str(e)) from e
+
+    def select(self, query):
+        res, rows_ = self._query(query)
         vars_ = [str(v) for v in res.vars]
         rows = [{v: _py(row[v]) for v in vars_ if row[v] is not None and not isinstance(row[v], BNode)}
-                for row in res]
+                for row in rows_]
         return SelectResult(vars_, rows)
 
     def ask(self, query):
-        try:
-            return bool(self.g.query(query).askAnswer)
-        except Exception as e:
-            raise SparqlError(str(e)) from e
+        return bool(self._query(query)[0].askAnswer)
 
     def graph(self, query):
-        try:
-            res = self.g.query(query)
-        except Exception as e:
-            raise SparqlError(str(e)) from e
+        _, triples = self._query(query)
         out = Graph()
         out.bind("", "http://example.org/pharma#")
-        for t in res:
+        for t in triples:
             out.add(t)
         return out.serialize(format="turtle")
 
     def update(self, query):
         try:
-            self.g.update(query)
+            with self.lock:
+                self.g.update(query)
         except Exception as e:
             raise SparqlError(str(e)) from e
 

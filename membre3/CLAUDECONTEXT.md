@@ -16,6 +16,8 @@ Consignes complètes : `../PROMPT_CLAUDE_CODE_MEMBRE3.md`. Contexte d'équipe : 
 - [x] Étape 2 : squelette, client SPARQL (Fuseki/rdflib), scripts, validation HermiT
 - [x] Étape 3 : individus (19 pathologies, 11 patients, 5 médecins, 3 pharmaciens), HermiT OK
 - [x] Étape 4 : 36 requêtes nommées (`backend/sparql`), services, 50 tests rdflib, `docs/SPARQL.md` généré
+- [x] Étape 5 : API FastAPI (`/api/...`, OpenAPI sur `/docs`), erreurs `{code, message, details}`,
+  201/204/404/409/422, console SPARQL lecture seule ; 58 tests (dont 8 d'intégration TestClient)
 
 ## Reste à faire
-- API, NLP, frontend, docs, installation propre.
+- NLP (`/api/nlp/ask`), frontend, docs, installation propre.
