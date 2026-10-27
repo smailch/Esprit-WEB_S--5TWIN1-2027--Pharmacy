@@ -45,12 +45,15 @@ npm run dev
 
 ```
 ontologie/        pharma.ttl (source), pharma.owl (Protégé), requetes.sparql
+  extensions/                        individus ajoutés par les membres (chargés en plus de pharma.ttl)
 backend/          FastAPI + rdflib + owlrl (inférence OWL 2 RL)
   app/modules/molecule_medicament/   module A : routes, 16 requêtes SPARQL nommées, CRUD
+  app/modules/pathologie_personne/   module Pathologie + Personne : routes, 36 requêtes .rq, CRUD, NLP
+  tools/                             validation HermiT, évaluation NLP, génération de docs/sante/SPARQL.md
   nlp/pharmanlu/                     modèle IA PharmaNLU-A (question → SPARQL)
   nlp/data/  nlp/models/             jeux de données et modèle entraîné
-  tests/                             36 tests pytest
-src/              React + Vite : site vitrine (/) + application (/molecules, /medicaments…)
+  tests/                             100 tests pytest (36 module A + 64 Pathologie + Personne)
+src/              React + Vite : site vitrine (/) + application (/molecules, /medicaments, /sante, /pathologies…)
 scripts/          setup / start (Windows et macOS/Linux)
 ```
 
@@ -87,6 +90,34 @@ cd backend
 .venv/Scripts/python -m nlp.train                  # ré-entraîne + évalue + écrit la carte du modèle
 .venv/Scripts/python -m nlp.evaluate               # évalue le modèle enregistré
 .venv/Scripts/python -m pytest -q                  # 36 tests
+```
+
+## Module Pathologie + Personne (Allaya Ahmed)
+
+Section **Pathologie + Personne** du menu de l'application. Individus : `ontologie/extensions/individus-ahmed.ttl`
+(19 pathologies, 11 patients, 5 médecins, 3 pharmaciens ; `pharma.ttl` n'est pas modifié).
+
+| Page | Contenu |
+|---|---|
+| Tableau santé (`/sante`) | compteurs enfants/adultes, aiguës/chroniques (sous-types compris), répartitions, alertes en cours |
+| Pathologies | recherche sans accents, filtre aiguë/chronique/sous-type, CRUD, médicaments indiqués et contre-indiqués, patients |
+| Personnes | onglets Patients / Médecins / Pharmaciens, filtres (âge, sexe, pathologie, spécialité), CRUD ; classe Enfant/Adulte **dérivée de l'âge** (badge « inféré ») |
+| Fiche patient | pathologies (ajout/retrait), prescriptions, **alerte de sécurité en direct** (contre-indication ou allergie), export Turtle |
+| Assistant santé | question en français → SPARQL → résultats, avec entités surlignées, confiance et étapes du pipeline |
+| Graphe | relations entrantes et sortantes d'une entité |
+
+- **API** : `/api/pathologies`, `/api/patients`, `/api/medecins`, `/api/pharmaciens` (CRUD, 201/204/404/409/422),
+  `/api/alertes`, `/api/sante/stats`, `/api/sante/recherche`, `/api/sante/graphe/{id}`, `/api/sante/nlp/ask`.
+- **SPARQL** : 36 requêtes nommées et paramétrées (aucune concaténation de texte utilisateur), documentées avec leurs vrais résultats dans `docs/sante/SPARQL.md`.
+- **Assistant santé (aucune API de LLM)** : spaCy (`fr_core_news_sm`, PhraseMatcher, Matcher), RapidFuzz, scikit-learn
+  (TF-IDF → régression logistique, 14 intentions) ; **100 % sur 78 questions de test**. Détails : `docs/sante/NLP.md`.
+- Démo et oral : `docs/sante/SCENARIO_DEMO.md`, `docs/sante/ORAL_QA.md`.
+
+```bash
+cd backend
+.venv/Scripts/python -m pytest -q tests/test_sante_sparql.py tests/test_sante_api.py tests/test_sante_nlp.py   # 64 tests
+.venv/Scripts/python tools/eval_nlp_sante.py      # précision de l'assistant santé
+.venv/Scripts/python tools/validate_ontology.py   # HermiT (Java requis) : cohérence + classes inférées
 ```
 
 ## Équipe NeoCoders

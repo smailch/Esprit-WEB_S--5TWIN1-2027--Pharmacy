@@ -13,6 +13,8 @@ joblib==1.6.0
 RapidFuzz==3.14.6
 numpy==2.5.4
 scipy==1.18.1
+# Validation HermiT du module Pathologie + Personne (backend/tools/validate_ontology.py, nécessite Java)
+owlready2==0.51
 # Tests
 pytest==9.1.1
 httpx==0.28.1

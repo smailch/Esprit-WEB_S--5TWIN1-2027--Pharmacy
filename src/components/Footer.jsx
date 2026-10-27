@@ -18,7 +18,6 @@ export default function Footer() {
                 <a href={`#${l.id}`} onClick={(e) => { e.preventDefault(); scrollToId(l.id); }}>{l.label}</a>
               </li>
             ))}
-            <li><a href="/ahmed.html">Pathologies &amp; Personnes (application)</a></li>
           </ul>
         </nav>
       </div>

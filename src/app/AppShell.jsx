@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
-import { FlaskConical, Pill, Scale, ShieldAlert, MessageSquareText, Database, Menu, X, Home, RotateCcw } from 'lucide-react';
+import { FlaskConical, Pill, Scale, ShieldAlert, MessageSquareText, Database, Menu, X, Home, RotateCcw,
+  HeartPulse, Stethoscope, Users, MessagesSquare, Network } from 'lucide-react';
 import Logo from '../components/Logo.jsx';
 import { api } from '../api/client.js';
 import { useToast } from './Toast.jsx';
@@ -12,7 +13,15 @@ const links = [
   { to: '/interactions', label: 'Interactions', icon: ShieldAlert },
   { to: '/assistant', label: 'Assistant IA', icon: MessageSquareText },
   { to: '/sparql', label: 'Console SPARQL', icon: Database },
+  // Module Pathologie + Personne
+  { to: '/sante', label: 'Tableau santé', icon: HeartPulse, section: 'Pathologie + Personne' },
+  { to: '/pathologies', label: 'Pathologies', icon: Stethoscope },
+  { to: '/personnes', label: 'Personnes', icon: Users },
+  { to: '/assistant-sante', label: 'Assistant santé', icon: MessagesSquare },
+  { to: '/graphe', label: 'Graphe', icon: Network },
 ];
+
+const SANTE_PATHS = ['/sante', '/pathologies', '/personnes', '/patients', '/assistant-sante', '/graphe'];
 
 export default function AppShell() {
   const [open, setOpen] = useState(false);
@@ -49,7 +58,7 @@ export default function AppShell() {
           <Logo size={28} />
           <span>PharmaSémantique</span>
         </Link>
-        <span className="app-module-tag">Module A · Molécule + Médicament</span>
+        <span className="app-module-tag">{SANTE_PATHS.some((p) => pathname.startsWith(p)) ? 'Pathologie + Personne' : 'Module A · Molécule + Médicament'}</span>
         <button type="button" className="nav-toggle app-toggle" aria-expanded={open} aria-controls="app-nav" aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'} onClick={() => setOpen((v) => !v)}>
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -59,8 +68,9 @@ export default function AppShell() {
         <aside id="app-nav" className={`app-nav ${open ? 'is-open' : ''}`} aria-label="Navigation de l’application">
           <nav>
             <ul>
-              {links.map(({ to, label, icon: Icon }) => (
+              {links.map(({ to, label, icon: Icon, section }) => (
                 <li key={to}>
+                  {section && <p className="app-nav-section">{section}</p>}
                   <NavLink to={to} className={({ isActive }) => `app-link ${isActive ? 'is-active' : ''}`}>
                     <Icon size={18} strokeWidth={1.5} aria-hidden="true" /> {label}
                   </NavLink>

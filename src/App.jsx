@@ -11,6 +11,9 @@ import Interactions from './pages/Interactions.jsx';
 import Assistant from './pages/Assistant.jsx';
 import SparqlConsole from './pages/SparqlConsole.jsx';
 import NotFound from './pages/NotFound.jsx';
+import TableauSante from './pages/sante/TableauSante.jsx';
+import Pathologies from './pages/sante/Pathologies.jsx';
+import { AssistantSantePage, GraphePage, PatientPage, PersonnesPage, SanteLayout } from './pages/sante/routes.jsx';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -33,6 +36,16 @@ export default function App() {
           <Route path="/interactions" element={<Interactions />} />
           <Route path="/assistant" element={<Assistant />} />
           <Route path="/sparql" element={<SparqlConsole />} />
+          {/* Module Pathologie + Personne */}
+          <Route element={<SanteLayout />}>
+            <Route path="/sante" element={<TableauSante />} />
+            <Route path="/pathologies" element={<Pathologies />} />
+            <Route path="/personnes" element={<PersonnesPage />} />
+            <Route path="/patients/:id" element={<PatientPage />} />
+            <Route path="/assistant-sante" element={<AssistantSantePage />} />
+            <Route path="/graphe" element={<GraphePage />} />
+            <Route path="/graphe/:id" element={<GraphePage />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

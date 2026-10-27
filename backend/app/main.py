@@ -10,6 +10,8 @@ from . import config
 from .graph_store import store
 from .modules.molecule_medicament.nlp_router import router as nlp_router
 from .modules.molecule_medicament.router import router as module_a_router
+from .modules.pathologie_personne.router import register_error_handlers
+from .modules.pathologie_personne.router import router as pathologie_personne_router
 
 app = FastAPI(
     title="PharmaSémantique API",
@@ -21,6 +23,8 @@ app.add_middleware(CORSMiddleware, allow_origins=config.CORS_ORIGINS, allow_meth
 
 app.include_router(module_a_router, prefix="/api")
 app.include_router(nlp_router, prefix="/api")
+app.include_router(pathologie_personne_router, prefix="/api")
+register_error_handlers(app)
 
 
 @app.on_event("startup")
