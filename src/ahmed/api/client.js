@@ -1,5 +1,6 @@
 // Client API unique : tous les appels au backend passent par ici (pas de fetch ailleurs).
-const BASE = import.meta.env.VITE_API_BASE || '/api';
+// Préfixe propre au module (le backend du module A utilise /api) ; le proxy Vite le redirige vers le port 8001.
+const BASE = import.meta.env.VITE_AHMED_API_BASE || '/api-ahmed';
 
 export class ApiError extends Error {
   constructor(status, code, message, details) {

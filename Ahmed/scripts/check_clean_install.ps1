@@ -20,10 +20,10 @@ Step "Tests backend (pytest)"
 Set-Location (Join-Path $app "backend")
 & .venv/Scripts/python.exe -m pytest -q; Check "pytest"
 
-Step "Lint + build frontend"
-Set-Location (Join-Path $app "frontend")
-npm run lint; Check "lint"
+Step "Build du projet React (site vitrine + ahmed.html)"
+Set-Location $tmp
 npm run build; Check "build"
+if (-not (Test-Path (Join-Path $tmp "dist/ahmed.html"))) { Write-Host "ÉCHEC : dist/ahmed.html absent" -ForegroundColor Red; exit 1 }
 
 Step "Démarrage de l'API et appel /api/health"
 Set-Location (Join-Path $app "backend")

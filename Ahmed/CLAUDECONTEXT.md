@@ -10,7 +10,10 @@ Consignes complètes : `../PROMPT_CLAUDE_CODE_MEMBRE3.md`. Contexte d'équipe : 
 - `PatientEnfant`/`PatientAdulte` jamais écrits : on stocke `:Patient` + `:age`, la classe est dérivée.
 - HermiT : `xsd:date` non supporté → correctif en mémoire (`xsd:dateTime`) dans `validate_ontology.py`.
   **À remonter à l'équipe** : remplacer `xsd:date` par `xsd:dateTime` dans `pharma.ttl` (ou retirer le range).
-- Frontend sur le port **5174** (5173 = site vitrine de l'équipe).
+- Interface **intégrée au projet React de la racine** : page `ahmed.html`, code `src/ahmed/` (multi-pages Vite).
+  Aucun fichier partagé modifié sauf `vite.config.js` (proxy `/api-ahmed` → :8001, build multi-pages) et
+  `src/components/Footer.jsx` (lien). Backend sur le port **8001** (le 8000 = backend du module A sur `origin/main`).
+  Fusion avec `origin/main` : voir `INTEGRATION.md` (seul conflit attendu : `vite.config.js`).
 - Scripts `.ps1` en UTF-8 **avec BOM** et sans `$ErrorActionPreference = "Stop"` (Windows PowerShell 5.1).
 - Docker non installé sur le PC de dev : `docker-compose.yml` fourni mais non testé localement.
 
@@ -22,7 +25,7 @@ Consignes complètes : `../PROMPT_CLAUDE_CODE_MEMBRE3.md`. Contexte d'équipe : 
   201/204/404/409/422, console SPARQL lecture seule, tests d'intégration TestClient
 - [x] Étape 6 : NLP spaCy + RapidFuzz + scikit-learn (`app/nlp/`, `POST /api/nlp/ask`), 14 intentions,
   232 exemples, 78 questions de test → 100 % (`scripts/eval_nlp.py`). Voir `docs/NLP.md`.
-- [x] Étape 7 : frontend React 18 + Vite : tableau de bord, pathologies, personnes (3 onglets),
+- [x] Étape 7 : frontend React 18 (page `ahmed.html` du projet racine) : tableau de bord, pathologies, personnes (3 onglets),
   fiche patient + alertes, assistant NLP, graphe SVG, console SPARQL ; lint 0 avertissement.
 - [x] Étape 8 : `docs/SCENARIO_DEMO.md` (rejoué via l'API), `docs/ORAL_QA.md`, `README.md`, scripts setup/start
 - [x] Étape 9 : `scripts/check_clean_install` (clone neuf → setup → 65 tests → lint/build → /api/health)

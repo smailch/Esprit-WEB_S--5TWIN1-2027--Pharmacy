@@ -1,5 +1,5 @@
 # git clone … && cd Ahmed && docker compose up --build
-# Fuseki : http://localhost:3030 · API : http://localhost:8000/docs · Appli : http://localhost:5174
+# Fuseki : http://localhost:3030 · API : http://localhost:8001/docs · Appli : http://localhost:5173/ahmed.html
 services:
   fuseki:
     image: stain/jena-fuseki:4.8.0
@@ -21,17 +21,18 @@ services:
       SPARQL_BACKEND: fuseki
       FUSEKI_URL: http://fuseki:3030
       FUSEKI_PASSWORD: ${FUSEKI_PASSWORD:-admin}
-      CORS_ORIGINS: http://localhost:5174
-    ports: ["8000:8000"]
+      CORS_ORIGINS: http://localhost:5173
+    ports: ["8001:8000"]
     depends_on:
       fuseki: { condition: service_healthy }
 
+  # Projet React commun (site vitrine + page ahmed.html), à la racine du dépôt
   frontend:
     image: node:22.11-alpine
     working_dir: /app
     command: sh -c "npm ci && npm run dev -- --host 0.0.0.0"
     environment:
-      VITE_API_TARGET: http://backend:8000
-    ports: ["5174:5174"]
-    volumes: ["./frontend:/app", "/app/node_modules"]
+      VITE_AHMED_BACKEND_URL: http://backend:8000
+    ports: ["5173:5173"]
+    volumes: ["..:/app", "/app/node_modules"]
     depends_on: [backend]

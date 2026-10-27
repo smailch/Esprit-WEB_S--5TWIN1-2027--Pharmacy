@@ -7,7 +7,7 @@ import sys
 
 import httpx
 
-api = sys.argv[1] if len(sys.argv) > 1 else "http://localhost:8000"
+api = sys.argv[1] if len(sys.argv) > 1 else "http://localhost:8001"
 r = httpx.post(f"{api}/api/admin/reset", timeout=60)
 r.raise_for_status()
 print("Données réinitialisées :", r.json())

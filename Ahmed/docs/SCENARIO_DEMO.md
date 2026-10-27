@@ -3,9 +3,9 @@
 Modules **Pathologie** et **Personne**. Toutes les étapes ont été rejouées via l'API : les chiffres ci-dessous sont les vrais.
 
 ## Avant de commencer (2 min avant l'oral)
-1. `cd Ahmed` puis `.\scripts\start.ps1` (backend sur :8000, application sur **http://localhost:5174**).
+1. `cd Ahmed` puis `.\scripts\start.ps1` (backend sur :8001, application sur **http://localhost:5173/ahmed.html**, accessible aussi depuis le pied de page du site vitrine).
 2. Dans l'appli : pied de page → **Réinitialiser les données** (état initial garanti).
-3. Onglets ouverts : l'application, `http://localhost:8000/docs`, et ce document.
+3. Onglets ouverts : l'application, `http://localhost:8001/docs`, et ce document.
 4. Faire une question NLP « à blanc » : le premier appel charge spaCy (~4 s), les suivants prennent environ 20 ms.
 
 ## Déroulé
@@ -26,6 +26,6 @@ Modules **Pathologie** et **Personne**. Toutes les étapes ont été rejouées v
 
 ## Plan B
 - Backend planté : relancer `.\scripts\start.ps1`. Données incohérentes : **Réinitialiser les données** (ou `.\scripts\reset_data.ps1`).
-- Interface inutilisable : tout montrer depuis `http://localhost:8000/docs` (Try it out), avec les mêmes étapes.
+- Interface inutilisable : tout montrer depuis `http://localhost:8001/docs` (Try it out), avec les mêmes étapes.
 - Rien ne marche : `docs/SPARQL.md` (requêtes et vrais résultats), `docs/NLP.md`, et la sortie de `.\scripts\eval_nlp.ps1` et `.\scripts\validate_ontology.ps1`.
 - Prévoir des captures d'écran des étapes 1, 3, 5 et 6 dans `docs/captures/` (à prendre la veille).

@@ -50,7 +50,8 @@ export default function App() {
 
   return (
     <>
-      <a className="skip-link" href="#main">Aller au contenu</a>
+      <a className="skip-link" href="#main"
+        onClick={(e) => { e.preventDefault(); document.getElementById('main')?.focus(); }}>Aller au contenu</a>
       <header className="topbar">
         <div className="container topbar-inner">
           <a className="brand" href="#/">
@@ -61,18 +62,19 @@ export default function App() {
             {NAV.map(([path, label]) => (
               <a key={path} href={`#/${path}`} aria-current={current === path ? 'page' : undefined}>{label}</a>
             ))}
+            <a href="/" className="back-link">← Site vitrine</a>
           </nav>
         </div>
       </header>
 
       {health.error && (
         <div className="offline" role="alert">
-          Backend injoignable : lancez <code>uvicorn app.main:app</code> dans <code>Ahmed/backend</code>.
+          Backend injoignable : lancez <code>uvicorn app.main:app --port 8001</code> dans <code>Ahmed/backend</code>.
           <button className="btn small" onClick={health.reload}>Réessayer</button>
         </div>
       )}
 
-      <main id="main" className="container main">
+      <main id="main" className="container main" tabIndex={-1}>
         <Page route={route} />
       </main>
 

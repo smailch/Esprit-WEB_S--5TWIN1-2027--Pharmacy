@@ -17,8 +17,8 @@ sh "$APP/scripts/setup.sh"
 echo "=== Tests backend"
 cd "$APP/backend" && .venv/bin/python -m pytest -q
 
-echo "=== Lint + build frontend"
-cd "$APP/frontend" && npm run lint && npm run build
+echo "=== Build du projet React (site vitrine + ahmed.html)"
+cd "$TMP/repo" && npm run build && test -f dist/ahmed.html
 
 echo "=== Démarrage de l'API et appel /api/health"
 cd "$APP/backend"

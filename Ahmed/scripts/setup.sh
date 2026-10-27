@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# Installation complète (Linux/macOS) : venv Python, dépendances épinglées, modèles NLP, dépendances front.
+# Installation complète (Linux/macOS) : venv Python, dépendances épinglées, modèles NLP, dépendances du projet React (racine).
 # Usage (depuis Ahmed/) : sh scripts/setup.sh
 set -e
 cd "$(dirname "$0")/.."
@@ -9,6 +9,6 @@ cd backend
 .venv/bin/python -m pip install --upgrade pip
 .venv/bin/python -m pip install -r requirements.txt
 .venv/bin/python scripts/setup_models.py
-cd ../frontend
+cd ../..
 npm ci --no-audit --no-fund
-echo "Installation terminée. Lancer : sh scripts/start.sh"
+echo "Installation terminée. Lancer : sh Ahmed/scripts/start.sh"

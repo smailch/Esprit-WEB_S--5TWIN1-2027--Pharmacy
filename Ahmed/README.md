@@ -8,10 +8,17 @@ Ontologie partagée : `../ontologie/pharma.ttl` (non modifiée) + mes individus 
 |---|---|---|
 | Triplestore | rdflib en mémoire (défaut) ou Apache Jena Fuseki | `backend/app/sparql/client.py` |
 | SPARQL | 36 requêtes nommées | `backend/sparql/*.rq`, doc : `docs/SPARQL.md` |
-| API | Python 3.11, FastAPI, Pydantic | `backend/app/` → http://localhost:8000/docs |
+| API | Python 3.11, FastAPI, Pydantic | `backend/app/` → http://localhost:8001/docs |
 | NLP → SPARQL | spaCy, RapidFuzz, scikit-learn (aucune API de LLM) | `backend/app/nlp/`, doc : `docs/NLP.md` |
-| Interface | React 18 + Vite | `frontend/` → http://localhost:5174 |
+| Interface | React 18 + Vite, **intégrée au projet React de l'équipe** (page `ahmed.html`) | `../src/ahmed/` → http://localhost:5173/ahmed.html |
 | Raisonneur | HermiT (owlready2) | `scripts/validate_ontology.py` |
+
+## Intégration dans le projet de l'équipe
+- **Interface** : page `ahmed.html` du projet React/Vite de la racine (même `package.json`, même serveur Vite,
+  même build) ; code dans `src/ahmed/`. Lien depuis le pied de page du site vitrine.
+- **API** : backend séparé sur le port **8001**, préfixe `/api-ahmed` côté navigateur (proxy dans `vite.config.js`),
+  pour ne pas entrer en collision avec le backend du module A (port 8000, préfixe `/api`).
+- Guide de fusion avec `origin/main` : `INTEGRATION.md`.
 
 ## Prérequis
 - **Python 3.11**, **Node.js 18+** (testé avec 22), **Java 17+** (seulement pour HermiT et Fuseki sans Docker).
@@ -21,7 +28,7 @@ Ontologie partagée : `../ontologie/pharma.ttl` (non modifiée) + mes individus 
 Windows (PowerShell), depuis le dossier `Ahmed/` :
 ```powershell
 .\scripts\setup.ps1      # venv, dépendances épinglées, modèle spaCy, classifieur, npm ci
-.\scripts\start.ps1      # backend (nouvelle fenêtre) + frontend
+.\scripts\start.ps1      # backend sur 8001 (nouvelle fenêtre) + projet React de la racine
 ```
 Linux / macOS : `sh scripts/setup.sh` puis `sh scripts/start.sh`.
 
@@ -31,10 +38,10 @@ cd backend
 py -3.11 -m venv .venv
 .venv/Scripts/python -m pip install -r requirements.txt
 .venv/Scripts/python scripts/setup_models.py
-.venv/Scripts/python -m uvicorn app.main:app --reload     # API : http://localhost:8000/docs
-cd ../frontend
+.venv/Scripts/python -m uvicorn app.main:app --reload --port 8001   # API : http://localhost:8001/docs
+cd ../..                                                             # racine du dépôt (projet React commun)
 npm ci
-npm run dev                                                # Appli : http://localhost:5174
+npm run dev                                                          # Appli : http://localhost:5173/ahmed.html
 ```
 
 ## Avec Docker
@@ -63,7 +70,7 @@ Lance Fuseki (http://localhost:3030, dataset `pharma`, chargé automatiquement a
 ## Tests
 ```powershell
 cd backend; .venv/Scripts/python -m pytest -q     # 65 tests : SPARQL, API, NLP (rdflib, sans Fuseki)
-cd ../frontend; npm run lint
+cd ../..; npm run build                           # build du projet React (index.html + ahmed.html)
 ```
 
 ## Jeu de données
@@ -77,8 +84,8 @@ Les prescriptions, médicaments et molécules viennent des modules des autres me
 ## Dépannage
 | Problème | Solution |
 |---|---|
-| Bandeau « Backend injoignable » | Lancer l'API (`uvicorn`) dans `backend/` ; vérifier http://localhost:8000/api/health |
-| Port 5174 ou 8000 occupé | Changer `--port` (backend) ou `server.port` dans `frontend/vite.config.js` et `VITE_API_TARGET` dans `.env` |
+| Bandeau « Backend injoignable » | Lancer l'API (`uvicorn … --port 8001`) dans `backend/` ; vérifier http://localhost:8001/api/health |
+| Port 8001 occupé | Lancer uvicorn sur un autre port et définir `VITE_AHMED_BACKEND_URL=http://127.0.0.1:<port>` avant `npm run dev` |
 | `fr_core_news_md` introuvable | `.venv/Scripts/python scripts/setup_models.py` |
 | Premier appel NLP lent (~4 s) | Normal : chargement de spaCy, les suivants prennent environ 20 ms |
 | `validate_ontology` échoue sur Java | Installer Java 17+ et vérifier `java -version` |

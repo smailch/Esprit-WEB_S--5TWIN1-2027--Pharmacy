@@ -185,3 +185,5 @@ pre.code { background: var(--forest); color: var(--ivory); padding: 1rem; border
   .ask { flex-direction: column; }
   .bars li { grid-template-columns: 1fr 1fr 2rem; }
 }
+.topbar nav a.back-link { opacity: .6; margin-left: .5rem; border: 1px solid rgba(255, 255, 255, .25); }
+.main:focus { outline: none; }
