@@ -23,6 +23,7 @@ import TableauSante from './pages/sante/TableauSante.jsx';
 import Pathologies from './pages/sante/Pathologies.jsx';
 import ConsoleSante from './pages/sante/ConsoleSante.jsx';
 import { AssistantSantePage, PatientPage, PersonnesPage, SanteLayout } from './pages/sante/routes.jsx';
+import ModuleBSection from './components/ModuleBSection.jsx';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -60,6 +61,7 @@ export default function App() {
             <Route path="/assistant-sante" element={<AssistantSantePage />} />
           </Route>
           <Route path="/sante-sparql" element={<ConsoleSante />} />
+          <Route path="/module-b" element={<ModuleBSection />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

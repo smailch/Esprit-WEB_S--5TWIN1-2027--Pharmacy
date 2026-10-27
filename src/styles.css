@@ -472,6 +472,61 @@ code { font-family: var(--font-mono); font-size: 0.86em; background: rgba(30, 50
 /* Les cartes .lift révélées gardent un hover réactif. */
 .lift[data-reveal].is-visible { transition: opacity 0.9s var(--ease) var(--d, 0s), transform 0.5s var(--ease), background-color 0.4s var(--ease); }
 
+/* ---------- Module B ---------- */
+.mb-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.mb-block { margin-top: 22px; display: grid; gap: 16px; }
+.mb-title { display: flex; align-items: center; gap: 12px; }
+.mb-title h3, .mb-block h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.45rem; }
+.mb-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.mb-inline { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: end; }
+.mb-list { display: grid; gap: 8px; }
+.mb-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(242, 240, 236, 0.45);
+  cursor: pointer;
+}
+.mb-row.is-static { cursor: default; }
+.mb-row:hover { background: rgba(242, 240, 236, 0.8); }
+.mb-meta { display: block; color: var(--ink-soft); font-size: 0.82rem; }
+.mb-banner { padding: 12px 14px; border-radius: 12px; background: rgba(242, 240, 236, 0.55); color: var(--green); }
+.mb-banner.is-error { background: rgba(155, 138, 62, 0.16); color: var(--forest); }
+.mb-detail, .mb-answer { display: grid; gap: 14px; }
+.sparql {
+  margin: 0;
+  padding: 16px;
+  overflow: auto;
+  border-radius: 14px;
+  background: var(--forest);
+  color: var(--ivory);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+.field { display: grid; gap: 6px; font-size: 0.85rem; color: var(--green); }
+.field input, .field select, .field textarea {
+  width: 100%;
+  min-height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--line-strong);
+  background: rgba(242, 240, 236, 0.75);
+  color: var(--forest);
+  padding: 8px 12px;
+  font: inherit;
+}
+.field textarea { min-height: 88px; resize: vertical; }
+@media (max-width: 860px) {
+  .mb-grid, .mb-inline { grid-template-columns: 1fr; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }

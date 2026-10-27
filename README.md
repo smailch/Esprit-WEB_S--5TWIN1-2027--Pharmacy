@@ -335,3 +335,7 @@ Bibliothèques réellement utilisées : **spaCy 3.8** + modèle **fr_core_news_s
   `moduleD.css` ; `src/api/moduleD.js`.
 - Enregistrement dans les fichiers communs (minimal) : 2 lignes dans `backend/app/main.py` (routeur) ; routes dans
   `src/App.jsx` ; liens du menu dans `src/app/AppShell.jsx`. Aucun fichier des autres modules n'est modifié.
+
+## Module B — effets et contre-indications
+
+Page `/module-b`. L'API est sous `/api/b` pour ne pas recouvrir `/api/nlp/ask` ni `/api/health`. Qwen2.5 3B Instruct (`ollama pull qwen2.5:3b`) écrit le SPARQL ; les règles spaCy répondent si Ollama est absent. Le graphe de travail du module est `backend/data/graph.ttl`. Jeton d'écriture de démonstration : `neocoders-module-b`.

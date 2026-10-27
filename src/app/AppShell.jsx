@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
 import { FlaskConical, Pill, Scale, ShieldAlert, MessageSquareText, Database, Menu, X, Home, RotateCcw,
-  ClipboardList, Stethoscope, Route, Bot, TerminalSquare, HeartPulse, Activity, Users, MessagesSquare, Braces } from 'lucide-react';
+  ClipboardList, Stethoscope, Route, Bot, TerminalSquare, HeartPulse, Activity, Users, MessagesSquare, Braces, AlertTriangle } from 'lucide-react';
 import Logo from '../components/Logo.jsx';
 import { api } from '../api/client.js';
 import { useToast } from './Toast.jsx';
@@ -25,6 +25,7 @@ const links = [
   { to: '/personnes', label: 'Personnes', icon: Users },
   { to: '/assistant-sante', label: 'Assistant santé', icon: MessagesSquare },
   { to: '/sante-sparql', label: 'Console SPARQL (santé)', icon: Braces },
+  { to: '/module-b', label: 'Effets et contre-indications', icon: AlertTriangle, section: 'Module B' },
 ];
 const MODULE_D = links.filter((l) => l.module === 'D').map((l) => l.to);
 

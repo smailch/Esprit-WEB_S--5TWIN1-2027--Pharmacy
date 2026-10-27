@@ -9,3 +9,7 @@ backend/data/runtime.ttl
 __pycache__/
 .pytest_cache/
 backend/data/sante_intent.joblib
+backend/data/*.ttl
+backend/data/*.tmp
+*.pyc
+.env
