@@ -62,6 +62,13 @@ Note : la grille est individuelle → chaque membre doit pouvoir présenter sa p
 - Idéalement : un script de démarrage unique (ou docker-compose) qui lance back + front + triplestore.
 - Tester une installation « propre » (clone neuf dans un dossier temporaire) avant chaque livraison.
 
+## Module choisi par Ismail : A — Molécule + Médicament
+- Ontologie v2 dans `ontologie/` (pharma.ttl = source, pharma.owl = Protégé, requetes.sparql). 8 modules A–D, 2 classes par membre.
+- Plan détaillé : `PLAN_MODULE_A.md` (v2) — EN ATTENTE DU « GO » FINAL d'Ismail avant tout code.
+- Décisions (2026-10-27) : back FastAPI + rdflib ; une seule application commune (mon module isolé, intégration à la fin) ; valeurs ajoutées proposées par Claude ; site vitrine = page d'accueil `/`.
+- Modèle IA : « PharmaNLU-A » = spaCy fr_core_news_sm + classifieur scikit-learn (TF-IDF mots+caractères → régression logistique) + EntityRuler + RapidFuzz → gabarits SPARQL. Fichier pharmanlu_intent_v1.joblib commité.
+- Python dispo sur ce PC : 3.13 (aussi 3.10) ; Java 17 dispo mais non utilisé.
+
 ## Prochaine étape
 Attendre le fichier de l'ontologie et la description des deux modules d'Ismail. Ne rien coder de ces modules avant.
 

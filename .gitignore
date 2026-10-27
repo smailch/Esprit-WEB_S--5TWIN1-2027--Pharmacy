@@ -3,3 +3,8 @@ dist
 .claude
 /*.mp4
 /*.png
+backend/.venv/
+backend/.env
+backend/data/runtime.ttl
+__pycache__/
+.pytest_cache/
