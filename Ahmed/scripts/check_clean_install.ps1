@@ -4,7 +4,7 @@ param(
     [string]$Source = (git -C $PSScriptRoot rev-parse --show-toplevel),
     [string]$Branch = (git -C $PSScriptRoot rev-parse --abbrev-ref HEAD)
 )
-$ErrorActionPreference = "Stop"
+$ErrorActionPreference = "Continue"  # les avertissements npm/pip sur stderr ne sont pas des erreurs ; on teste $LASTEXITCODE
 $tmp = Join-Path ([IO.Path]::GetTempPath()) ("pharma-clean-" + [guid]::NewGuid().ToString("N").Substring(0, 8))
 function Step($msg) { Write-Host "`n=== $msg" -ForegroundColor Cyan }
 function Check($what) { if ($LASTEXITCODE -ne 0) { Write-Host "ÉCHEC : $what" -ForegroundColor Red; exit 1 } }
