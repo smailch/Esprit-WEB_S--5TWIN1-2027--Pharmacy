@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import MetricCard from './MetricCard.jsx';
 import { scrollToId } from './Navbar.jsx';
@@ -51,9 +52,9 @@ export default function Hero() {
             <button type="button" className="btn btn-primary" onClick={() => scrollToId('ontologie')}>
               Explorer l’ontologie <ArrowRight size={16} strokeWidth={1.6} aria-hidden="true" />
             </button>
-            <button type="button" className="btn btn-ghost" onClick={() => scrollToId('approche')}>
-              Découvrir notre approche
-            </button>
+            <Link to="/molecules" className="btn btn-ghost">
+              Ouvrir l’application
+            </Link>
           </div>
           <div className="hero-metrics stagger" style={{ '--d': '0.64s' }}>
             {heroMetrics.map((m) => <MetricCard key={m.label} {...m} />)}

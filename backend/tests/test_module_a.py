@@ -26,6 +26,16 @@ def test_hierarchie_sans_boucle(client):
 
 
 # ---------- Molécules ----------
+def test_liste_complete_et_tris(client):
+    for tri in ("label", "atc", "dose", "medicaments"):
+        rows = client.get("/api/molecules", params={"tri": tri}).json()["data"]
+        assert len(rows) == 8, tri
+    codeine = next(r for r in rows if r["id"] == "Codeine")
+    assert codeine["nbMedicaments"] == 0 and codeine["medicaments"] == []
+    for tri in ("label", "prix", "prix_desc"):
+        assert len(client.get("/api/medicaments", params={"tri": tri}).json()["data"]) == 9
+
+
 def test_filtre_classe_via_hierarchie(client):
     rows = client.get("/api/molecules", params={"classe": "Antibiotique"}).json()["data"]
     assert ids(rows) == {"Amoxicilline", "Azithromycine"}

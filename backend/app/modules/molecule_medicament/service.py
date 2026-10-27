@@ -101,9 +101,10 @@ def list_molecules(t: Trace, classe=None, q=None, atc=None, tri="label"):
     if atc:
         filters.append('FILTER(STRSTARTS(?atc, {{atc}}))')
         params["atc"] = lit(atc.upper())
-    order = {"label": "?label", "dose": "DESC(?dose)", "atc": "?atc", "medicaments": "DESC(?nbMedicaments)"}.get(tri, "?label")
+    order = {"label": "?label", "dose": "DESC(?dose)", "atc": "?atc", "medicaments": "?label"}.get(tri, "?label")
+    # COALESCE : une molécule sans médicament (ex. Codéine) garde une valeur liée pour l'agrégat.
     sparql = render("""
-SELECT ?m ?label ?atc ?dose (COUNT(DISTINCT ?med) AS ?nbMedicaments) (GROUP_CONCAT(DISTINCT ?medLabel; separator="|") AS ?medicaments) WHERE {
+SELECT ?m ?label ?atc ?dose (GROUP_CONCAT(DISTINCT COALESCE(?medLabel, ""); separator="|") AS ?medicaments) WHERE {
   ?m a :Molecule ; rdfs:label ?label .
   OPTIONAL { ?m :codeATC ?atc }
   OPTIONAL { ?m :doseMaxJourMg ?dose }
@@ -111,11 +112,14 @@ SELECT ?m ?label ?atc ?dose (COUNT(DISTINCT ?med) AS ?nbMedicaments) (GROUP_CONC
   """ + "\n  ".join(filters) + """
 } GROUP BY ?m ?label ?atc ?dose ORDER BY """ + order, **params)
     rows = t.select("Liste des molécules (filtres)", sparql)
-    return [{
+    out = [{
         "id": r["m"], "label": r["label"], "classe": _declared_class(r["m"], Q.MOLECULE_CLASSES),
-        "codeATC": r["atc"], "doseMaxJourMg": r["dose"], "nbMedicaments": r["nbMedicaments"],
-        "medicaments": _split(r["medicaments"]),
+        "codeATC": r["atc"], "doseMaxJourMg": r["dose"],
+        "medicaments": _split(r["medicaments"]), "nbMedicaments": len(_split(r["medicaments"])),
     } for r in rows]
+    if tri == "medicaments":
+        out.sort(key=lambda m: -m["nbMedicaments"])
+    return out
 
 
 def get_molecule(t: Trace, mid: str):
@@ -127,7 +131,7 @@ SELECT ?label ?atc ?dose WHERE {
   OPTIONAL { {{m}} :codeATC ?atc } OPTIONAL { {{m}} :doseMaxJourMg ?dose }
 }""", m=m))[0]
     types = t.select("Classes déclarées et inférées", render("""
-SELECT ?classe ?label WHERE {
+SELECT DISTINCT ?classe ?label WHERE {
   {{m}} rdf:type ?classe . ?classe rdfs:subClassOf* :Molecule ; rdfs:label ?label .
 }""", m=m))
     meds = t.select("Médicaments qui la contiennent (propriété inverse)", render("""
@@ -144,7 +148,7 @@ SELECT ?id ?label ?risque ?pathologie WHERE {
   OPTIONAL { ?id :concernePathologie ?p . ?p rdfs:label ?pathologie }
 }""", m=m))
     inter = t.select("Interactions (propriété symétrique)", render("""
-SELECT ?id ?label WHERE {
+SELECT DISTINCT ?id ?label WHERE {
   {{m}} :interagitAvec ?id . ?id rdfs:label ?label .
 }""", m=m))
     return {
@@ -278,7 +282,7 @@ SELECT ?label ?nom ?dosage ?forme ?ordonnance ?prix WHERE {
   OPTIONAL { {{m}} :surOrdonnance ?ordonnance } OPTIONAL { {{m}} :prixDT ?prix }
 }""", m=m))[0]
     types = t.select("Classes déclarées et inférées", render("""
-SELECT ?classe ?label WHERE {
+SELECT DISTINCT ?classe ?label WHERE {
   {{m}} rdf:type ?classe . ?classe rdfs:subClassOf* :Medicament ; rdfs:label ?label .
 }""", m=m))
     mols = t.select("Molécules contenues", render("""
