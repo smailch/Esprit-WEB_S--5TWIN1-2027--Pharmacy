@@ -10,5 +10,6 @@ command -v npm >/dev/null || { echo "Node.js 18+ requis"; exit 1; }
 VPY=backend/.venv/bin/python; [ -x "$VPY" ] || VPY=backend/.venv/Scripts/python.exe
 "$VPY" -m pip install --upgrade pip -q
 "$VPY" -m pip install -r backend/requirements.txt
+"$VPY" -m pip install --no-deps backend/vendor/fr_core_news_sm-3.8.0-py3-none-any.whl
 npm install --no-audit --no-fund
 echo "Installation terminée. Lancez : scripts/start.sh"

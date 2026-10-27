@@ -27,6 +27,9 @@ Documentation interactive de l'API : **http://localhost:8000/docs**.
 L'installation télécharge automatiquement le modèle spaCy `fr_core_news_sm` (version épinglée).
 Le modèle d'intention entraîné (`backend/nlp/models/pharmanlu_intent_v1.joblib`) est déjà dans le dépôt.
 
+> **Windows** : clonez dans un dossier au chemin court (ex. `C:\projets\pharma`). Les chemins de plus de 260 caractères
+> empêchent spaCy de charger ses bibliothèques (« DLL load failed… Nom de fichier ou extension trop long »).
+
 ### Lancement manuel (si besoin)
 ```bash
 # Terminal 1 — API

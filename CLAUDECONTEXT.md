@@ -69,8 +69,17 @@ Note : la grille est individuelle → chaque membre doit pouvoir présenter sa p
 - Modèle IA : « PharmaNLU-A » = spaCy fr_core_news_sm + classifieur scikit-learn (TF-IDF mots+caractères → régression logistique) + EntityRuler + RapidFuzz → gabarits SPARQL. Fichier pharmanlu_intent_v1.joblib commité.
 - Python dispo sur ce PC : 3.13 (aussi 3.10) ; Java 17 dispo mais non utilisé.
 
+## Avancement module A (2026-10-27) — plan v2 réalisé
+- [x] Back-end FastAPI + rdflib + owlrl (graphes nommés base / inferred), 16 requêtes SPARQL nommées, CRUD validé
+- [x] Front React : /molecules, /medicaments, /comparateur, /interactions, /assistant, /sparql ; site vitrine sur /
+- [x] PharmaNLU-A : spaCy + EntityRuler + RapidFuzz + scikit-learn ; test 96,9 % (96 questions), entités 100 %
+- [x] 36 tests pytest ; scripts/setup + start (Windows et sh) ; README ; docs/PRESENTATION_MODULE_A.md
+- Lancement dev : `.claude/launch.json` (configs « api » et « dev »). Back-end à relancer après modif Python (pas de --reload).
+- Points techniques : rdflib ne gère pas EXISTS{GRAPH} dans SELECT ni GROUP_CONCAT sur variable non liée → contourné (Python / COALESCE).
+- Reste : intégration avec les modules B, C, D des coéquipiers (même application) quand ils seront prêts.
+
 ## Prochaine étape
-Attendre le fichier de l'ontologie et la description des deux modules d'Ismail. Ne rien coder de ces modules avant.
+Module A terminé et poussé. Prochaine étape : intégrer les modules des coéquipiers dans la même application (chacun ajoute son dossier `backend/app/modules/<module>/` et ses pages), puis répéter le scénario de `docs/PRESENTATION_MODULE_A.md`.
 
 ## Journal
 - 2026-10-27 : ontologie v2 réécrite à partir de ontograf.rdf (corrections : classe Voie non déclarée, codeATC/idPatient à la fois Object et Datatype property, Personne à 3 sous-classes, accents dans les URI). Répartition proposée 2 modules/membre dans ontologie/README.md (à confirmer par l'équipe).
